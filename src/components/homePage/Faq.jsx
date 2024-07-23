@@ -1,0 +1,92 @@
+import React, { useState } from "react";
+const faqData = [
+  {
+    question: "Question no -- 1",
+    answer:
+      "Lorem ipsum is simply dummy text of the printing and typesetting industry...",
+  },
+  {
+    question: "Question no -- 2",
+    answer:
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
+  },
+  {
+    question: "Question no -- 3",
+    answer:
+      "It has survived not only five centuries, but also the leap into electronic typesetting...",
+  },
+  {
+    question: "Question no -- 4",
+    answer: "Remaining essentially unchanged...",
+  },
+];
+const Faq = () => {
+  const [activeIndex, setActiveIndex] = useState(null);
+
+  const toggleFAQ = (index) => {
+    setActiveIndex(activeIndex === index ? null : index);
+  };
+  return (
+    <div className="max-w-[90rem] px-[1.25rem] mx-auto py-[7.219rem] flex flex-col gap-[2rem]">
+      <div className="flex justify-between items-center">
+        <h1 className="text-secondary leading-[3.375rem] font-[600] text-[2.813rem]">
+          Frequently Asked
+          <span className="text-primary">&nbsp;Questions</span>
+        </h1>
+        <button className="btn-outline flex gap-[0.625rem] text-[0.875rem] font-[700] items-center">
+          <p>View All</p>
+          <img src="/right-arrow.png" className="h-full" />
+        </button>
+      </div>
+
+      <div className="border-t">
+        {faqData.map((faq, index) => (
+          <div className="border-b">
+            <div key={index} className=" p-[1.45rem_1.25rem]">
+              <button
+                className="w-full text-left py-0 flex justify-between items-center"
+                onClick={() => toggleFAQ(index)}
+              >
+                <span
+                  className={`text-[1.25rem] font-[600] leading-[1.25rem] flex flex-row ${
+                    activeIndex === index ? "text-primary" : "text-black"
+                  }`}
+                >
+                  <span
+                    className={`${
+                      activeIndex === index ? "text-primary" : "text-[#CAC2D1]"
+                    }`}
+                  >
+                    {(index + 1).toString().padStart(2, "0") + "."}
+                  </span>
+                  &nbsp; &nbsp;
+                  {faq.question}
+                </span>
+                <span
+                  className={`text-xl ${
+                    activeIndex === index ? "text-primary" : "text-primary"
+                  }`}
+                >
+                  {activeIndex === index ? (
+                    <img src="/subtract.png" />
+                  ) : (
+                    <img src="/add.png" />
+                  )}
+                </span>
+              </button>
+            </div>
+            <div
+              className={`text-primaryLight text-[1rem] leading-[1.563rem] font-[400] p-[1.45rem_1.25rem] pt-2 pb-9 text-algin-start ${
+                activeIndex === index ? "" : "hidden"
+              }`}
+            >
+              {faq?.answer}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default Faq;
