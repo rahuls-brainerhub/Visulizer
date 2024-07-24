@@ -1,7 +1,7 @@
 import * as yup from "yup";
 const signupSchema = yup.object({
-    first_name: yup.string().required("First Name is required"),
-    last_name: yup.string().required("Last Name is required"),
+    first_name: yup.string().required("First Name is required").matches(/^[A-Za-z]+$/, "First Name can only contain alphabetic characters"),
+    last_name: yup.string().required("Last Name is required").matches(/^[A-Za-z]+$/, "Last Name can only contain alphabetic characters"),
     phone_number: yup
       .string()
       .length(10, "Phone Number must be exactly 10 digits")

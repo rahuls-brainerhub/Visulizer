@@ -46,28 +46,7 @@ input[type="text"].signup-input:focus {
 input[type="text"].signup-input {
   @apply outline-none !border !border-[#CCCCCC] !pl-[0px] w-[300px] h-[50px] placeholder:text-[black] placeholder:text-[20px] placeholder:font-[400] text-[20px] md:text-[25px] lg:text-[28px] xl:text-[30px] font-[700] text-[#0072BB];
 }
-.google-btn {
-  display: flex !important;
-  justify-content: center !important;
-  align-items: center !important;
-  box-shadow: unset !important;
-  padding: unset;
-  border-radius: 50px !important;
-  border: 1px solid #cac2d1 !important;
-  font-size: unset;
-  font-weight: unset;
-  font-family: unset;
-}
-.google-btn:hover {
-  background-color: #cac2d1 !important;
-}
-.google-btn div {
-  margin-right: 0px !important;
-  background: unset !important;
-  padding: 0px !important;
-  border-radius: 0px !important;
-}
 
-.google-btn span {
-  padding: 0px !important;
+.S9gUrf-YoZ4jf {
+  @apply flex items-center justify-center !w-[2.5rem] !h-[2.5rem] rounded-full !border !border-[#CAC2D1] hover:bg-[#CAC2D1] cursor-pointer;
 }

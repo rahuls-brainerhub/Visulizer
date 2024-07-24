@@ -8,12 +8,14 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { toast } from "react-toastify";
 import { userRegister } from "../../services/authService";
 import { signupSchema } from "../../schema/signupSchema";
-import { GoogleLogin } from "react-google-login";
+import { GoogleLogin } from "@react-oauth/google";
+import { GoogleOAuthProvider } from "@react-oauth/google";
+// import { GoogleLogin } from "react-google-login";
 import FacebookLogin from "react-facebook-login";
-import InstagramLogin from "react-instagram-login";
-import axios from "axios";
+import { InstagramLogin } from "@amraneze/react-instagram-login";
 const clientId =
   "566791707357-313huo648nc02hc6cfl0ha07cco4kole.apps.googleusercontent.com";
+const redirectUrl = "http://localhost:5173";
 
 const SignUpPopup = ({ onClose }) => {
   const facebookBtnRef = createRef();
@@ -87,22 +89,20 @@ const SignUpPopup = ({ onClose }) => {
     console.log(response);
     // Handle the response from Facebook, e.g. store user details to state
   };
-  const responseInstagram = async (response) => {
-    try {
-      // Use response.code or response.token for API requests
-      const accessToken = response.access_token;
-      const userId = response.user_id;
+  const responseInstagram = (response) => {
+    console.log(response);
+  };
 
-      // Example: Fetch user data
-      const userData = await axios.get(
-        `https://graph.instagram.com/${userId}?fields=id,username&access_token=${accessToken}`
-      );
-
-      console.log("User Data:", userData.data);
-
-      // Handle further logic (e.g., save user data to state or localStorage)
-    } catch (error) {
-      console.error("Error fetching Instagram user data:", error);
+  const handleKeyPress = (event) => {
+    const charCode = event.charCode;
+    if (!/[a-zA-Z]/.test(String.fromCharCode(charCode))) {
+      event.preventDefault();
+    }
+  };
+  const handleKeyPressNumber = (event) => {
+    const charCode = event.charCode;
+    if (!/[0-9]/.test(String.fromCharCode(charCode))) {
+      event.preventDefault();
     }
   };
   return (
@@ -124,6 +124,7 @@ const SignUpPopup = ({ onClose }) => {
                 type="text"
                 placeholder="Enter Your First Name"
                 {...register("first_name")}
+                onKeyPress={handleKeyPress}
               />
             </div>
             <p className="text-[red]">{errors.first_name?.message}</p>
@@ -143,6 +144,7 @@ const SignUpPopup = ({ onClose }) => {
                 type="text"
                 placeholder="Enter Your Last Name"
                 {...register("last_name")}
+                onKeyPress={handleKeyPress}
               />
             </div>
             <p className="text-[red]">{errors.last_name?.message}</p>
@@ -184,6 +186,7 @@ const SignUpPopup = ({ onClose }) => {
                 type="text"
                 placeholder="Enter Mobile Number"
                 {...register("phone_number")}
+                onKeyPress={handleKeyPressNumber}
               />
             </div>
             <p className="text-[red]">{errors.phone_number?.message}</p>
@@ -294,35 +297,45 @@ const SignUpPopup = ({ onClose }) => {
           Or continue with
         </p>
         <div className="flex py-[1.75rem] gap-[1rem]">
-          <GoogleLogin
-            clientId={clientId}
-            type="icon"
-            icon={true}
-            shape="circle"
-            buttonText={""}
-            onSuccess={onSuccess}
-            onFailure={onFailure}
-            cookiePolicy={"single_host_origin"}
-            id="google-signin-button"
-            className="google-btn flex items-center justify-center w-[3.25rem] h-[3.25rem] rounded-full border border-[#CAC2D1] hover:bg-[#CAC2D1] cursor-pointer"
-          />
+          <GoogleOAuthProvider clientId={clientId}>
+            <GoogleLogin
+              type="icon"
+              icon={true}
+              size="large"
+              shape="circle"
+              buttonText={""}
+              onSuccess={onSuccess}
+              onError={onFailure}
+              id="google-signin-button"
+              className="flex items-center justify-center w-[2.5rem] h-[2.5rem] rounded-full border border-[#CAC2D1] hover:bg-[#CAC2D1] cursor-pointer"
+            />
+          </GoogleOAuthProvider>
           <FacebookLogin
             appId="1260486952064586"
             autoLoad={false}
-            cssClass="flex items-center justify-center w-[3.25rem] h-[3.25rem] rounded-full border border-[#CAC2D1] hover:bg-[#CAC2D1] cursor-pointer"
+            cssClass="flex items-center justify-center rounded-full  hover:bg-[#CAC2D1] cursor-pointer border border-[#CAC2D1] overflow-hidden"
             fields="name,email,picture"
             callback={responseFacebook}
-            icon={<img src="/googleSignup.png" />}
+            icon={
+              <img
+                className="bg-[white] h-[38px] w-[38px] p-[9px] "
+                src="/googleSignup.png"
+              />
+            }
             textButton=""
           />
           <InstagramLogin
             clientId="1674124336754072"
-            buttonText={<img src="/facebookSignup.png" />}
-            onSuccess={responseInstagram}
-            onFailure={(error) =>
-              console.error("Instagram login error:", error)
+            buttonText={
+              <img
+                className="bg-[white] h-[38px] w-[38px] p-[9px] "
+                src="/facebookSignup.png"
+              />
             }
-            cssClass="flex items-center justify-center w-[3.25rem] h-[3.25rem] rounded-full border border-[#CAC2D1] hover:bg-[#CAC2D1] cursor-pointer"
+            onSuccess={responseInstagram}
+            onFailure={responseInstagram}
+            redirectUri={redirectUrl}
+            cssClass="flex items-center justify-center rounded-full  hover:bg-[#CAC2D1] cursor-pointer border border-[#CAC2D1] overflow-hidden"
           />
         </div>
         <p className="font-[400] text-[1rem] leading-[1.563rem] text-secondary">

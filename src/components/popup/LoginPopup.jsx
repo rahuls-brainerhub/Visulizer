@@ -7,6 +7,15 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { login } from "../../services/authService";
 import { toast } from "react-toastify";
+import { GoogleLogin } from "@react-oauth/google";
+import { GoogleOAuthProvider } from "@react-oauth/google";
+import FacebookLogin from "react-facebook-login";
+import { InstagramLogin } from "@amraneze/react-instagram-login";
+const clientId =
+  "566791707357-313huo648nc02hc6cfl0ha07cco4kole.apps.googleusercontent.com";
+  const redirectUrl="http://localhost:5173"
+
+
 const LoginPopup = ({ setOpen, onClose }) => {
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -49,6 +58,28 @@ const LoginPopup = ({ setOpen, onClose }) => {
       email: "",
       password: "",
     });
+  };
+  const onSuccess = (googleUser) => {
+    console.log("Logged in successfully!", googleUser);
+    // Handle successful login. You can access user profile in googleUser.profileObj
+  };
+
+  const onFailure = (error) => {
+    if (error.error === "popup_closed_by_user") {
+      alert(
+        "The login popup was closed before completing the process. Please try again."
+      );
+    } else {
+      console.error("Login failed:", error);
+      alert("An error occurred during login. Please try again.");
+    }
+  };
+  const responseFacebook = (response) => {
+    console.log(response);
+    // Handle the response from Facebook, e.g. store user details to state
+  };
+  const responseInstagram = (response) => {
+    console.log(response);
   };
   return (
     <div className="flex flex-col gap-[1.5rem]">
@@ -120,15 +151,46 @@ const LoginPopup = ({ setOpen, onClose }) => {
           Or continue with
         </p>
         <div className="flex py-[1.75rem] gap-[1rem]">
-          <div className="flex items-center justify-center w-[3.25rem] h-[3.25rem] rounded-full border border-[#CAC2D1] hover:bg-[#CAC2D1]">
-            <img src="/instagramSignup.png" />
-          </div>
-          <div className="flex items-center justify-center w-[3.25rem] h-[3.25rem] rounded-full border border-[#CAC2D1] hover:bg-[#CAC2D1]">
-            <img src="/googleSignup.png" />
-          </div>
-          <div className="flex items-center justify-center w-[3.25rem] h-[3.25rem] rounded-full border border-[#CAC2D1] hover:bg-[#CAC2D1]">
-            <img src="/facebookSignup.png" />
-          </div>
+          <GoogleOAuthProvider clientId={clientId}>
+            <GoogleLogin
+              type="icon"
+              icon={true}
+              size="large"
+              shape="circle"
+              buttonText={""}
+              onSuccess={onSuccess}
+              onError={onFailure}
+              id="google-signin-button"
+              className="flex items-center justify-center w-[2.5rem] h-[2.5rem] rounded-full border border-[#CAC2D1] hover:bg-[#CAC2D1] cursor-pointer"
+            />
+          </GoogleOAuthProvider>
+          <FacebookLogin
+            appId="1260486952064586"
+            autoLoad={false}
+            cssClass="flex items-center justify-center rounded-full  hover:bg-[#CAC2D1] cursor-pointer border border-[#CAC2D1] overflow-hidden"
+            fields="name,email,picture"
+            callback={responseFacebook}
+            icon={
+              <img
+                className="bg-[white] h-[38px] w-[38px] p-[9px] "
+                src="/googleSignup.png"
+              />
+            }
+            textButton=""
+          />
+          <InstagramLogin
+            clientId="1674124336754072"
+            buttonText={
+              <img
+                className="bg-[white] h-[38px] w-[38px] p-[9px] "
+                src="/facebookSignup.png"
+              />
+            }
+            onSuccess={responseInstagram}
+            onFailure={responseInstagram}
+            redirectUri={redirectUrl}
+            cssClass="flex items-center justify-center rounded-full  hover:bg-[#CAC2D1] cursor-pointer border border-[#CAC2D1] overflow-hidden"
+          />
         </div>
         <p className="font-[400] text-[1rem] leading-[1.563rem] text-secondary">
           Didn’t have an account?{" "}
