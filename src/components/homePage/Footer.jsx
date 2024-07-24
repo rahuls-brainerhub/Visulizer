@@ -115,26 +115,26 @@ const Footer = () => {
               <h1 className="text-white font-bold text-xl leading-7">
                 Follow Us
               </h1>
-              <div className="flex flex-row gap-4">
-                <div className="group w-8 flex justify-center items-center rounded-full bg-iconFooterBg hover:bg-white">
+              <div className="flex flex-row gap-[1rem]">
+                <div className="group w-[2rem] flex justify-center items-center rounded-full bg-iconFooterBg hover:bg-[white]">
                   <FaInstagram
                     size={17}
                     className="text-white group-hover:text-primary"
                   />
                 </div>
-                <div className="group w-8 flex justify-center items-center rounded-full bg-iconFooterBg p-1.5 hover:bg-white">
+                <div className="group w-[2rem] flex justify-center items-center rounded-full bg-iconFooterBg p-[0.467rem] hover:bg-[white]">
                   <FaDribbble
                     className="text-white group-hover:text-primary"
                     size={17}
                   />
                 </div>
-                <div className="group w-8 flex justify-center items-center rounded-full bg-iconFooterBg p-1.5 hover:bg-white">
+                <div className="group w-[2rem] flex justify-center items-center rounded-full bg-iconFooterBg p-[0.467rem] hover:bg-[white]">
                   <FaTwitter
                     className="text-white group-hover:text-primary"
                     size={17}
                   />
                 </div>
-                <div className="group w-8 flex justify-center items-center rounded-full bg-iconFooterBg p-1.5 hover:bg-white">
+                <div className="group w-[2rem] flex justify-center items-center rounded-full bg-iconFooterBg p-[0.467rem] hover:bg-[white]">
                   <FaYoutube
                     className="text-white group-hover:text-primary"
                     size={17}
