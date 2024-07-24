@@ -12,6 +12,7 @@ export default {
         themeBlack: "#18191F",
         primaryLight: "#7E6E8C",
         iconFooter: "#CAC2D1",
+        iconFooterBg: "#644C79",
         primaryMediumLight: "#AC83CF",
         primaryDark: "#92278F",
         primaryInputBorder:"#E1D9E9"
