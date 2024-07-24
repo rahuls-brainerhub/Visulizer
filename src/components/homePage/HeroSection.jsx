@@ -1,6 +1,16 @@
 import React from "react";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 const HeroSection = () => {
+  var settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+  };
   return (
     <div className="w-full overflow-hidden relative bg-[#F9FAFE]">
       <img
@@ -27,7 +37,38 @@ const HeroSection = () => {
           </div>
         </div>
         <div className="w-1/2">
-          <img className="h-[30rem] w-full object-cover" src={"/hero.jpeg"} />
+          <Slider {...settings}>
+            <div>
+              <img
+                className="h-[30rem] w-full object-cover"
+                src={"/hero.jpeg"}
+              />
+            </div>
+            <div>
+              <img
+                className="h-[30rem] w-full object-cover"
+                src={"/hero.jpeg"}
+              />
+            </div>
+            <div>
+              <img
+                className="h-[30rem] w-full object-cover"
+                src={"/hero.jpeg"}
+              />
+            </div>
+            <div>
+              <img
+                className="h-[30rem] w-full object-cover"
+                src={"/hero.jpeg"}
+              />
+            </div>
+            <div>
+              <img
+                className="h-[30rem] w-full object-cover"
+                src={"/hero.jpeg"}
+              />
+            </div>
+          </Slider>
         </div>
       </div>
     </div>

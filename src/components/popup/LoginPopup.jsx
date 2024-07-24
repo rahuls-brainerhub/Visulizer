@@ -10,10 +10,10 @@ import { toast } from "react-toastify";
 import { GoogleLogin } from "@react-oauth/google";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import FacebookLogin from "react-facebook-login";
-import { InstagramLogin } from "@amraneze/react-instagram-login";
+// import { InstagramLogin } from "@amraneze/react-instagram-login";
 const clientId =
   "566791707357-313huo648nc02hc6cfl0ha07cco4kole.apps.googleusercontent.com";
-  const redirectUrl="http://localhost:5173"
+  // const redirectUrl="http://localhost:5173"
 
 
 const LoginPopup = ({ setOpen, onClose }) => {
@@ -78,9 +78,9 @@ const LoginPopup = ({ setOpen, onClose }) => {
     console.log(response);
     // Handle the response from Facebook, e.g. store user details to state
   };
-  const responseInstagram = (response) => {
-    console.log(response);
-  };
+  // const responseInstagram = (response) => {
+  //   console.log(response);
+  // };
   return (
     <div className="flex flex-col gap-[1.5rem]">
       <form onSubmit={handleSubmit(onSubmit)}>
@@ -178,7 +178,7 @@ const LoginPopup = ({ setOpen, onClose }) => {
             }
             textButton=""
           />
-          <InstagramLogin
+          {/* <InstagramLogin
             clientId="1674124336754072"
             buttonText={
               <img
@@ -190,7 +190,7 @@ const LoginPopup = ({ setOpen, onClose }) => {
             onFailure={responseInstagram}
             redirectUri={redirectUrl}
             cssClass="flex items-center justify-center rounded-full  hover:bg-[#CAC2D1] cursor-pointer border border-[#CAC2D1] overflow-hidden"
-          />
+          /> */}
         </div>
         <p className="font-[400] text-[1rem] leading-[1.563rem] text-secondary">
           Didn’t have an account?{" "}

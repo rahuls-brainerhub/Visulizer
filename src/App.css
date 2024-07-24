@@ -50,3 +50,15 @@ input[type="text"].signup-input {
 .S9gUrf-YoZ4jf {
   @apply flex items-center justify-center !w-[2.5rem] !h-[2.5rem] rounded-full !border !border-[#CAC2D1] hover:bg-[#CAC2D1] cursor-pointer;
 }
+
+.slick-arrow slick-prev {
+  background-color: black;
+}
+
+.slick-prev:before {
+  /* background-color: #8c2a8d; */
+  color: #8c2a8d !important;
+}
+.slick-next:before {
+  color: #8c2a8d !important;
+}

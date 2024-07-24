@@ -12,10 +12,10 @@ import { GoogleLogin } from "@react-oauth/google";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 // import { GoogleLogin } from "react-google-login";
 import FacebookLogin from "react-facebook-login";
-import { InstagramLogin } from "@amraneze/react-instagram-login";
+// import { InstagramLogin } from "@amraneze/react-instagram-login";
 const clientId =
   "566791707357-313huo648nc02hc6cfl0ha07cco4kole.apps.googleusercontent.com";
-const redirectUrl = "http://localhost:5173";
+// const redirectUrl = "http://localhost:5173";
 
 const SignUpPopup = ({ onClose }) => {
   const facebookBtnRef = createRef();
@@ -324,7 +324,7 @@ const SignUpPopup = ({ onClose }) => {
             }
             textButton=""
           />
-          <InstagramLogin
+          {/* <InstagramLogin
             clientId="1674124336754072"
             buttonText={
               <img
@@ -336,7 +336,7 @@ const SignUpPopup = ({ onClose }) => {
             onFailure={responseInstagram}
             redirectUri={redirectUrl}
             cssClass="flex items-center justify-center rounded-full  hover:bg-[#CAC2D1] cursor-pointer border border-[#CAC2D1] overflow-hidden"
-          />
+          /> */}
         </div>
         <p className="font-[400] text-[1rem] leading-[1.563rem] text-secondary">
           Already have an account?{" "}
