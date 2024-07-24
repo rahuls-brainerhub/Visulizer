@@ -69,3 +69,17 @@ export const resetPassword = async (Data) => {
         return err;
     }
 };
+
+export const socialAuth = async (Data) => {
+    try {
+        const res = await baseService.post(ROUTES.AUTH.SOCIALAUTH, Data);
+        if (res) {
+            store.dispatch(setIsAuthenticated(true));
+            store.dispatch(setrefreshToken(res?.data?.data?.access_token))
+        }
+        return res.data;
+    } catch (err) {
+        console.error(err);
+        return err;
+    }
+};

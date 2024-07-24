@@ -6,7 +6,7 @@ import { LuEye } from "react-icons/lu";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { toast } from "react-toastify";
-import { userRegister } from "../../services/authService";
+import { socialAuth, userRegister } from "../../services/authService";
 import { signupSchema } from "../../schema/signupSchema";
 import { GoogleLogin } from "@react-oauth/google";
 import { GoogleOAuthProvider } from "@react-oauth/google";
@@ -16,7 +16,7 @@ const clientId =
   "566791707357-313huo648nc02hc6cfl0ha07cco4kole.apps.googleusercontent.com";
 // const redirectUrl = "http://localhost:5173";
 
-const SignUpPopup = ({ onClose }) => {
+const SignUpPopup = ({ setOpen,onClose }) => {
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
@@ -82,8 +82,27 @@ const SignUpPopup = ({ onClose }) => {
       alert("An error occurred during login. Please try again.");
     }
   };
-  const responseFacebook = (response) => {
-    console.log(response);
+  const responseFacebook = async (response) => {
+    const socialLogin = await socialAuth({
+      access_token: response.accessToken,
+      provider: "facebook",
+    });
+    console.log(response)
+    try {
+      // console.log(response?.response?.data?.message);
+      if (socialLogin?.status === 1) {
+        toast.success("Login successfully");
+        setOpen({});
+      } else {
+        toast.error(response?.response?.data?.message);
+      }
+    } catch (error) {
+      toast.error("Error login");
+    } finally {
+      setLoading(false);
+      close();
+    }
+    // Handle the response from Facebook, e.g. store user details to state
   };
   const responseInstagram = (response) => {
     console.log(response);

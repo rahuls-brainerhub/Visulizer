@@ -73,7 +73,9 @@ const HomePage = () => {
       {open?.openSignup && (
         <PopupTemplete
           title={"Sign up"}
-          bodyComponent={<SignUpPopup onClose={(view) => onClose(view)} />}
+          bodyComponent={
+            <SignUpPopup setOpen={setOpen} onClose={(view) => onClose(view)} />
+          }
           onClose={() => onClose("openSignup")}
         />
       )}

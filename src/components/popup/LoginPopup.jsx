@@ -5,7 +5,7 @@ import { LuEye } from "react-icons/lu";
 import { loginSchema } from "../../schema/loginSchema";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { login } from "../../services/authService";
+import { login, socialAuth } from "../../services/authService";
 import { toast } from "react-toastify";
 import { GoogleLogin } from "@react-oauth/google";
 import { GoogleOAuthProvider } from "@react-oauth/google";
@@ -58,9 +58,13 @@ const LoginPopup = ({ setOpen, onClose }) => {
       password: "",
     });
   };
-  const onSuccess = (googleUser) => {
+  const onSuccess = async (googleUser) => {
     console.log("Logged in successfully!", googleUser);
-    // Handle successful login. You can access user profile in googleUser.profileObj
+    const socialLogin = await socialAuth({
+      access_token: googleUser.credential,
+      provider: "google",
+    });
+    console.log(socialLogin);
   };
 
   const onFailure = (error) => {
@@ -73,8 +77,27 @@ const LoginPopup = ({ setOpen, onClose }) => {
       alert("An error occurred during login. Please try again.");
     }
   };
-  const responseFacebook = (response) => {
+  const responseFacebook = async (response) => {
     console.log(response);
+    const socialLogin = await socialAuth({
+      access_token: response.accessToken,
+      provider: "facebook",
+    });
+    console.log(socialLogin);
+    try {
+      console.log(response?.response?.data?.message);
+      if (socialLogin?.status === 1) {
+        toast.success("Login successfully");
+        setOpen({});
+      } else {
+        toast.error(response?.response?.data?.message);
+      }
+    } catch (error) {
+      toast.error("Error login");
+    } finally {
+      setLoading(false);
+      close();
+    }
     // Handle the response from Facebook, e.g. store user details to state
   };
   // const responseInstagram = (response) => {

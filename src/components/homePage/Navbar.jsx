@@ -78,7 +78,7 @@ const Navbar = ({ onClose, onCloseLogin }) => {
         </button>
         {isMobileOpen && (
           <div className="absolute md:hidden z-[10] top-[5rem] left-[0px] w-full min-h-[calc(100vh-5rem)] h-full bg-white ">
-            <div className="p-[1.25rem] h-full flex flex-col justify-between">
+            <div className="p-[1.25rem] h-full flex flex-col gap-[2rem]">
               <div className="flex flex-col items-start gap-[1.5rem]">
                 {links.map((item, i) => (
                   <Link
