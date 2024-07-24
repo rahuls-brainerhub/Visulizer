@@ -2,6 +2,10 @@
   @apply select-none;
 }
 
+html {
+  font-size: 16px;
+}
+
 @keyframes slideIn {
   from {
     width: 0;
@@ -61,4 +65,10 @@ input[type="text"].signup-input {
 }
 .slick-next:before {
   color: #8c2a8d !important;
+}
+
+@media screen and (max-width: 720px) {
+  html {
+    font-size: 13px;
+  }
 }

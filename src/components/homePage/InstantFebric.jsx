@@ -2,14 +2,14 @@ import React from "react";
 
 const InstantFebric = () => {
   return (
-    <div className="relative z-[2] max-w-[90rem] px-[1.25rem] w-full flex gap-[3.25rem] items-center m-auto py-[6rem]">
-      <div className="w-[45%]">
+    <div className="relative z-[2] max-w-[80rem] px-[1.25rem] w-full flex flex-col md:flex-row gap-[3.25rem] items-center m-auto py-[3rem] md:py-[6rem]">
+      <div className="w-full md:w-[45%]">
         <img
           className="h-[30rem] w-full object-cover"
           src={"/instantFebric.png"}
         />
       </div>
-      <div className="flex flex-col gap-[2rem] w-[55%]">
+      <div className="flex flex-col gap-[2rem] w-full md:w-[55%]">
         <div className="flex flex-col gap-[1rem]">
           <h1 className="text-secondary leading-[3.375rem] font-[600] text-[2.813rem]">
             Instant Fabric Transformation at &nbsp;

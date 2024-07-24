@@ -36,10 +36,23 @@ const HomePage = () => {
         openResetPassword: false,
       };
       newState[modalType] = !prevState[modalType];
-
+      updateBodyOverflowClass(newState);
       return newState;
     });
   };
+
+  function updateBodyOverflowClass(modalStates) {
+    const hasOpenModal = Object.values(modalStates).some(
+      (state) => state === true
+    );
+
+    if (hasOpenModal) {
+      document.body.classList.add("overflow-hidden");
+    } else {
+      document.body.classList.remove("overflow-hidden");
+    }
+  }
+
   const removeTokenFromURL = () => {
     const baseUrl = window.location.href.split("?")[0];
     window.history.replaceState({}, document.title, baseUrl);
@@ -67,7 +80,12 @@ const HomePage = () => {
       {open?.openForgetPassword && (
         <PopupTemplete
           title={"Forget Password"}
-          bodyComponent={<ForgetPassword setOpen={setOpen} onClose={(view) => onClose(view)} />}
+          bodyComponent={
+            <ForgetPassword
+              setOpen={setOpen}
+              onClose={(view) => onClose(view)}
+            />
+          }
           onClose={onClose}
         />
       )}
@@ -94,7 +112,7 @@ const HomePage = () => {
         <PopupTemplete
           title={"Reset Password"}
           bodyComponent={
-            <ResetPassword token={token} onClose={(view) => onClose(view)}  />
+            <ResetPassword token={token} onClose={(view) => onClose(view)} />
           }
           onClose={onClose}
           removeTokenFromURL={removeTokenFromURL}

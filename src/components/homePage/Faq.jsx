@@ -8,7 +8,7 @@ const faqData = [
   {
     question: "Question no -- 2",
     answer:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
   },
   {
     question: "Question no -- 3",
@@ -27,8 +27,8 @@ const Faq = () => {
     setActiveIndex(activeIndex === index ? null : index);
   };
   return (
-    <div className="max-w-[90rem] px-[1.25rem] mx-auto py-[7.219rem] flex flex-col gap-[2rem]">
-      <div className="flex justify-between items-center">
+    <div className="max-w-[80rem] px-[1.25rem] mx-auto py-[7.219rem] flex flex-col gap-[2rem]">
+      <div className="flex flex-col md:flex-row justify-between gap-[2rem] items-start md:items-center">
         <h1 className="text-secondary leading-[3.375rem] font-[600] text-[2.813rem]">
           Frequently Asked
           <span className="text-primary">&nbsp;Questions</span>

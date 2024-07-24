@@ -5,9 +5,10 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { forgetPassword } from "../../services/authService";
 import { forgetPasswordSchema } from "../../schema/forgetPasswordSchema";
 import { toast } from "react-toastify";
+import { FaRegUser } from "react-icons/fa";
 
-const ForgetPassword = ({setOpen}) => {
-  const [loading,setLoading]=useState(false)
+const ForgetPassword = ({ setOpen }) => {
+  const [loading, setLoading] = useState(false);
   const {
     register,
     handleSubmit,
@@ -17,7 +18,6 @@ const ForgetPassword = ({setOpen}) => {
     resolver: yupResolver(forgetPasswordSchema),
   });
   const onSubmit = async (data) => {
- 
     const formData = new FormData();
     formData.append("email", data?.email);
     setLoading(true);
@@ -45,25 +45,28 @@ const ForgetPassword = ({setOpen}) => {
 
   return (
     <div>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <div className="flex flex-col py-[2.5rem] gap-[2.5rem]">
-          <div className="text-center">
-            <p className="text-primaryLight font-[400] text-[1rem] leading-[1rem]">
-              Enter Your Email address and we will send you a link to reset your
-              password
-            </p>
-          </div>
-          <div className="">
+      <div className="flex flex-col py-[2.5rem] gap-[2.5rem]">
+        <div className="text-center">
+          <p className="text-primaryLight font-[400] text-[1rem] leading-[1rem]">
+            Enter Your Email address and we will send you a link to reset your
+            password
+          </p>
+        </div>
+        <form
+          className="max-w-[38.625rem] px-[1.25rem] w-full m-auto"
+          onSubmit={handleSubmit(onSubmit)}
+        >
+          <div className="w-full">
             <label className="text-secondary font-[400] text-[1rem] leading-[1rem]">
               Email Address
             </label>
-            <div className="relative pt-[.5rem]">
-              <div className=" absolute left-[0.5rem] top-[55%] translate-y-[-50%] flex items-center gap-[0.25rem]">
-                <AiOutlineMail size={20} className="text-primary" />
+            <div className="relative pt-[.5rem] w-full">
+              <div className=" absolute left-[0.5rem] top-[50%] translate-y-[-50%] flex items-center gap-[0.25rem]">
+                <FaRegUser size={20} className="text-primary" />
                 <p className="text-[1rem] text-gray-400">|</p>
               </div>
               <input
-                className="border border-primaryInputBorder rounded-lg w-[38.625rem] h-[3rem] pl-[2.75rem] transition duration-300 ease-in-out hover:border-primary"
+                className="border w-full border-primaryInputBorder rounded-lg h-[3rem] pl-[2.75rem] transition duration-300 ease-in-out hover:border-primary"
                 id=""
                 type="text"
                 placeholder="Enter Email Address"
@@ -73,12 +76,12 @@ const ForgetPassword = ({setOpen}) => {
             <p className="text-[red]">{errors.email?.message}</p>
           </div>
           <div>
-            <button className="btn-primary text-[1rem] font-[500] w-[38.625rem]  leading-[1.5rem]">
+            <button className="btn-primary text-[1rem] font-[500] my-[1.5rem] leading-[1.5rem] w-full">
               Reset Password
             </button>
           </div>
-        </div>
-      </form>
+        </form>
+      </div>
     </div>
   );
 };

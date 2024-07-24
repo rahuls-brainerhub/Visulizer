@@ -10,7 +10,6 @@ import { userRegister } from "../../services/authService";
 import { signupSchema } from "../../schema/signupSchema";
 import { GoogleLogin } from "@react-oauth/google";
 import { GoogleOAuthProvider } from "@react-oauth/google";
-// import { GoogleLogin } from "react-google-login";
 import FacebookLogin from "react-facebook-login";
 // import { InstagramLogin } from "@amraneze/react-instagram-login";
 const clientId =
@@ -18,7 +17,6 @@ const clientId =
 // const redirectUrl = "http://localhost:5173";
 
 const SignUpPopup = ({ onClose }) => {
-  const facebookBtnRef = createRef();
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
@@ -72,7 +70,6 @@ const SignUpPopup = ({ onClose }) => {
 
   const onSuccess = (googleUser) => {
     console.log("Logged in successfully!", googleUser);
-    // Handle successful login. You can access user profile in googleUser.profileObj
   };
 
   const onFailure = (error) => {
@@ -87,7 +84,6 @@ const SignUpPopup = ({ onClose }) => {
   };
   const responseFacebook = (response) => {
     console.log(response);
-    // Handle the response from Facebook, e.g. store user details to state
   };
   const responseInstagram = (response) => {
     console.log(response);
@@ -107,146 +103,112 @@ const SignUpPopup = ({ onClose }) => {
   };
   return (
     <div>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <div className="flex flex-row gap-[1.125rem] w-full">
-          <div className="w-1/2">
+      <form
+        className="max-w-[38.625rem] px-[0.5rem] md:px-[1.25rem] w-full m-auto"
+        onSubmit={handleSubmit(onSubmit)}
+      >
+        <div className="flex flex-wrap flex-row gap-[0.5rem] md:gap-[1.125rem] w-full">
+          <div className="w-[calc(50%-0.25rem)] md:w-[calc(50%-0.563rem)]">
             <label className="text-secondary font-[400] text-[1rem] leading-[1rem]">
               First Name
             </label>
             <div className="relative pt-[.5rem]">
-              <div className=" absolute left-[0.5rem] top-[50%] translate-y-[-50%] flex items-center gap-[0.25rem]">
+              <div className=" absolute left-[0.5rem] top-[50%] translate-y-[-34%] flex items-center gap-[0.25rem]">
                 <FaRegUser size={20} className="text-primary" />
                 <p className="text-[1rem] text-gray-400">|</p>
               </div>
               <input
-                className="border border-primaryInputBorder rounded-lg w-[18.813rem] h-[3rem] pl-[2.75rem] transition duration-300 ease-in-out hover:border-primary"
+                className="border border-primaryInputBorder rounded-lg w-full h-[3rem] pl-[2.75rem] transition duration-300 ease-in-out hover:border-primary placeholder:text-[0.85rem] md:placeholder:text-[1rem]"
                 id=""
                 type="text"
-                placeholder="Enter Your First Name"
+                placeholder="First Name"
                 {...register("first_name")}
                 onKeyPress={handleKeyPress}
               />
             </div>
             <p className="text-[red]">{errors.first_name?.message}</p>
           </div>
-          <div className="w-1/2">
+          <div className="w-[calc(50%-0.25rem)] md:w-[calc(50%-0.563rem)]">
             <label className="text-secondary font-[400] text-[1rem] leading-[1rem]">
               Last Name
             </label>
             <div className="relative pt-[.5rem]">
-              <div className=" absolute left-[0.5rem] top-[50%] translate-y-[-50%] flex items-center gap-[0.25rem]">
+              <div className=" absolute left-[0.5rem] top-[50%] translate-y-[-34%] flex items-center gap-[0.25rem]">
                 <FaRegUser size={20} className="text-primary" />
                 <p className="text-[1rem] text-gray-400">|</p>
               </div>
               <input
-                className="border border-primaryInputBorder rounded-lg  h-[3rem] pl-[2.75rem] w-[18.813rem] transition duration-300 ease-in-out hover:border-primary"
+                className="border border-primaryInputBorder rounded-lg  h-[3rem] pl-[2.75rem] w-full transition duration-300 ease-in-out hover:border-primary placeholder:text-[0.85rem] md:placeholder:text-[1rem]"
                 id=""
                 type="text"
-                placeholder="Enter Your Last Name"
+                placeholder="Last Name"
                 {...register("last_name")}
                 onKeyPress={handleKeyPress}
               />
             </div>
             <p className="text-[red]">{errors.last_name?.message}</p>
           </div>
-        </div>
-
-        <div className="flex flex-row gap-[1.125rem] w-full mt-[1.1rem]">
-          <div className="w-1/2">
+          <div className="w-[calc(50%-0.25rem)] md:w-[calc(50%-0.563rem)]">
             <label className="text-secondary font-[400] text-[1rem] leading-[1rem]">
               Email Address
             </label>
             <div className="relative pt-[.5rem]">
-              <div className=" absolute left-[0.5rem] top-[50%] translate-y-[-50%] flex items-center gap-[0.25rem]">
+              <div className=" absolute left-[0.5rem] top-[50%] translate-y-[-34%] flex items-center gap-[0.25rem]">
                 <AiOutlineMail size={20} className="text-primary" />
                 <p className="text-[1rem] text-gray-400">|</p>
               </div>
               <input
-                className="border border-primaryInputBorder rounded-lg  h-[3rem] pl-[2.75rem] w-[18.813rem] transition duration-300 ease-in-out hover:border-primary"
+                className="border border-primaryInputBorder rounded-lg  h-[3rem] pl-[2.75rem] w-full transition duration-300 ease-in-out hover:border-primary placeholder:text-[0.85rem] md:placeholder:text-[1rem]"
                 id=""
                 type="text"
-                placeholder="Enter Email Address"
+                placeholder="Email Address"
                 {...register("email")}
               />
             </div>
             <p className="text-[red]">{errors.email?.message}</p>
           </div>
-          <div className="w-1/2">
+          <div className="w-[calc(50%-0.25rem)] md:w-[calc(50%-0.563rem)]">
             <label className="text-secondary font-[400] text-[1rem] leading-[1rem]">
               Mobile Number
             </label>
             <div className="relative pt-[.5rem]">
-              <div className=" absolute left-[0.5rem] top-[50%] translate-y-[-50%] flex items-center gap-[0.25rem]">
+              <div className=" absolute left-[0.5rem] top-[50%] translate-y-[-34%] flex items-center gap-[0.25rem]">
                 <LuPhone size={20} className="text-primary" />
                 <p className="text-[1rem] text-gray-400">|</p>
               </div>
               <input
-                className="border border-primaryInputBorder rounded-lg h-[3rem] pl-[2.75rem] w-[18.813rem] transition duration-300 ease-in-out hover:border-primary"
+                className="border border-primaryInputBorder rounded-lg h-[3rem] pl-[2.75rem] w-full transition duration-300 ease-in-out hover:border-primary placeholder:text-[0.85rem] md:placeholder:text-[1rem]"
                 id=""
                 type="text"
-                placeholder="Enter Mobile Number"
+                placeholder="Mobile Number"
                 {...register("phone_number")}
                 onKeyPress={handleKeyPressNumber}
               />
             </div>
             <p className="text-[red]">{errors.phone_number?.message}</p>
           </div>
-        </div>
-        {/* <div className="flex flex-row gap-[1.125rem] mt-[1.1rem] w-full">
-        <div className="w-1/2">
-          <label className="text-secondary font-[400] text-[1rem] leading-[1rem]">
-            Password
-          </label>
-          <div className="relative pt-[.5rem]">
-            <div className=" absolute left-[0.5rem] top-[50%] translate-y-[-50%] flex items-center gap-[0.25rem]">
-              <img src="/password.svg" />
-              <p className="text-[1rem] text-gray-400">|</p>
-            </div>
-            <input
-              className="border rounded-lg w-full h-[3rem] pl-[2.75rem] "
-              id=""
-              type="text"
-              placeholder="Enter Your Password"
-            />
-          </div>
-        </div>
-        <div className="w-1/2">
-          <label className="text-secondary font-[400] text-[1rem] leading-[1rem]">
-            Confirm Password
-          </label>
-          <div className="relative pt-[.5rem]">
-            <div className=" absolute left-[0.5rem] top-[50%] translate-y-[-50%] flex items-center gap-[0.25rem]">
-              <img src="/password.svg" />
-              <p className="text-[1rem] text-gray-400">|</p>
-            </div>
-            <input
-              className="border rounded-lg w-full h-[3rem] pl-[2.75rem] "
-              id=""
-              type="text"
-              placeholder="Enter Your Confirm Password"
-            />
-          </div>
-        </div>
-      </div> */}
-        <div className="flex flex-row gap-[1.125rem] mt-[1.1rem] w-full">
-          <div className="w-1/2">
+          <div className="w-[calc(50%-0.25rem)] md:w-[calc(50%-0.563rem)]">
             <label className="text-secondary font-[400] text-[1rem] leading-[1rem]">
               Password
             </label>
             <div className="relative pt-[.5rem]">
-              <div className=" absolute left-[0.5rem] top-[55%] translate-y-[-50%] flex items-center gap-[0.25rem]">
-                <img src="/password.svg" alt="password icon" />
+              <div className=" absolute left-[0.5rem] top-[55%] translate-y-[-44%] flex items-center gap-[0.25rem]">
+                <img
+                  className="h-[1.25rem] w-[1.25rem]"
+                  src="/password.svg"
+                  alt="password icon"
+                />
                 <p className="text-[1rem] text-gray-400">|</p>
               </div>
               <input
-                className="border border-primaryInputBorder rounded-lg w-[18.813rem] h-[3rem] pl-[2.75rem] pr-[2rem] transition duration-300 ease-in-out hover:border-primary"
+                className="border border-primaryInputBorder rounded-lg w-full h-[3rem] pl-[2.75rem] pr-[2rem] transition duration-300 ease-in-out hover:border-primary placeholder:text-[0.85rem] md:placeholder:text-[1rem]"
                 id="password"
                 type={showPassword ? "text" : "password"}
-                placeholder="Enter Password"
+                placeholder="Password"
                 {...register("password")}
               />
               <div
-                className="absolute right-[0.5rem] top-[60%] translate-y-[-50%] cursor-pointer"
+                className="absolute right-[0.5rem] top-[60%] translate-y-[-44%] cursor-pointer"
                 onClick={togglePasswordVisibility}
               >
                 {showPassword ? (
@@ -258,24 +220,28 @@ const SignUpPopup = ({ onClose }) => {
             </div>
             <p className="text-[red]">{errors.password?.message}</p>
           </div>
-          <div className="w-1/2">
+          <div className="w-[calc(50%-0.25rem)] md:w-[calc(50%-0.563rem)]">
             <label className="text-secondary font-[400] text-[1rem] leading-[1rem]">
               Confirm Password
             </label>
             <div className="relative pt-[.5rem]">
-              <div className=" absolute left-[0.5rem] top-[60%] translate-y-[-50%] flex items-center gap-[0.25rem]">
-                <img src="/password.svg" alt="password icon" />
+              <div className=" absolute left-[0.5rem] top-[60%] translate-y-[-44%] flex items-center gap-[0.25rem]">
+                <img
+                  className="h-[1.25rem] w-[1.25rem]"
+                  src="/password.svg"
+                  alt="password icon"
+                />
                 <p className="text-[1rem] text-gray-400">|</p>
               </div>
               <input
-                className="border border-primaryInputBorder rounded-lg w-[18.813rem] h-[3rem] pl-[2.75rem] pr-[2rem] transition duration-300 ease-in-out hover:border-primary "
+                className="border border-primaryInputBorder rounded-lg w-full h-[3rem] pl-[2.75rem] pr-[2rem] transition duration-300 ease-in-out hover:border-primary placeholder:text-[0.85rem] md:placeholder:text-[1rem] "
                 id="confirmPassword"
                 type={showConfirmPassword ? "text" : "password"}
-                placeholder="Enter Confirm Password"
+                placeholder="Confirm Password"
                 {...register("confirm_password")}
               />
               <div
-                className="absolute right-[0.5rem] top-[60%] translate-y-[-50%] cursor-pointer"
+                className="absolute right-[0.5rem] top-[60%] translate-y-[-44%] cursor-pointer"
                 onClick={toggleConfirmPasswordVisibility}
               >
                 {showConfirmPassword ? (
@@ -288,15 +254,15 @@ const SignUpPopup = ({ onClose }) => {
             <p className="text-[red]">{errors.confirm_password?.message}</p>
           </div>
         </div>
-        <button className="btn-primary text-[1rem] font-[500] w-[38.625rem] my-[1.5rem] leading-[1.5rem]">
+        <button className="btn-primary text-[1rem] font-[500] w-full my-[1rem] md:my-[1.5rem] leading-[1.5rem]">
           Signup
         </button>
       </form>
-      <div className="flex flex-col items-center py-[2.375rem]">
+      <div className="flex flex-col items-center py-[1rem] md:py-[2.375rem]">
         <p className="font-[400] text-[1rem] text-secondary">
           Or continue with
         </p>
-        <div className="flex py-[1.75rem] gap-[1rem]">
+        <div className="flex py-[1rem] md:py-[1.75rem] gap-[1rem]">
           <GoogleOAuthProvider clientId={clientId}>
             <GoogleLogin
               type="icon"

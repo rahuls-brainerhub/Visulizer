@@ -19,8 +19,8 @@ const HeroSection = () => {
         alt=""
         srcset=""
       />
-      <div className="relative z-[2] max-w-[90rem] px-[1.25rem] w-full flex justify-between items-center m-auto py-[6rem]">
-        <div className="w-1/2 flex flex-col gap-[2rem]">
+      <div className="relative z-[2] max-w-[80rem] px-[1.25rem] w-full flex flex-col md:flex-row gap-[2rem] justify-between items-center m-auto py-[3rem] md:py-[6rem]">
+        <div className="w-full md:w-1/2 flex flex-col gap-[2rem]">
           <div className="flex flex-col gap-[1rem]">
             <h1 className="text-secondary leading-[4.625rem] font-[600] text-[4rem]">
               Experience Fabric Magic
@@ -36,7 +36,7 @@ const HeroSection = () => {
             </button>
           </div>
         </div>
-        <div className="w-1/2">
+        <div className="w-full md:w-1/2">
           <Slider {...settings}>
             <div>
               <img
@@ -47,25 +47,13 @@ const HeroSection = () => {
             <div>
               <img
                 className="h-[30rem] w-full object-cover"
-                src={"/hero.jpeg"}
+                src={"/bannerImage2.png"}
               />
             </div>
             <div>
               <img
                 className="h-[30rem] w-full object-cover"
-                src={"/hero.jpeg"}
-              />
-            </div>
-            <div>
-              <img
-                className="h-[30rem] w-full object-cover"
-                src={"/hero.jpeg"}
-              />
-            </div>
-            <div>
-              <img
-                className="h-[30rem] w-full object-cover"
-                src={"/hero.jpeg"}
+                src={"/bannerImage3.png"}
               />
             </div>
           </Slider>
