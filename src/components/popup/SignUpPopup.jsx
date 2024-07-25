@@ -273,15 +273,15 @@ const SignUpPopup = ({ setOpen,onClose }) => {
             <p className="text-[red]">{errors.confirm_password?.message}</p>
           </div>
         </div>
-        <button className="btn-primary text-[1rem] font-[500] w-full my-[1rem] md:my-[1.5rem] leading-[1.5rem]">
+        <button className="btn-primary text-[1rem] font-[500] w-full mt-[0.75rem] leading-[1.5rem]">
           Signup
         </button>
       </form>
-      <div className="flex flex-col items-center py-[1rem] md:py-[2.375rem]">
+      <div className="flex flex-col items-center gap-[0.75rem] py-[1rem]">
         <p className="font-[400] text-[1rem] text-secondary">
           Or continue with
         </p>
-        <div className="flex py-[1rem] md:py-[1.75rem] gap-[1rem]">
+        <div className="flex gap-[1rem]">
           <GoogleOAuthProvider clientId={clientId}>
             <GoogleLogin
               type="icon"
