@@ -42,7 +42,6 @@ const ForgetPassword = ({ setOpen }) => {
       email: "",
     });
   };
-  console.log(loading);
   return (
     <div>
       <div className="flex flex-col py-[2.5rem] gap-[2.5rem]">
@@ -101,7 +100,7 @@ const ForgetPassword = ({ setOpen }) => {
               </button>
             </div>
           </form>
-        )}
+        )}  
       </div>
     </div>
   );

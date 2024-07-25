@@ -12,7 +12,6 @@ import { useGoogleLogin } from "@react-oauth/google";
 import FacebookLogin from "react-facebook-login";
 import { FcGoogle } from "react-icons/fc";
 
-
 const SignUpPopup = ({ onClose }) => {
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
@@ -48,7 +47,7 @@ const SignUpPopup = ({ onClose }) => {
     }
   };
   useEffect(() => {
-    if (user) {
+    if (Object.keys(user).length) {
       getAuthTokn(user.access_token);
     }
   }, [user]);
@@ -151,7 +150,7 @@ const SignUpPopup = ({ onClose }) => {
               </div>
               <input
                 className="border border-primaryInputBorder rounded-lg w-full h-[3rem] pl-[2.75rem] transition duration-300 ease-in-out hover:border-primary placeholder:text-[0.85rem] md:placeholder:text-[1rem]"
-                id=""
+                id="first_name"
                 type="text"
                 placeholder="First Name"
                 {...register("first_name")}
@@ -171,7 +170,7 @@ const SignUpPopup = ({ onClose }) => {
               </div>
               <input
                 className="border border-primaryInputBorder rounded-lg  h-[3rem] pl-[2.75rem] w-full transition duration-300 ease-in-out hover:border-primary placeholder:text-[0.85rem] md:placeholder:text-[1rem]"
-                id=""
+                id="last_name"
                 type="text"
                 placeholder="Last Name"
                 {...register("last_name")}
@@ -191,7 +190,7 @@ const SignUpPopup = ({ onClose }) => {
               </div>
               <input
                 className="border border-primaryInputBorder rounded-lg  h-[3rem] pl-[2.75rem] w-full transition duration-300 ease-in-out hover:border-primary placeholder:text-[0.85rem] md:placeholder:text-[1rem]"
-                id=""
+                id="email"
                 type="text"
                 placeholder="Email Address"
                 {...register("email")}
@@ -210,7 +209,7 @@ const SignUpPopup = ({ onClose }) => {
               </div>
               <input
                 className="border border-primaryInputBorder rounded-lg h-[3rem] pl-[2.75rem] w-full transition duration-300 ease-in-out hover:border-primary placeholder:text-[0.85rem] md:placeholder:text-[1rem]"
-                id=""
+                id="phone_number"
                 type="text"
                 placeholder="Mobile Number"
                 {...register("phone_number")}

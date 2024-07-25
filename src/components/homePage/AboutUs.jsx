@@ -7,7 +7,6 @@ const AboutUs = () => {
         className="absolute h-full top-0 left-0 w-full opacity-[0.2] z-[0]"
         src="/bg.png"
         alt=""
-        srcset=""
       />
       <div className="relative max-w-[80rem] px-[1.25rem] w-full flex flex-col md:flex-row gap-[1.438rem] items-center m-auto py-[3rem] md:py-[6.188rem] ">
         <div className="w-full md:w-[calc(100%-0.75rem)]">
