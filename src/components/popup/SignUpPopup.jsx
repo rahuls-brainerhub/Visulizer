@@ -8,16 +8,12 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { toast } from "react-toastify";
 import { socialAuth, userRegister } from "../../services/authService";
 import { signupSchema } from "../../schema/signupSchema";
-import { GoogleLogin, useGoogleLogin } from "@react-oauth/google";
-import { GoogleOAuthProvider } from "@react-oauth/google";
+import { useGoogleLogin } from "@react-oauth/google";
 import FacebookLogin from "react-facebook-login";
 import { FcGoogle } from "react-icons/fc";
-// import { InstagramLogin } from "@amraneze/react-instagram-login";
-const clientId =
-  "566791707357-313huo648nc02hc6cfl0ha07cco4kole.apps.googleusercontent.com";
-// const redirectUrl = "http://localhost:5173";
 
-const SignUpPopup = ({ setOpen,onClose }) => {
+
+const SignUpPopup = ({ onClose }) => {
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
@@ -25,10 +21,11 @@ const SignUpPopup = ({ setOpen,onClose }) => {
 
   const signupWithGoogle = useGoogleLogin({
     onSuccess: (codeResponse) => {
-      setUser(codeResponse)
-      console.log(codeResponse)
+      setUser(codeResponse);
     },
-    onError: (error) => console.log("Login Failed:", error)
+    onError: (error) => {
+      return error;
+    },
   });
 
   const getAuthTokn = async (token) => {
@@ -36,14 +33,25 @@ const SignUpPopup = ({ setOpen,onClose }) => {
       access_token: token,
       provider: "google",
     });
-    console.log(socialLogin);
-  }
+    try {
+      if (socialLogin?.status === 1) {
+        toast.success("Login successfully");
+        onClose("openSignup");
+      } else {
+        toast.error(response?.response?.data?.message);
+      }
+    } catch (error) {
+      return error;
+    } finally {
+      setLoading(false);
+      close();
+    }
+  };
   useEffect(() => {
     if (user) {
-      getAuthTokn(user.access_token)
+      getAuthTokn(user.access_token);
     }
-  }
-  )
+  }, [user]);
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
@@ -93,44 +101,24 @@ const SignUpPopup = ({ setOpen,onClose }) => {
     });
   };
 
-  const onSuccess = (googleUser) => {
-    console.log("Logged in successfully!", googleUser);
-  };
-
-  const onFailure = (error) => {
-    if (error.error === "popup_closed_by_user") {
-      alert(
-        "The login popup was closed before completing the process. Please try again."
-      );
-    } else {
-      console.error("Login failed:", error);
-      alert("An error occurred during login. Please try again.");
-    }
-  };
   const responseFacebook = async (response) => {
     const socialLogin = await socialAuth({
       access_token: response.accessToken,
       provider: "facebook",
     });
-    console.log(response)
     try {
-      // console.log(response?.response?.data?.message);
       if (socialLogin?.status === 1) {
         toast.success("Login successfully");
-        setOpen({});
+        onClose("openSignup");
       } else {
         toast.error(response?.response?.data?.message);
       }
     } catch (error) {
-      toast.error("Error login");
+      return error;
     } finally {
       setLoading(false);
       close();
     }
-    // Handle the response from Facebook, e.g. store user details to state
-  };
-  const responseInstagram = (response) => {
-    console.log(response);
   };
 
   const handleKeyPress = (event) => {
@@ -307,12 +295,12 @@ const SignUpPopup = ({ setOpen,onClose }) => {
           Or continue with
         </p>
         <div className="flex gap-[1rem]">
-        <button
-              className="flex items-center justify-center px-[0.6rem] rounded-full cursor-pointer border border-[#CAC2D1] overflow-hidden"
-              onClick={() => signupWithGoogle()}
-            >
-              <FcGoogle size={18} />
-            </button>
+          <button
+            className="flex items-center justify-center px-[0.6rem] rounded-full cursor-pointer border border-[#CAC2D1] overflow-hidden"
+            onClick={() => signupWithGoogle()}
+          >
+            <FcGoogle size={18} />
+          </button>
           <FacebookLogin
             appId="1260486952064586"
             autoLoad={false}
@@ -327,19 +315,6 @@ const SignUpPopup = ({ setOpen,onClose }) => {
             }
             textButton=""
           />
-          {/* <InstagramLogin
-            clientId="1674124336754072"
-            buttonText={
-              <img
-                className="bg-[white] h-[38px] w-[38px] p-[9px] "
-                src="/facebookSignup.png"
-              />
-            }
-            onSuccess={responseInstagram}
-            onFailure={responseInstagram}
-            redirectUri={redirectUrl}
-            cssClass="flex items-center justify-center rounded-full  hover:bg-[#CAC2D1] cursor-pointer border border-[#CAC2D1] overflow-hidden"
-          /> */}
         </div>
         <p className="font-[400] text-[1rem] leading-[1.563rem] text-secondary">
           Already have an account?{" "}

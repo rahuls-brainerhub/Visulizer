@@ -23,7 +23,6 @@ const ForgetPassword = ({ setOpen }) => {
     setLoading(true);
     try {
       const response = await forgetPassword(formData);
-      console.log(response?.response?.data);
       if (response?.status === 1) {
         toast.success("send Link to email successfully");
         setOpen({});

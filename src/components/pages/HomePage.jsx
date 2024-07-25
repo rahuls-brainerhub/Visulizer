@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "../homePage/Navbar";
 import HeroSection from "../homePage/HeroSection";
 import InstantFebric from "../homePage/InstantFebric";
@@ -26,7 +26,6 @@ const HomePage = () => {
   });
 
   const onClose = (modalType) => {
-    console.log(modalType, "modelType");
     setOpen((prevState) => {
       const newState = {
         openSignup: false,

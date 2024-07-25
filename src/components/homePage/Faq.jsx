@@ -41,7 +41,7 @@ const Faq = () => {
 
       <div className="border-t">
         {faqData.map((faq, index) => (
-          <div className="border-b">
+          <div key={index} className="border-b">
             <div key={index} className=" p-[1.45rem_1.25rem]">
               <button
                 className="w-full text-left py-0 flex justify-between items-center"

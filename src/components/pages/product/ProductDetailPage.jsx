@@ -10,7 +10,6 @@ const ProductDetailPage = () => {
     const [selectedColor, setSelectedColor] = useState("#00000000")
     const [selectedTexture, setSelectedTexture] = useState("")
     const currentProduct = productData.filter((item) => item.productId === id)[0]
-    console.log(selectedColor);
     return (
         <div className='bg-[#f8f8f8]'>
             <div className='flex w-full max-w-[1600px] h-screen m-auto'>

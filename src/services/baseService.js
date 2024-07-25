@@ -1,7 +1,6 @@
 import axios from "axios";
 import { store } from "../redux/store";
 import { clearAuth, setrefreshToken } from "../redux/slice/authSlice"
-console.log("BASE_URL", import.meta.env.VITE_API_URL)
 const BASE_URL = import.meta.env.VITE_API_URL;
 const baseService = axios.create({
     baseURL: BASE_URL,
