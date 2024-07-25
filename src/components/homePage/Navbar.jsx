@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { store } from "../../redux/store";
@@ -18,7 +18,15 @@ const Navbar = ({ onClose, onCloseLogin }) => {
     store.dispatch(clearAuth());
     store.dispatch(setIsAuthenticated(false));
     toast.success("Logout Successful");
+    setIsMobileOpen(false);
   };
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      setIsMobileOpen(false);
+    }
+  }, [isAuthenticated]);
+
   function updateBodyOverflowClass(isMobileOpen) {
     if (isMobileOpen) {
       document.body.classList.add("overflow-hidden");
@@ -34,7 +42,8 @@ const Navbar = ({ onClose, onCloseLogin }) => {
         </div>
         <div className="hidden md:flex items-center gap-[3rem]">
           {links.map((item, i) => (
-            <Link key={i}
+            <Link
+              key={i}
               onClick={() => {
                 setActiveLink(i);
               }}
