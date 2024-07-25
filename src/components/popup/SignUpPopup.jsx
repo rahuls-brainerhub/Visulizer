@@ -1,4 +1,4 @@
-import React, { createRef, useRef, useState } from "react";
+import React, { createRef, useEffect, useRef, useState } from "react";
 import { FaRegUser } from "react-icons/fa";
 import { AiOutlineMail, AiOutlineEyeInvisible } from "react-icons/ai";
 import { LuPhone } from "react-icons/lu";
@@ -8,9 +8,10 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { toast } from "react-toastify";
 import { socialAuth, userRegister } from "../../services/authService";
 import { signupSchema } from "../../schema/signupSchema";
-import { GoogleLogin } from "@react-oauth/google";
+import { GoogleLogin, useGoogleLogin } from "@react-oauth/google";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import FacebookLogin from "react-facebook-login";
+import { FcGoogle } from "react-icons/fc";
 // import { InstagramLogin } from "@amraneze/react-instagram-login";
 const clientId =
   "566791707357-313huo648nc02hc6cfl0ha07cco4kole.apps.googleusercontent.com";
@@ -20,6 +21,30 @@ const SignUpPopup = ({ setOpen,onClose }) => {
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [user, setUser] = useState([]);
+
+  const signupWithGoogle = useGoogleLogin({
+    onSuccess: (codeResponse) => {
+      setUser(codeResponse)
+      console.log(codeResponse)
+    },
+    onError: (error) => console.log("Login Failed:", error)
+  });
+
+  const getAuthTokn = async (token) => {
+    const socialLogin = await socialAuth({
+      access_token: token,
+      provider: "google",
+    });
+    console.log(socialLogin);
+  }
+  useEffect(() => {
+    if (user) {
+      getAuthTokn(user.access_token)
+    }
+  }
+  )
+
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
@@ -282,19 +307,12 @@ const SignUpPopup = ({ setOpen,onClose }) => {
           Or continue with
         </p>
         <div className="flex gap-[1rem]">
-          <GoogleOAuthProvider clientId={clientId}>
-            <GoogleLogin
-              type="icon"
-              icon={true}
-              size="large"
-              shape="circle"
-              buttonText={""}
-              onSuccess={onSuccess}
-              onError={onFailure}
-              id="google-signin-button"
-              className="flex items-center justify-center w-[2.5rem] h-[2.5rem] rounded-full border border-[#CAC2D1] hover:bg-[#CAC2D1] cursor-pointer"
-            />
-          </GoogleOAuthProvider>
+        <button
+              className="flex items-center justify-center px-[0.6rem] rounded-full cursor-pointer border border-[#CAC2D1] overflow-hidden"
+              onClick={() => signupWithGoogle()}
+            >
+              <FcGoogle size={18} />
+            </button>
           <FacebookLogin
             appId="1260486952064586"
             autoLoad={false}

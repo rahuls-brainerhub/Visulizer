@@ -21,7 +21,7 @@ const LoginPopup = ({ setOpen, onClose }) => {
   const [loading, setLoading] = useState(false);
   const [user, setUser] = useState([]);
 
-  const login = useGoogleLogin({
+  const loginWithGoogle = useGoogleLogin({
     onSuccess: (codeResponse) => {
       setUser(codeResponse)
       console.log(codeResponse)
@@ -29,9 +29,9 @@ const LoginPopup = ({ setOpen, onClose }) => {
     onError: (error) => console.log("Login Failed:", error)
   });
 
-  const getAuthTokn = async(token) => {
+  const getAuthTokn = async (token) => {
     const socialLogin = await socialAuth({
-      access_token:token,
+      access_token: token,
       provider: "google",
     });
     console.log(socialLogin);
@@ -39,20 +39,6 @@ const LoginPopup = ({ setOpen, onClose }) => {
   useEffect(() => {
     if (user) {
       getAuthTokn(user.access_token)
-      /* axios
-        .get(
-          `https://www.googleapis.com/oauth2/v1/userinfo?access_token=${user.access_token}`,
-          {
-            headers: {
-              Authorization: `Bearer ${user.access_token}`,
-              Accept: "application/json",
-            },
-          }
-        )
-        .then((res) => {
-          setProfile(res.data);
-        })
-        .catch((err) => console.log(err)); */
     }
   }
   )
@@ -96,28 +82,7 @@ const LoginPopup = ({ setOpen, onClose }) => {
       password: "",
     });
   };
-  const onSuccess = async (googleUser) => {
-    console.log("Logged in successfully!", googleUser);
-    getAccessToken(googleUser.credential, "http://localhost:5173")
-    const socialLogin = await socialAuth({
-      access_token: googleUser.credential,
-      provider: "google",
-    });
-    console.log(socialLogin);
-  };
-
-
-
-  const onFailure = (error) => {
-    if (error.error === "popup_closed_by_user") {
-      alert(
-        "The login popup was closed before completing the process. Please try again."
-      );
-    } else {
-      console.error("Login failed:", error);
-      alert("An error occurred during login. Please try again.");
-    }
-  };
+ 
   const responseFacebook = async (response) => {
     console.log(response);
     const socialLogin = await socialAuth({
@@ -198,7 +163,7 @@ const LoginPopup = ({ setOpen, onClose }) => {
           </div>
           <p className="text-[red]">{errors.password?.message}</p>
         </div>
-        <button className="btn-primary text-[1rem] font-[500] mt-[0.75rem] leading-[1.5rem] w-full">
+        <button type="submit" className="btn-primary text-[1rem] font-[500] mt-[0.75rem] leading-[1.5rem] w-full">
           Login
         </button>
       </form>
@@ -219,14 +184,13 @@ const LoginPopup = ({ setOpen, onClose }) => {
             Or continue with
           </p>
           <div className="flex gap-[1rem] w-full justify-center">
-          
-                <button
-                  type="button"
-                  className="flex items-center justify-center px-[0.6rem] rounded-full cursor-pointer border border-[#CAC2D1] overflow-hidden"
-                  onClick={() => login()}
-                >
-                  <FcGoogle size={18}/>
-                </button>
+
+            <button
+              className="flex items-center justify-center px-[0.6rem] rounded-full cursor-pointer border border-[#CAC2D1] overflow-hidden"
+              onClick={() => loginWithGoogle()}
+            >
+              <FcGoogle size={18} />
+            </button>
             <FacebookLogin
               appId="1260486952064586"
               autoLoad={false}
