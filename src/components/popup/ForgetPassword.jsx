@@ -101,7 +101,7 @@ const ForgetPassword = ({ setOpen }) => {
               </button>
             </div>
           </form>
-        )}
+        )}  
       </div>
     </div>
   );

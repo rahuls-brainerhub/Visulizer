@@ -21,7 +21,7 @@ const LoginPopup = ({ onClose }) => {
       setUser(codeResponse);
     },
     onError: (error) => {
-      return error; 
+      return error;
     },
   });
 
@@ -44,11 +44,10 @@ const LoginPopup = ({ onClose }) => {
     }
   };
   useEffect(() => {
-    if (user) {
+    if (Object.keys(user).length) {
       getAuthTokn(user.access_token);
     }
-  });
-
+  }, [user]);
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };

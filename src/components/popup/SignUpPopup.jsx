@@ -12,7 +12,6 @@ import { useGoogleLogin } from "@react-oauth/google";
 import FacebookLogin from "react-facebook-login";
 import { FcGoogle } from "react-icons/fc";
 
-
 const SignUpPopup = ({ onClose }) => {
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
@@ -48,7 +47,7 @@ const SignUpPopup = ({ onClose }) => {
     }
   };
   useEffect(() => {
-    if (user) {
+    if (Object.keys(user).length) {
       getAuthTokn(user.access_token);
     }
   }, [user]);
