@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { AiOutlineEyeInvisible } from "react-icons/ai";
 import { FaRegUser } from "react-icons/fa";
 import { LuEye } from "react-icons/lu";
@@ -7,17 +7,55 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { login, socialAuth } from "../../services/authService";
 import { toast } from "react-toastify";
-import { GoogleLogin } from "@react-oauth/google";
-import { GoogleOAuthProvider } from "@react-oauth/google";
+import { useGoogleLogin } from "@react-oauth/google";
+import { FcGoogle } from "react-icons/fc";
+
 import FacebookLogin from "react-facebook-login";
+import axios from "axios";
 // import { InstagramLogin } from "@amraneze/react-instagram-login";
-const clientId =
-  "566791707357-313huo648nc02hc6cfl0ha07cco4kole.apps.googleusercontent.com";
+
 // const redirectUrl="http://localhost:5173"
 
 const LoginPopup = ({ setOpen, onClose }) => {
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [user, setUser] = useState([]);
+
+  const login = useGoogleLogin({
+    onSuccess: (codeResponse) => {
+      setUser(codeResponse)
+      console.log(codeResponse)
+    },
+    onError: (error) => console.log("Login Failed:", error)
+  });
+
+  const getAuthTokn = async(token) => {
+    const socialLogin = await socialAuth({
+      access_token:token,
+      provider: "google",
+    });
+    console.log(socialLogin);
+  }
+  useEffect(() => {
+    if (user) {
+      getAuthTokn(user.access_token)
+      /* axios
+        .get(
+          `https://www.googleapis.com/oauth2/v1/userinfo?access_token=${user.access_token}`,
+          {
+            headers: {
+              Authorization: `Bearer ${user.access_token}`,
+              Accept: "application/json",
+            },
+          }
+        )
+        .then((res) => {
+          setProfile(res.data);
+        })
+        .catch((err) => console.log(err)); */
+    }
+  }
+  )
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
@@ -60,12 +98,15 @@ const LoginPopup = ({ setOpen, onClose }) => {
   };
   const onSuccess = async (googleUser) => {
     console.log("Logged in successfully!", googleUser);
+    getAccessToken(googleUser.credential, "http://localhost:5173")
     const socialLogin = await socialAuth({
       access_token: googleUser.credential,
       provider: "google",
     });
     console.log(socialLogin);
   };
+
+
 
   const onFailure = (error) => {
     if (error.error === "popup_closed_by_user") {
@@ -177,20 +218,15 @@ const LoginPopup = ({ setOpen, onClose }) => {
           <p className="font-[400] text-[1rem] text-secondary">
             Or continue with
           </p>
-          <div className="flex gap-[1rem]">
-            <GoogleOAuthProvider clientId={clientId}>
-              <GoogleLogin
-                type="icon"
-                icon={true}
-                size="large"
-                shape="circle"
-                buttonText={""}
-                onSuccess={onSuccess}
-                onError={onFailure}
-                id="google-signin-button"
-                className="flex items-center justify-center w-[2.5rem] h-[2.5rem] rounded-full border border-[#CAC2D1] hover:bg-[#CAC2D1] cursor-pointer"
-              />
-            </GoogleOAuthProvider>
+          <div className="flex gap-[1rem] w-full justify-center">
+          
+                <button
+                  type="button"
+                  className="flex items-center justify-center px-[0.6rem] rounded-full cursor-pointer border border-[#CAC2D1] overflow-hidden"
+                  onClick={() => login()}
+                >
+                  <FcGoogle size={18}/>
+                </button>
             <FacebookLogin
               appId="1260486952064586"
               autoLoad={false}

@@ -7,18 +7,23 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import AllRoutes from "./components/routes/AllRoutes";
 import { BrowserRouter } from "react-router-dom";
+import { GoogleOAuthProvider } from "@react-oauth/google";
 
 function App() {
   const persisted = persistStore(store);
+  const clientId =
+  "566791707357-313huo648nc02hc6cfl0ha07cco4kole.apps.googleusercontent.com";
   return (
-    <Provider store={store}>
-      <PersistGate persistor={persisted}>
-        <ToastContainer />
-        <BrowserRouter>
-          <AllRoutes />
-        </BrowserRouter>
-      </PersistGate>
-    </Provider>
+    <GoogleOAuthProvider clientId={clientId}>
+      <Provider store={store}>
+        <PersistGate persistor={persisted}>
+          <ToastContainer />
+          <BrowserRouter>
+            <AllRoutes />
+          </BrowserRouter>
+        </PersistGate>
+      </Provider>
+    </GoogleOAuthProvider>
   );
 }
 
