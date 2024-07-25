@@ -100,8 +100,7 @@ const HomePage = () => {
           onClose={onClose}
         />
       )}
-      {/* onClose={() => onClose("openSignup")}  */}
-      {/* open?.openOTP */}
+
       {open?.openOTP ? (
         <PopupTemplete
           title={"Verify OTP"}
