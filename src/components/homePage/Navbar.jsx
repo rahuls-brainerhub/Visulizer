@@ -17,7 +17,7 @@ const Navbar = ({ onClose, onCloseLogin }) => {
   const logout = () => {
     store.dispatch(clearAuth());
     store.dispatch(setIsAuthenticated(false));
-    toast.success("Logout Sucessfull");
+    toast.success("Logout Successful");
   };
   function updateBodyOverflowClass(isMobileOpen) {
     if (isMobileOpen) {

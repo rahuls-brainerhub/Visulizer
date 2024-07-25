@@ -35,7 +35,7 @@ const SignUpPopup = ({ onClose }) => {
     });
     try {
       if (socialLogin?.status === 1) {
-        toast.success("Login successfully");
+        toast.success("Login Successful");
         onClose("openSignup");
       } else {
         toast.error(response?.response?.data?.message);
@@ -108,7 +108,7 @@ const SignUpPopup = ({ onClose }) => {
     });
     try {
       if (socialLogin?.status === 1) {
-        toast.success("Login successfully");
+        toast.success("Login Successful");
         onClose("openSignup");
       } else {
         toast.error(response?.response?.data?.message);

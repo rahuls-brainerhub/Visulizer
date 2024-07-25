@@ -27,7 +27,7 @@ const ForgetPassword = ({ setOpen }) => {
         toast.success("send Link to email successfully");
         setOpen({});
       } else {
-        // toast.error(response?.response?.data?.message);
+        toast.error(response?.response?.data?.message);
       }
     } catch (error) {
       // toast.error("Error Forget Password");

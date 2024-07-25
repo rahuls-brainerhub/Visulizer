@@ -32,7 +32,7 @@ const LoginPopup = ({ onClose }) => {
     });
     try {
       if (socialLogin?.status === 1) {
-        toast.success("Login successfully");
+        toast.success("Login Successful");
         onClose("openLogin");
       } else {
         toast.error(response?.response?.data?.message);
@@ -69,7 +69,7 @@ const LoginPopup = ({ onClose }) => {
     try {
       const response = await login(formData);
       if (response?.status === 1) {
-        toast.success("Login successfully");
+        toast.success("Login Successful");
         onClose("openLogin");
       } else {
         toast.error(response?.response?.data?.message);
@@ -95,7 +95,7 @@ const LoginPopup = ({ onClose }) => {
     });
     try {
       if (socialLogin?.status === 1) {
-        toast.success("Login successfully");
+        toast.success("Login Successful");
         onClose("openLogin");
       } else {
         toast.error(response?.response?.data?.message);
