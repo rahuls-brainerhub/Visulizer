@@ -1,11 +1,9 @@
 import React, { useState } from "react";
-import { AiOutlineEyeInvisible, AiOutlineMail } from "react-icons/ai";
-import { FaRegUser } from "react-icons/fa";
+import { AiOutlineEyeInvisible } from "react-icons/ai";
 import { LuEye } from "react-icons/lu";
-import { loginSchema } from "../../schema/loginSchema";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { login, resetPassword } from "../../services/authService";
+import { resetPassword } from "../../services/authService";
 import { toast } from "react-toastify";
 import { resetPasswordSchema } from "../../schema/resetPasswordSchema";
 const ResetPassword = ({ onClose, token }) => {
@@ -28,7 +26,6 @@ const ResetPassword = ({ onClose, token }) => {
     resolver: yupResolver(resetPasswordSchema),
   });
   const onSubmit = async (data) => {
-    console.log(data);
     const formData = new FormData();
     formData.append("token", token);
     formData.append("new_password", data?.new_password);
@@ -36,7 +33,6 @@ const ResetPassword = ({ onClose, token }) => {
     setLoading(true);
     try {
       const response = await resetPassword(formData);
-      console.log(response?.response?.data?.message);
       if (response?.status === 1) {
         toast.success("Password Reset successfully");
         onClose("openLogin");
@@ -63,8 +59,8 @@ const ResetPassword = ({ onClose, token }) => {
     window.history.replaceState({}, document.title, baseUrl);
   };
   return (
-    <div>
-      <div className="flex flex-col py-[2.5rem] gap-[2.5rem]">
+ 
+      <div className="flex flex-col py-[.5rem] gap-[2.5rem]">
         <div className="text-center">
           <p className="text-primaryLight font-[400] text-[1rem] leading-[1rem]">
             Enter Your Email address and we will send you a link to reset your
@@ -72,7 +68,7 @@ const ResetPassword = ({ onClose, token }) => {
           </p>
         </div>
         <form
-          className="max-w-[38.625rem] px-[1.25rem] w-full m-auto"
+          className="max-w-[38.625rem] px-[1.25rem]  w-full m-auto"
           onSubmit={handleSubmit(onSubmit)}
         >
           <div className="w-full">
@@ -104,7 +100,7 @@ const ResetPassword = ({ onClose, token }) => {
             </div>
             <p className="text-[red]">{errors.password?.message}</p>
           </div>
-          <div className="w-full">
+          <div className="w-full pt-[.5rem]">
             <label className="text-secondary font-[400] text-[1rem] leading-[1rem]">
               New Password Confirm
             </label>
@@ -138,7 +134,7 @@ const ResetPassword = ({ onClose, token }) => {
           </button>
         </form>
       </div>
-    </div>
+  
   );
 };
 
