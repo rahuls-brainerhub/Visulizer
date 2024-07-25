@@ -34,7 +34,7 @@ const Navbar = ({ onClose, onCloseLogin }) => {
         </div>
         <div className="hidden md:flex items-center gap-[3rem]">
           {links.map((item, i) => (
-            <Link
+            <Link key={i}
               onClick={() => {
                 setActiveLink(i);
               }}

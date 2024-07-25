@@ -16,8 +16,7 @@ const HeroSection = () => {
       <img
         className="absolute top-0 left-0 w-full rotate-[180deg] opacity-[0.2] z-[0]"
         src="/bg.png"
-        alt=""
-        srcset=""
+        alt=""  
       />
       <div className="relative z-[2] max-w-[80rem] px-[1.25rem] w-full flex flex-col md:flex-row gap-[2rem] justify-between items-center m-auto py-[3rem] md:py-[6rem]">
         <div className="w-full md:w-1/2 flex flex-col gap-[2rem]">
