@@ -8,6 +8,7 @@ import ForgotPasswordPage from "../pages/ForgotPassword";
 import RegistrationPage from "../pages/RegistrationPage";
 import ProductListingPage from "../pages/product/ProductListingPage";
 import ProductDetailPage from "../pages/product/ProductDetailPage";
+import AboutUs from "../pages/AboutUs";
 
 const AllRoutes = () => {
   return (
@@ -21,7 +22,7 @@ const AllRoutes = () => {
             </PrivateLayout>
           }
         />
-         <Route
+        <Route
           path="/products/all"
           element={
             <PrivateLayout>
@@ -29,7 +30,7 @@ const AllRoutes = () => {
             </PrivateLayout>
           }
         />
-         <Route
+        <Route
           path="/product/:id"
           element={
             <PrivateLayout>
@@ -61,6 +62,7 @@ const AllRoutes = () => {
             </PublicLayout>
           }
         />
+        <Route path="/about-us" element={<AboutUs />} />
       </Routes>
     </div>
   );

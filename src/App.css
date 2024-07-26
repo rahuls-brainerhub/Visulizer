@@ -72,3 +72,9 @@ input[type="text"].signup-input {
     font-size: 13px;
   }
 }
+.form-bg {
+  background: var(--background-image);
+  background-repeat: round;
+  width: 100%;
+  object-fit: cover;
+}

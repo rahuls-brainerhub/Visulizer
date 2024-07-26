@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { store } from "../../redux/store";
 import { clearAuth } from "../../redux/slice/authSlice";
 import { setIsAuthenticated } from "../../redux/slice/globalSlice";
@@ -9,7 +9,13 @@ import { RiMenu2Fill } from "react-icons/ri";
 
 const Navbar = ({ onClose, onCloseLogin }) => {
   const [activeLink, setActiveLink] = useState(0);
-  const links = ["Home", "Services", "About us", "Contact us", "FAQ"];
+  const links = [
+    { name: "Home", path: "/" },
+    { name: "Services", path: "/" },
+    { name: "About us", path: "/about-us" },
+    { name: "Contact us", path: "/" },
+    { name: "FAQ", path: "/" },
+  ];
   const isAuthenticated = useSelector(
     (store) => store.global?.is_authenticated
   );
@@ -34,6 +40,12 @@ const Navbar = ({ onClose, onCloseLogin }) => {
       document.body.classList.remove("overflow-hidden");
     }
   }
+
+  const navigate = useNavigate();
+  const handalNaviagte = (path) => {
+    navigate(path);
+  };
+
   return (
     <div className="shadow-lg">
       <div className="max-w-[80rem] px-[1.25rem] mx-auto flex justify-between items-center relative">
@@ -42,15 +54,16 @@ const Navbar = ({ onClose, onCloseLogin }) => {
         </div>
         <div className="hidden md:flex items-center gap-[3rem]">
           {links.map((item, i) => (
-            <Link
+            <div
               key={i}
               onClick={() => {
                 setActiveLink(i);
+                handalNaviagte(item?.path);
               }}
               className={`navbar-link ${activeLink === i ? "active" : ""}`}
             >
-              {item}
-            </Link>
+              {item?.name}
+            </div>
           ))}
         </div>
         {isAuthenticated ? (
@@ -91,6 +104,8 @@ const Navbar = ({ onClose, onCloseLogin }) => {
               <div className="flex flex-col items-start gap-[1.5rem]">
                 {links.map((item, i) => (
                   <Link
+                    key={i}
+                    to={item?.path}
                     onClick={() => {
                       setActiveLink(i);
                     }}
@@ -98,7 +113,7 @@ const Navbar = ({ onClose, onCloseLogin }) => {
                       activeLink === i ? "active" : ""
                     }`}
                   >
-                    {item}
+                    {item?.name}
                   </Link>
                 ))}
               </div>
