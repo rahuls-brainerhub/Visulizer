@@ -1,13 +1,13 @@
 import React from "react";
-import Navbar from "../homePage/Navbar";
 import Footer from "../homePage/Footer";
 import TopSection from "./Topsection";
 import Story from "../aboutUs/Story";
+import NavbarPages from "./NavbarPages";
 // import successImage from "../../../public/"
 const AboutUs = () => {
   return (
     <div>
-      <Navbar />
+      <NavbarPages />
       <TopSection
         keys={"unique"}
         title={"About Us"}

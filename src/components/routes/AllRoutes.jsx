@@ -9,6 +9,8 @@ import RegistrationPage from "../pages/RegistrationPage";
 import ProductListingPage from "../pages/product/ProductListingPage";
 import ProductDetailPage from "../pages/product/ProductDetailPage";
 import AboutUs from "../pages/AboutUs";
+import ContactUs from "../pages/ContactUs";
+import Fqa from "../pages/Fqa";
 
 const AllRoutes = () => {
   return (
@@ -63,6 +65,8 @@ const AllRoutes = () => {
           }
         />
         <Route path="/about-us" element={<AboutUs />} />
+        <Route path="/contact-us" element={<ContactUs />} />
+        <Route path="/faq" element={<Fqa />} />
       </Routes>
     </div>
   );

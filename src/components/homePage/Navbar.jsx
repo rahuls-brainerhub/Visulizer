@@ -13,8 +13,8 @@ const Navbar = ({ onClose, onCloseLogin }) => {
     { name: "Home", path: "/" },
     { name: "Services", path: "/" },
     { name: "About us", path: "/about-us" },
-    { name: "Contact us", path: "/" },
-    { name: "FAQ", path: "/" },
+    { name: "Contact us", path: "/contact-us" },
+    { name: "FAQ", path: "/faq" },
   ];
   const isAuthenticated = useSelector(
     (store) => store.global?.is_authenticated
@@ -45,7 +45,7 @@ const Navbar = ({ onClose, onCloseLogin }) => {
   const handalNaviagte = (path) => {
     navigate(path);
   };
-
+  console.log(activeLink, "activelink");
   return (
     <div className="shadow-lg">
       <div className="max-w-[80rem] px-[1.25rem] mx-auto flex justify-between items-center relative">
@@ -56,12 +56,15 @@ const Navbar = ({ onClose, onCloseLogin }) => {
           {links.map((item, i) => (
             <div
               key={i}
-              onClick={() => {
+              onClick={(e) => {
+                console.log(i);
+                e.preventDefault();
                 setActiveLink(i);
                 handalNaviagte(item?.path);
               }}
               className={`navbar-link ${activeLink === i ? "active" : ""}`}
             >
+             
               {item?.name}
             </div>
           ))}

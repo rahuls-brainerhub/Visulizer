@@ -1,9 +1,7 @@
 import React, { useEffect } from "react";
 import { HiHome } from "react-icons/hi";
 
-const TopSection = ({ title, breadcrumData, keys, image }) => {
-  const isAboutPage = title === "ABOUT US";
-  console.log(image, "image");
+const TopSection = ({ title, breadcrumData, keys, image, bg }) => {
   useEffect(() => {
     if (image) {
       document.documentElement.style.setProperty(
@@ -12,17 +10,21 @@ const TopSection = ({ title, breadcrumData, keys, image }) => {
       );
     }
   }, [image]);
-  console.log(isAboutPage);
   return (
     <div
-      className={`flex flex-col w-full justify-center items-center form-bg relative `}
+      className={`flex flex-col justify-center items-center form-bg relative min-h-[25rem]`}
     >
+      <div
+        className={`absolute h-full w-full top-0 left-0 ${
+          bg ? "bg-black" : ""
+        } opacity-[0.4]`}
+      ></div>
       <div className="flex justify-center items-center z-10 py-[6.25rem]">
         <h1 className="text-white text-[4rem] font-[700] text-center leading-[4.75rem]">
-          About Us
+          {title}
         </h1>
       </div>
-      <div className=" w-full flex items-center py-[2.25rem]  justify-center border-t-[0.031rem] border-[#E1D9E9]  gap-[.6rem]">
+      <div className="relative w-full flex items-center py-[2.25rem]  justify-center border-t-[0.031rem] border-[#E1D9E9]  gap-[.6rem]">
         {breadcrumData?.length === 1 ? (
           <div key={keys} className="page-subtitle text-white text-center">
             {breadcrumData[0]}

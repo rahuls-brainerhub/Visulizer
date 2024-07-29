@@ -74,7 +74,18 @@ input[type="text"].signup-input {
 }
 .form-bg {
   background: var(--background-image);
-  background-repeat: round;
-  width: 100%;
-  object-fit: cover;
+  background-repeat: round !important;
+  width: auto !important;
+  height: auto !important;
+  object-fit: contain !important;
+  background-color: #000000;
+}
+
+.arrow-up {
+  width: 24px;
+  height: 40px;
+  border-left: 12px solid transparent;
+  border-right: 12px solid transparent;
+  border-bottom: 20px solid #cac2d1;
+  @apply absolute top-[-20px] right-0 translate-x-[50%] z-[-1];
 }
