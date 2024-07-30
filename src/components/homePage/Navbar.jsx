@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { store } from "../../redux/store";
 import { clearAuth } from "../../redux/slice/authSlice";
 import { setIsAuthenticated } from "../../redux/slice/globalSlice";
@@ -8,10 +8,10 @@ import { toast } from "react-toastify";
 import { RiMenu2Fill } from "react-icons/ri";
 
 const Navbar = ({ onClose, onCloseLogin }) => {
-  const [activeLink, setActiveLink] = useState(0);
+  const [activeLink, setActiveLink] = useState(null);
   const links = [
     { name: "Home", path: "/" },
-    { name: "Services", path: "/" },
+    { name: "Services", path: "/service" },
     { name: "About us", path: "/about-us" },
     { name: "Contact us", path: "/contact-us" },
     { name: "FAQ", path: "/faq" },
@@ -45,27 +45,34 @@ const Navbar = ({ onClose, onCloseLogin }) => {
   const handalNaviagte = (path) => {
     navigate(path);
   };
-  console.log(activeLink, "activelink");
+
+  const location = useLocation();
+
+  useEffect(() => {
+    const currentIndex = links.findIndex(
+      (link) => link.path === location.pathname
+    );
+    if (currentIndex !== -1) {
+      setActiveLink(currentIndex);
+    }
+  }, [location, links]);
+
   return (
     <div className="shadow-lg">
       <div className="max-w-[80rem] px-[1.25rem] mx-auto flex justify-between items-center relative">
         <div className="my-[0.5rem]">
           <img className="h-[4rem]" src={"/logo_new.png"} />
         </div>
-        <div className="hidden md:flex items-center gap-[3rem]">
+        <div className="hidden md:flex items-center gap-[2rem] lg:gap-[3rem]">
           {links.map((item, i) => (
             <div
               key={i}
               onClick={(e) => {
-                console.log(i);
-                e.preventDefault();
                 setActiveLink(i);
-                handalNaviagte(item?.path);
               }}
-              className={`navbar-link ${activeLink === i ? "active" : ""}`}
+              className={`navbar-link ${activeLink == i ? "active" : ""}`}
             >
-             
-              {item?.name}
+              <Link to={item?.path}>{item?.name}</Link>
             </div>
           ))}
         </div>
@@ -106,9 +113,8 @@ const Navbar = ({ onClose, onCloseLogin }) => {
             <div className="p-[1.25rem] h-full flex flex-col gap-[2rem]">
               <div className="flex flex-col items-start gap-[1.5rem]">
                 {links.map((item, i) => (
-                  <Link
+                  <div
                     key={i}
-                    to={item?.path}
                     onClick={() => {
                       setActiveLink(i);
                     }}
@@ -116,8 +122,8 @@ const Navbar = ({ onClose, onCloseLogin }) => {
                       activeLink === i ? "active" : ""
                     }`}
                   >
-                    {item?.name}
-                  </Link>
+                    <Link to={item?.path}>{item?.name}</Link>
+                  </div>
                 ))}
               </div>
               <div>

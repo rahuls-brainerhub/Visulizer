@@ -74,11 +74,12 @@ input[type="text"].signup-input {
 }
 .form-bg {
   background: var(--background-image);
-  background-repeat: round !important;
+  background-repeat: no-repeat !important;
   width: auto !important;
   height: auto !important;
-  object-fit: contain !important;
   background-color: #000000;
+  background-size: cover;
+  background-position: center;
 }
 
 .arrow-up {
