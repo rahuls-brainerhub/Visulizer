@@ -1,6 +1,7 @@
 import React from "react";
 
 const Story = () => {
+  
   return (
     <div className="flex flex-col items-center justify-center bg-white ">
       <div className="py-[3rem] lg:py-[6rem] max-w-[80rem] px-[1.25rem] w-full m-auto flex flex-col gap-[1.4rem] items-center">

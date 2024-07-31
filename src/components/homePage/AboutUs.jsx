@@ -1,6 +1,8 @@
 import React from "react";
 
+
 const AboutUs = () => {
+  
   return (
     <div className="relative z-[2] bg-[#F9FAFE]">
       <img

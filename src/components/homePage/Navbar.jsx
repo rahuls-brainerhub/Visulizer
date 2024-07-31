@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { store } from "../../redux/store";
 import { clearAuth } from "../../redux/slice/authSlice";
 import { setIsAuthenticated } from "../../redux/slice/globalSlice";
@@ -8,7 +8,10 @@ import { toast } from "react-toastify";
 import { RiMenu2Fill } from "react-icons/ri";
 
 const Navbar = ({ onClose, onCloseLogin }) => {
+  
   const [activeLink, setActiveLink] = useState(null);
+  const [isMobileOpen, setIsMobileOpen] = useState(false);
+
   const links = [
     { name: "Home", path: "/" },
     { name: "Services", path: "/service" },
@@ -19,19 +22,13 @@ const Navbar = ({ onClose, onCloseLogin }) => {
   const isAuthenticated = useSelector(
     (store) => store.global?.is_authenticated
   );
-  const [isMobileOpen, setIsMobileOpen] = useState(false);
+
   const logout = () => {
     store.dispatch(clearAuth());
     store.dispatch(setIsAuthenticated(false));
     toast.success("Logout Successful");
     setIsMobileOpen(false);
   };
-
-  useEffect(() => {
-    if (isAuthenticated) {
-      setIsMobileOpen(false);
-    }
-  }, [isAuthenticated]);
 
   function updateBodyOverflowClass(isMobileOpen) {
     if (isMobileOpen) {
@@ -40,11 +37,6 @@ const Navbar = ({ onClose, onCloseLogin }) => {
       document.body.classList.remove("overflow-hidden");
     }
   }
-
-  const navigate = useNavigate();
-  const handalNaviagte = (path) => {
-    navigate(path);
-  };
 
   const location = useLocation();
 
@@ -56,6 +48,12 @@ const Navbar = ({ onClose, onCloseLogin }) => {
       setActiveLink(currentIndex);
     }
   }, [location, links]);
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      setIsMobileOpen(false);
+    }
+  }, [isAuthenticated]);
 
   return (
     <div className="shadow-lg">

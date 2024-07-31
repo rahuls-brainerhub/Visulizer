@@ -1,6 +1,8 @@
 import React from "react";
 
+
 const InstantFebric = () => {
+  
   return (
     <div className="relative z-[2] max-w-[80rem] px-[1.25rem] w-full flex flex-col md:flex-row gap-[3.25rem] items-center m-auto py-[3rem] md:py-[6rem]">
       <div className="w-full md:w-[45%]">

@@ -1,35 +1,9 @@
 import React from "react";
-const features = [
-  {
-    title: "Free",
-    description:
-      "10 free credits to generate images. Each credit is worth 1 image and the images will be generated with a watermark.",
-    icon: "/free.png",
-    link: "#",
-  },
-  {
-    title: "Bronze",
-    description:
-      "100 credits to generate images. Each credit is worth 1 image.",
-    icon: "/bronze.png",
-    link: "#",
-  },
-  {
-    title: "Silver",
-    description:
-      "150 credits to generate images. Each credit is worth 1 image.",
-    icon: "/silver.png",
-    link: "#",
-  },
-  {
-    title: "Gold",
-    description:
-      "200 credits to generate images. Each credit is worth 1 image.",
-    icon: "/silver.png",
-    link: "#",
-  },
-];
+import service from "../../utils/homePage/service"
+
+
 const OurServices = () => {
+  
   return (
     <div className="max-w-[80rem] px-[1.25rem] mx-auto flex flex-col gap-[2.188rem] py-[3rem] md:py-[5.938rem]">
       <div className="flex flex-col gap-[0.5rem] items-center">
@@ -41,7 +15,7 @@ const OurServices = () => {
         </p>
       </div>
       <div className="flex flex-col md:flex-row w-full gap-[1.5rem]">
-        {features.map((feature, index) => (
+        {service.map((feature, index) => (
           <div
             key={index}
             className="w-full md:w-1/4 h-[auto] p-[2rem] group rounded-2xl border border-[#E1D9E9] transition duration-300 hover:bg-[#EFE8F5]  flex flex-col gap-[1rem] items-center"
