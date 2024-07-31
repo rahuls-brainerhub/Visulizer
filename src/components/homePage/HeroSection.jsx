@@ -3,7 +3,9 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
+
 const HeroSection = () => {
+
   var settings = {
     dots: true,
     infinite: true,
@@ -11,6 +13,7 @@ const HeroSection = () => {
     slidesToShow: 1,
     slidesToScroll: 1,
   };
+  
   return (
     <div className="w-full overflow-hidden relative bg-[#F9FAFE]">
       <img

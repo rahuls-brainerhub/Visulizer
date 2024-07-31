@@ -5,7 +5,9 @@ import priceRelated from "../../utils/priceRelated";
 import refundRelated from "../../utils/refundRelated";
 import softwareRelated from "../../utils/softwareRelated";
 
+
 const Faq = () => {
+
   const [activeIndex, setActiveIndex] = useState({
     section: null,
     index: null,
@@ -18,6 +20,7 @@ const Faq = () => {
         : { section, index }
     );
   };
+
   return (
     <div className=" max-w-[80rem] flex flex-row py-[6rem] m-auto padding px-5 gap-[1rem]">
       <div className="w-[17rem]  py-[.5rem] mx-auto">

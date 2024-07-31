@@ -1,31 +1,15 @@
 import React, { useState } from "react";
-const faqData = [
-  {
-    question: "Question no -- 1",
-    answer:
-      "Lorem ipsum is simply dummy text of the printing and typesetting industry...",
-  },
-  {
-    question: "Question no -- 2",
-    answer:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
-  },
-  {
-    question: "Question no -- 3",
-    answer:
-      "It has survived not only five centuries, but also the leap into electronic typesetting...",
-  },
-  {
-    question: "Question no -- 4",
-    answer: "Remaining essentially unchanged...",
-  },
-];
+import faqData from "../../utils/homePage/faq";
+
+
 const Faq = () => {
+
   const [activeIndex, setActiveIndex] = useState(null);
 
   const toggleFAQ = (index) => {
     setActiveIndex(activeIndex === index ? null : index);
   };
+  
   return (
     <div className="max-w-[80rem] px-[1.25rem] mx-auto py-[7.219rem] flex flex-col gap-[2rem]">
       <div className="flex flex-col md:flex-row justify-between gap-[2rem] items-start md:items-center">

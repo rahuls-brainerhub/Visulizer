@@ -1,29 +1,8 @@
 import React from "react";
+import choose from "../../utils/homePage/whyChooseUs";
+
 
 const WhyChooseUs = () => {
-  const features = [
-    {
-      title: "Productions Of Fabrics",
-      description:
-        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
-      icon: "/fabrics.png",
-      link: "#",
-    },
-    {
-      title: "Exportation Globally",
-      description:
-        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
-      icon: "/globally.png",
-      link: "#",
-    },
-    {
-      title: "Great Clients Support",
-      description:
-        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
-      icon: "/support.png",
-      link: "#",
-    },
-  ];
 
   return (
     <div className="flex-col bg-[#FDFBFF] py-[3rem] md:py-[5.938rem]">
@@ -37,7 +16,7 @@ const WhyChooseUs = () => {
         </p>
       </div>
       <div className=" max-w-[80rem] px-[1.25rem] flex flex-col md:flex-row w-full gap-[1.5rem] py-[2.188rem] mx-auto">
-        {features.map((feature, index) => (
+        {choose.map((feature, index) => (
           <div
             key={index}
             className="w-full md:w-1/3 h-[auto] p-[2rem] rounded-2xl border border-[#E1D9E9] hover:border-primary transition duration-300 flex flex-col gap-[1rem]"

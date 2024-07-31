@@ -126,6 +126,7 @@ const SignUpPopup = ({ onClose }) => {
       event.preventDefault();
     }
   };
+  
   const handleKeyPressNumber = (event) => {
     const charCode = event.charCode;
     if (!/[0-9]/.test(String.fromCharCode(charCode))) {

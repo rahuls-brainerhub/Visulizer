@@ -1,6 +1,7 @@
 import React from "react";
 
 const Question = ({ faqData, toggleFAQ, activeIndex, titlePre, titleSuf }) => {
+  
   return (
     <div className="max-w-[80rem] pb-[2rem]  gap-[2rem]">
       <div className="flex flex-col md:flex-row  items-start md:items-center">

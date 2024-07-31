@@ -1,8 +1,47 @@
-import React from "react";
+import React, { useState } from "react";
 import { AiOutlineMail } from "react-icons/ai";
 import { FaRegUser } from "react-icons/fa";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { touchSchema } from "../../schema/touchSchema";
 
 const Touch = () => {
+  const [loading, setLoading] = useState(false);
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm({
+    resolver: yupResolver(touchSchema),
+  });
+
+  const onSubmit = async (data) => {
+    console.log(data, "servicedata");
+    // const formData = new FormData();
+    // formData.append("name", data?.name);
+    // formData.append("email", data?.email);
+    // formData.append("message", data.message);
+    // setLoading(true);
+    close()
+  };
+
+  const close = () => {
+    reset({
+      name: "",
+      email: "",
+      message: "",
+    });
+  };
+
+  const handleKeyPress = (event) => {
+    const charCode = event.charCode;
+    if (!/[a-zA-Z]/.test(String.fromCharCode(charCode))) {
+      event.preventDefault();
+    }
+  };
+
   return (
     <div className="flex-col py-[3rem] lg:py-[6rem] ">
       <div className=" max-w-[80rem] px-[1.25rem] mx-auto">
@@ -16,10 +55,7 @@ const Touch = () => {
       </div>
       <div className="flex flex-col-reverse lg:flex-row max-w-[80rem]  mx-auto pt-[3rem] px-[1.25rem] items-center gap-[2.5rem] lg:gap-[4.5rem]">
         <div className="w-full max-w-xl">
-          <form
-            className="  m-auto"
-            // onSubmit={handleSubmit(onSubmit)}
-          >
+          <form className="  m-auto" onSubmit={handleSubmit(onSubmit)}>
             <div className="w-full mb-[1rem]">
               <label className="text-secondary font-[400] text-[1rem] leading-[1rem] mb-[0.5rem] block">
                 Full Name:
@@ -34,8 +70,11 @@ const Touch = () => {
                   id=""
                   type="text"
                   placeholder="Enter Your Name"
+                  {...register("name")}
+                  onKeyPress={handleKeyPress}
                 />
               </div>
+              <p className="text-[red]">{errors.name?.message}</p>
             </div>
             <div className="w-full mb-[1rem]">
               <label className="text-secondary font-[400] text-[1rem] leading-[1rem]  mb-[0.5rem] block">
@@ -51,8 +90,10 @@ const Touch = () => {
                   id=""
                   type="text"
                   placeholder="Enter Your Email Address"
+                  {...register("email")}
                 />
               </div>
+              <p className="text-[red]">{errors.email?.message}</p>
             </div>
             <div className="w-full mb-[1rem]">
               <label className="text-secondary font-[400] text-[1rem] leading-[1rem]  mb-[0.5rem] block">
@@ -64,8 +105,10 @@ const Touch = () => {
                   id=""
                   type="text"
                   placeholder="Enter Your Message"
+                  {...register("message")}
                 />
               </div>
+              <p className="text-[red]">{errors.message?.message}</p>
             </div>
             <button
               type="submit"
