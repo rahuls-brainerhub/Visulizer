@@ -72,4 +72,21 @@ input[type="text"].signup-input {
     font-size: 13px;
   }
 }
+.form-bg {
+  background: var(--background-image);
+  background-repeat: no-repeat !important;
+  width: auto !important;
+  height: auto !important;
+  background-color: #000000;
+  background-size: cover;
+  background-position: center;
+}
 
+.arrow-up {
+  width: 24px;
+  height: 40px;
+  border-left: 12px solid transparent;
+  border-right: 12px solid transparent;
+  border-bottom: 20px solid #cac2d1;
+  @apply absolute top-[-20px] right-0 translate-x-[50%] z-[-1];
+}

@@ -8,8 +8,8 @@ const Footer = () => {
         style={{ backgroundImage: "url(/footerimage.png)" }}
       >
         <div className="absolute inset-0 bg-black opacity-50"></div>
-        <div className="relative flex flex-col items-center gap-[2rem] justify-center py-[6rem]">
-          <h1 className="text-white text-[4rem] font-bold mb-4 text-center">
+        <div className="relative flex flex-col items-center gap-[2rem] justify-center max-w-[80rem] px-[1.25rem] mx-auto py-[3rem] lg:py-[6rem]">
+          <h1 className="text-white text-[2rem] sm:text-[3rem] lg:text-[4rem] font-bold  text-center">
             Visualize Your Fabric Now
           </h1>
           <button className="btn-primary border border-white text-[1rem] p-[0.75rem_2rem]">
@@ -18,7 +18,7 @@ const Footer = () => {
         </div>
       </div>
       <div className="bg-secondary">
-        <div className="flex flex-col md:flex-row justify-between px-5 max-w-[80rem] m-auto w-full py-14">
+        <div className="flex flex-col md:flex-row justify-between px-5 max-w-[80rem] m-auto w-full py-[2.5rem] lg:py-[3.5rem]">
           <div className="flex items-start flex-col gap-6 mb-8 md:mb-0">
             <img className="h-32 w-32" src="/footerIcon.png" />
             <div>
