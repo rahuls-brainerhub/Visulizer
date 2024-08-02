@@ -1,8 +1,6 @@
 import React from "react";
 
-
 const AboutUs = () => {
-  
   return (
     <div className="relative z-[2] bg-[#F9FAFE]">
       <img
@@ -13,16 +11,16 @@ const AboutUs = () => {
       <div className="relative max-w-[80rem] px-[1.25rem] w-full flex flex-col md:flex-row gap-[1.438rem] items-center m-auto py-[3rem] md:py-[6.188rem] ">
         <div className="w-full md:w-[calc(100%-0.75rem)]">
           <img
-            className="w-full h-[25rem] object-cover"
+            className="w-full max-h-[25rem] h-auto object-cover"
             src={"/nationalAssociations.png"}
           />
         </div>
         <div className="w-full md:w-[calc(100%-0.75rem)]">
           <div className="flex flex-col gap-[1.375rem]">
-            <h1 className="text-secondary leading-[3.375rem] font-[600] text-[2.813rem]">
+            <h2 className="text-secondary leading-[3.375rem] font-[600] text-[2.813rem]">
               About &nbsp;
               <span className="text-primary">Us</span>
-            </h1>
+            </h2>
             <p className="text-primaryLight text-[1rem] font-[400] leading-[1.5rem]">
               We are a team of enthusiastic and passionate professionals from a
               textile background. Camclo3D has been built on a foundation of

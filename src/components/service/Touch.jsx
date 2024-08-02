@@ -4,6 +4,8 @@ import { FaRegUser } from "react-icons/fa";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { touchSchema } from "../../schema/touchSchema";
+import { inquiryService } from "../../services/ourServiceService";
+import { toast } from "react-toastify";
 
 const Touch = () => {
   const [loading, setLoading] = useState(false);
@@ -19,12 +21,25 @@ const Touch = () => {
 
   const onSubmit = async (data) => {
     console.log(data, "servicedata");
-    // const formData = new FormData();
-    // formData.append("name", data?.name);
-    // formData.append("email", data?.email);
-    // formData.append("message", data.message);
-    // setLoading(true);
-    close()
+    const formData = new FormData();
+    formData.append("name", data?.name);
+    formData.append("email", data?.email);
+    formData.append("message", data.message);
+    setLoading(true);
+    try {
+      const response = await inquiryService(formData);
+      if (response?.status === 1) {
+        toast.success("Inquiry Added successful");
+      } else {
+        toast.error("Inquiry Added Unsuccessful");
+      }
+    } catch (error) {
+      return error;
+    } finally {
+      setLoading(false);
+      close();
+    }
+    close();
   };
 
   const close = () => {
@@ -37,7 +52,8 @@ const Touch = () => {
 
   const handleKeyPress = (event) => {
     const charCode = event.charCode;
-    if (!/[a-zA-Z]/.test(String.fromCharCode(charCode))) {
+    const char = String.fromCharCode(charCode);
+    if (!/[a-zA-Z\s]/.test(char)) {
       event.preventDefault();
     }
   };
@@ -45,7 +61,7 @@ const Touch = () => {
   return (
     <div className="flex-col py-[3rem] lg:py-[6rem] ">
       <div className=" max-w-[80rem] px-[1.25rem] mx-auto">
-        <h2 className="leading-[2.375rem] lg:leading-[3.375rem]  text-[1.813rem] lg:text-[2.813rem] text-center font-bold text-secondary ">
+        <h2 className="leading-[3.375rem] font-[700] text-[2.813rem] text-center text-secondary ">
           Get in <span className="text-primary">touch </span>
         </h2>
         <p className="text-center py-[.5rem] text-[#7E6E8C] leading-[1.5rem] text-[1rem] font-[400]  ">

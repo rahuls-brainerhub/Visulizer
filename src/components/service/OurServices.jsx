@@ -1,14 +1,24 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { FaCheck } from "react-icons/fa";
 import plans from "../../utils/service/ourService";
-
+import { packageService } from "../../services/ourServiceService";
+import { useSelector } from "react-redux";
 
 const OurServices = () => {
-
+  const [loading, setLoading] = useState(false);
+  const planData = useSelector((store) => store.service);
+  const serviceData = async () => {
+    const response = await packageService();
+    console.log(response);
+  };
+  useEffect(() => {
+    serviceData();
+  }, []);
+  console.log(planData);
   return (
     <div className="flex-col py-[3rem] lg:py-[5.938rem]">
       <div className=" max-w-[80rem] px-[1.25rem] mx-auto">
-        <h2 className="leading-[2.375rem] lg:leading-[3.375rem]  text-[1.813rem] lg:text-[2.813rem] text-center font-bold text-secondary ">
+        <h2 className="leading-[3.375rem] font-[700] text-[2.813rem] text-center text-secondary ">
           Take a Look Into <span className="text-primary">Our Services</span>
         </h2>
       </div>
@@ -16,7 +26,7 @@ const OurServices = () => {
         {plans?.map((feature, index) => (
           <div
             key={index}
-            className="w-full group  h-[auto] py-[1.2rem] px-[1.5rem] rounded-2xl border border-[#E1D9E9] hover:mb-[2rem] hover:bg-primary hover:-mt-[2rem] hover:border-primary transition duration-300 flex flex-col relative"
+            className="w-full hover:translate-y-[-5%] ease-in-out duration-500 group h-[auto] py-[1.2rem] px-[1.5rem] rounded-2xl border border-[#E1D9E9]  hover:bg-primary hover:border-primary  flex flex-col relative"
           >
             <img
               src="/cardVactor.png"

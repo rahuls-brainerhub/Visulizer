@@ -1,11 +1,10 @@
 import React from "react";
 
 const Story = () => {
-  
   return (
     <div className="flex flex-col items-center justify-center bg-white ">
       <div className="py-[3rem] lg:py-[6rem] max-w-[80rem] px-[1.25rem] w-full m-auto flex flex-col gap-[1.4rem] items-center">
-        <h2 className="leading-[2.375rem] lg:leading-[3.375rem] font-[700] text-[1.813rem] lg:text-[2.813rem] text-center pb-[0.5rem] lg:pb-[1rem]">
+        <h2 className="leading-[3.375rem] font-[700] text-[2.813rem] text-center pb-[0.5rem] lg:pb-[1rem]">
           The story behind <br />
           <span className="text-primary">CamClo3D</span>
         </h2>

@@ -1,8 +1,6 @@
 import React from "react";
 
-
 const AddService = () => {
-  
   return (
     <div className="relative z-[2] bg-[#F9FAFE]">
       <img
@@ -19,7 +17,7 @@ const AddService = () => {
         </div>
         <div className="w-full md:w-[calc(100%-0.75rem)]">
           <div className="flex flex-col">
-            <h2 className="text-secondary  leading-[2.375rem] lg:leading-[3.375rem] font-[600] text-[1.813rem] lg:text-[2.813rem] pb-[1.4rem]">
+            <h2 className="text-secondary  leading-[3.375rem] font-[700] text-[2.813rem]  pb-[1.4rem]">
               Add on <span className="text-primary font-[700]">Services</span>
             </h2>
             <h4 className="text-secondary leading-[1rem] font-[700] text-[1.25rem]  pb-[0.5rem]">

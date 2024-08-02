@@ -1,9 +1,7 @@
 import React from "react";
 import { FaInstagram, FaDribbble, FaYoutube, FaTwitter } from "react-icons/fa";
 
-
 const Footer = () => {
-  
   return (
     <div>
       <div
@@ -12,10 +10,10 @@ const Footer = () => {
       >
         <div className="absolute inset-0 bg-black opacity-50"></div>
         <div className="relative flex flex-col items-center gap-[2rem] justify-center max-w-[80rem] px-[1.25rem] mx-auto py-[3rem] lg:py-[6rem]">
-          <h1 className="text-white text-[2rem] sm:text-[3rem] lg:text-[4rem] font-bold  text-center">
+          <h1 className="text-white leading-[3.8rem] text-[3rem] md:text-[4rem]  md:leading-[4.8rem]  font-[700]  text-center">
             Visualize Your Fabric Now
           </h1>
-          <button className="btn-primary border border-white text-[1rem] p-[0.75rem_2rem]">
+          <button className="btn-primary border border-white text-[1rem] p-[0.50rem_1.3rem] md:p-[0.75rem_2rem]">
             Visualize
           </button>
         </div>

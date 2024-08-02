@@ -1,4 +1,4 @@
-import React, { createRef, useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FaRegUser } from "react-icons/fa";
 import { AiOutlineMail, AiOutlineEyeInvisible } from "react-icons/ai";
 import { LuPhone } from "react-icons/lu";
@@ -11,12 +11,15 @@ import { signupSchema } from "../../schema/signupSchema";
 import { useGoogleLogin } from "@react-oauth/google";
 import FacebookLogin from "react-facebook-login";
 import { FcGoogle } from "react-icons/fc";
+import { useNavigate } from "react-router-dom";
 
 const SignUpPopup = ({ onClose }) => {
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [user, setUser] = useState([]);
+
+  const naviagte = useNavigate();
 
   const signupWithGoogle = useGoogleLogin({
     onSuccess: (codeResponse) => {
@@ -36,6 +39,7 @@ const SignUpPopup = ({ onClose }) => {
       if (socialLogin?.status === 1) {
         toast.success("Login Successful");
         onClose("openSignup");
+        naviagte("/dashboard");
       } else {
         toast.error(response?.response?.data?.message);
       }
@@ -109,6 +113,7 @@ const SignUpPopup = ({ onClose }) => {
       if (socialLogin?.status === 1) {
         toast.success("Login Successful");
         onClose("openSignup");
+        naviagte("/dashboard");
       } else {
         toast.error(response?.response?.data?.message);
       }
@@ -126,7 +131,7 @@ const SignUpPopup = ({ onClose }) => {
       event.preventDefault();
     }
   };
-  
+
   const handleKeyPressNumber = (event) => {
     const charCode = event.charCode;
     if (!/[0-9]/.test(String.fromCharCode(charCode))) {

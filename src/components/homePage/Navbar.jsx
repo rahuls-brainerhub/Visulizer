@@ -8,7 +8,6 @@ import { toast } from "react-toastify";
 import { RiMenu2Fill } from "react-icons/ri";
 
 const Navbar = ({ onClose, onCloseLogin }) => {
-  
   const [activeLink, setActiveLink] = useState(null);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
 
@@ -23,12 +22,12 @@ const Navbar = ({ onClose, onCloseLogin }) => {
     (store) => store.global?.is_authenticated
   );
 
-  const logout = () => {
-    store.dispatch(clearAuth());
-    store.dispatch(setIsAuthenticated(false));
-    toast.success("Logout Successful");
-    setIsMobileOpen(false);
-  };
+  // const logout = () => {
+  //   store.dispatch(clearAuth());
+  //   store.dispatch(setIsAuthenticated(false));
+  //   toast.success("Logout Successful");
+  //   setIsMobileOpen(false);
+  // };
 
   function updateBodyOverflowClass(isMobileOpen) {
     if (isMobileOpen) {
@@ -56,9 +55,9 @@ const Navbar = ({ onClose, onCloseLogin }) => {
   }, [isAuthenticated]);
 
   return (
-    <div className="shadow-lg">
+    <header className="shadow-lg py-[0.625rem] bg-[#fff]">
       <div className="max-w-[80rem] px-[1.25rem] mx-auto flex justify-between items-center relative">
-        <div className="my-[0.5rem]">
+        <div className="">
           <img className="h-[4rem]" src={"/logo_new.png"} />
         </div>
         <div className="hidden md:flex items-center gap-[2rem] lg:gap-[3rem]">
@@ -74,29 +73,16 @@ const Navbar = ({ onClose, onCloseLogin }) => {
             </div>
           ))}
         </div>
-        {isAuthenticated ? (
-          <>
-            <div className="hidden md:flex gap-[0.9rem]">
-              <button
-                className="btn-outline bg-primary text-[white]"
-                onClick={logout}
-              >
-                Log Out
-              </button>
-            </div>
-          </>
-        ) : (
-          <>
-            <div className="hidden md:flex gap-[0.9rem]">
-              <button className="btn-outline" onClick={onCloseLogin}>
-                Login
-              </button>
-              <button className="btn-primary" onClick={onClose}>
-                Sign up
-              </button>
-            </div>
-          </>
-        )}
+
+        <div className="hidden md:flex gap-[0.9rem]">
+          <button className="btn-outline" onClick={onCloseLogin}>
+            Login
+          </button>
+          <button className="btn-primary" onClick={onClose}>
+            Sign up
+          </button>
+        </div>
+
         <button
           onClick={() => {
             updateBodyOverflowClass(!isMobileOpen);
@@ -107,7 +93,7 @@ const Navbar = ({ onClose, onCloseLogin }) => {
           <RiMenu2Fill size={30} fill="#8c2a8d" />
         </button>
         {isMobileOpen && (
-          <div className="absolute md:hidden z-[10] top-[5rem] left-[0px] w-full min-h-[calc(100vh-5rem)] h-full bg-white ">
+          <div className="absolute md:hidden z-[10] top-[4.6rem] left-[0px] w-full min-h-[calc(100vh-5rem)] h-full bg-white ">
             <div className="p-[1.25rem] h-full flex flex-col gap-[2rem]">
               <div className="flex flex-col items-start gap-[1.5rem]">
                 {links.map((item, i) => (
@@ -115,6 +101,7 @@ const Navbar = ({ onClose, onCloseLogin }) => {
                     key={i}
                     onClick={() => {
                       setActiveLink(i);
+                      updateBodyOverflowClass(!isMobileOpen);
                     }}
                     className={`navbar-link ${
                       activeLink === i ? "active" : ""
@@ -125,35 +112,20 @@ const Navbar = ({ onClose, onCloseLogin }) => {
                 ))}
               </div>
               <div>
-                {isAuthenticated ? (
-                  <>
-                    <div className="flex gap-[0.9rem]">
-                      <button
-                        className="btn-outline bg-primary text-[white]"
-                        onClick={logout}
-                      >
-                        Log Out
-                      </button>
-                    </div>
-                  </>
-                ) : (
-                  <>
-                    <div className="flex gap-[0.9rem]">
-                      <button className="btn-outline" onClick={onCloseLogin}>
-                        Login
-                      </button>
-                      <button className="btn-primary" onClick={onClose}>
-                        Sign up
-                      </button>
-                    </div>
-                  </>
-                )}
+                <div className="flex gap-[0.9rem]">
+                  <button className="btn-outline" onClick={onCloseLogin}>
+                    Login
+                  </button>
+                  <button className="btn-primary" onClick={onClose}>
+                    Sign up
+                  </button>
+                </div>
               </div>
             </div>
           </div>
         )}
       </div>
-    </div>
+    </header>
   );
 };
 

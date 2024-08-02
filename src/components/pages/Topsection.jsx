@@ -12,7 +12,7 @@ const TopSection = ({ title, breadcrumData, keys, image, bg }) => {
   }, [image]);
   return (
     <div
-      className={`flex flex-col justify-center items-center form-bg relative min-h-[20rem]`}
+      className={`flex flex-col justify-center items-center form-bg relative min-h-[18rem]`}
     >
       <div
         className={`absolute h-full w-full top-0 left-0 ${
@@ -20,11 +20,11 @@ const TopSection = ({ title, breadcrumData, keys, image, bg }) => {
         } opacity-[0.4]`}
       ></div>
       <div className="flex justify-center items-center z-10 py-[3.25rem] sm:py-[5.25rem] lg:py-[8.25rem] ">
-        <h1 className="text-white text-[2.5rem] sm:text-[3rem] lg:text-[4rem] font-[700] text-center leading-[2.75rem] sm:leading-[4.75rem] lg:leading-[4.75rem]">
+        <h1 className="text-white text-[3.5rem] lg:text-[4rem] font-[700] text-center leading-[4.75rem]">
           {title}
         </h1>
       </div>
-      <div className="relative w-full flex items-center pb-0 sm:pb-[2.25rem] py-[2.25rem]  justify-center border-t-[0.031rem] border-[#E1D9E9]  gap-[.6rem]">
+      <div className="relative w-full flex items-center pb-0 sm:pb-[2.25rem] pt-[2rem] sm:pt-[2.25rem]  justify-center border-t-[0.031rem] border-[#E1D9E9]  gap-[.6rem]">
         {breadcrumData?.length === 1 ? (
           <div key={keys} className="page-subtitle text-white text-center">
             {breadcrumData[0]}

@@ -1,4 +1,4 @@
-import { setrefreshToken, setUser } from "../redux/slice/authSlice";
+import { setMyProfile, setrefreshToken, setUser } from "../redux/slice/authSlice";
 import { setIsAuthenticated } from "../redux/slice/globalSlice";
 import { store } from "../redux/store";
 ;
@@ -69,6 +69,44 @@ export const socialAuth = async (Data) => {
             store.dispatch(setIsAuthenticated(true));
             store.dispatch(setrefreshToken(res?.data?.data?.access_token))
         }
+        return res.data;
+    } catch (err) {
+        return err;
+    }
+};
+
+export const myProfile = async () => {
+    const token = store.getState().auth.token;
+    try {
+        const res = await baseService.post(ROUTES.AUTH.MYPROFILE, null, {
+            headers: { Authorization: `Bearer ${token}` }
+        });
+        console.log(res)
+        store.dispatch(setMyProfile(res?.data?.data))
+
+        return res.data;
+    } catch (err) {
+        return err;
+    }
+};
+export const editProfile = async (data) => {
+    const token = store.getState().auth.token;
+    try {
+        const res = await baseService.post(ROUTES.AUTH.EDITPROFILE, data, {
+            headers: { Authorization: `Bearer ${token}` }
+        });
+        store.dispatch(setMyProfile(res?.data?.data))
+        return res.data;
+    } catch (err) {
+        return err;
+    }
+};
+export const changePassword = async (data) => {
+    const token = store.getState().auth.token;
+    try {
+        const res = await baseService.post(ROUTES.AUTH.CHANGEPASSWORD, data, {
+            headers: { Authorization: `Bearer ${token}` }
+        });
         return res.data;
     } catch (err) {
         return err;
