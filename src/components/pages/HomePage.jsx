@@ -19,7 +19,7 @@ const HomePage = () => {
       <OurServices />
       <AboutUs />
       <Faq />
-      <Footer />
+      <Footer footer={true} />
 
       {/* <Link to={"/products/all"}>Product Listing</Link> */}
     </div>

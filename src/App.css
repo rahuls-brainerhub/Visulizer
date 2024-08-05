@@ -90,3 +90,7 @@ input[type="text"].signup-input {
   border-bottom: 20px solid #cac2d1;
   @apply absolute top-[-20px] right-0 translate-x-[50%] z-[-1];
 }
+
+.btn-active {
+  @apply border-[0.13rem] bg-[green] rounded-[0.5rem] p-[0.6rem_1.3rem] font-[600] text-[1rem] leading-[1.25rem] text-white;
+}

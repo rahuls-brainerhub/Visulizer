@@ -15,7 +15,7 @@ const Fqa = () => {
         image={"/faqBanner.png"}
       />
       <Faq />
-      <Footer />
+      <Footer footer={true} />
     </>
   );
 };

@@ -68,7 +68,7 @@ const MyProfile = ({ profile, title }) => {
         <div className=" bg-[#fff] rounded-md pb-[3.125rem]">
           <div className=" h-[7.5rem] bg-gradient-to-r from-primaryLight to-primary rounded-t-md"></div>
 
-          <div className="flex justify-between items-center px-[1.563rem] mb-[2.5rem]">
+          <div className="flex justify-between items-center px-[1.563rem] mb-[2.5rem] gap-6 md:flex-nowrap flex-wrap">
             <div className="flex justify-center items-center gap-[1.563rem]">
               <div className="h-[9.375rem] w-[9.375rem] rounded-full shadow-[2px_2px_12px_0px_#CAC2D1] border-white  border-2 mt-[-1.875rem]">
                 {" "}
@@ -95,8 +95,8 @@ const MyProfile = ({ profile, title }) => {
             </button>
           </div>
           {/* <form/> */}
-          <div className="flex flex-wrap justify-between items-center px-[1.563rem] ">
-            <div className="w-[calc(50%-0.25rem)] md:w-[calc(50%-0.563rem)]">
+          <div className="grid md:grid-cols-2 md:gap-8 gap-4 items-center px-[1.563rem]">
+            <div className="w-full">
               <label className="text-secondary font-[400] text-[1rem] leading-[1rem]">
                 First Name
               </label>
@@ -116,7 +116,7 @@ const MyProfile = ({ profile, title }) => {
               </div>
               <p className="text-[red]">{errors.first_name?.message}</p>
             </div>
-            <div className="w-[calc(50%-0.25rem)] md:w-[calc(50%-0.563rem)]">
+            <div className="w-full">
               <label className="text-secondary font-[400] text-[1rem] leading-[1rem]">
                 Last Name
               </label>
@@ -136,7 +136,7 @@ const MyProfile = ({ profile, title }) => {
               </div>
               <p className="text-[red]">{errors.last_name?.message}</p>
             </div>
-            <div className="w-[calc(50%-0.25rem)] md:w-[calc(50%-0.563rem)]">
+            <div className="w-full">
               <label className="text-secondary font-[400] text-[1rem] leading-[1rem]">
                 Email
               </label>
@@ -155,7 +155,7 @@ const MyProfile = ({ profile, title }) => {
               </div>
               <p className="text-[red]">{errors.email?.message}</p>
             </div>
-            <div className="w-[calc(50%-0.25rem)] md:w-[calc(50%-0.563rem)]">
+            <div className="w-full">
               <label className="text-secondary font-[400] text-[1rem] leading-[1rem]">
                 Mobile Number
               </label>

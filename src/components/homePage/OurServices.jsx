@@ -16,7 +16,8 @@ const OurServices = () => {
         {service.map((feature, index) => (
           <div
             key={index}
-            className=" p-[2rem] hover:shadow-[2px_2px_12px_0px_#CAC2D1] group rounded-lg border hover:border-[#fff] border-[#E1D9E9] transition duration-300 hover:bg-[#EFE8F5]  flex flex-col gap-[1rem] items-center"
+            className=" p-[2rem] hover:shadow-[2px_2px_12px_0px_#CAC2D1] group rounded-lg border hover:border-[#fff] border-[#E1D9E9] transition duration-300 hover:bg-[#EFE8F5] 
+             flex flex-col gap-[1rem] items-center"
           >
             <div className="relative z-[0] h-14 w-14">
               <div className="absolute z-[1] top-0 left-0  translate-x-[25%] translate-y-[25%] h-14 w-14 transition ease-in-out duration-500 rounded-[10px_5px_10px_5px] bg-[#EFE8F5] group-hover:rounded-[10px] group-hover:bg-[#8C2A8D3D] group-hover:translate-x-[0%] group-hover:translate-y-[0%]"></div>

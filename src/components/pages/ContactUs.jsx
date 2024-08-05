@@ -26,7 +26,7 @@ const ContactUs = () => {
         <Location />
       </div>
 
-      <Footer />
+      <Footer footer={true} />
     </>
   );
 };

@@ -11,17 +11,17 @@ const navItems = [
 
 const Sidebar = ({ active, setActive }) => {
   return (
-    <div className="w-[21.5rem] bg-white h-full">
-      <div className="flex items-center justify-center py-[2.4rem] mx-auto">
+    <div className="bg-white h-full">
+      <div className="flex items-center justify-center md:py-[2.4rem] py-8 mx-auto">
         <img className="h-[4rem]" src="/logo_new.png" alt="Logo" />
       </div>
-      <nav className="mt-[3.5rem]">
+      <nav className="md:mt-[3.5rem] mt-0">
         {navItems.map((item, index) => (
           <div
             key={index}
             className={`border-l-4 ${
               active === index ? "border-primary" : "border-transparent"
-            }` }
+            }`}
           >
             <a
               href={item.href}

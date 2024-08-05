@@ -13,6 +13,7 @@ import ContactUs from "../pages/ContactUs";
 import Fqa from "../pages/Fqa";
 import ServicePage from "../pages/ServicePage";
 import Dashboard from "../pages/Dashboard";
+import PrivacyPage from "../pages/PrivacyPage";
 
 const AllRoutes = () => {
   return (
@@ -78,6 +79,7 @@ const AllRoutes = () => {
             </PublicLayout>
           }
         />
+        <Route path="/privacy-policy" element={<PrivacyPage />} />
       </Routes>
     </div>
   );

@@ -15,7 +15,7 @@ const AboutUs = () => {
         image={"/aboutus.png"}
       />
       <Story />
-      <Footer />
+      <Footer footer={true} />
     </div>
   );
 };

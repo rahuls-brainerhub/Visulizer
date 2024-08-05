@@ -17,7 +17,7 @@ import Notification from "../dashboard/Notification";
 
 const Dashboard = () => {
   const [openProfile, setOpenProfile] = useState(false);
-  const [toggleSideBar, setToggleNavBar] = useState(false);
+  const [toggleSideBar, setToggleSideBar] = useState(false);
   const [openNotification, SetOpenNotification] = useState(false);
   const [profileOpen, setProfileOpen] = useState(0);
   const [active, setActive] = useState(0);
@@ -25,6 +25,7 @@ const Dashboard = () => {
   // Create separate refs for the profile trigger and dropdown
   const profileTriggerRef = useRef(null);
   const profileDropdownRef = useRef(null);
+  const toogleTriggerRef = useRef(null);
 
   const handleProfile = () => {
     setOpenProfile(!openProfile);
@@ -82,11 +83,24 @@ const Dashboard = () => {
     }
   }, [active]);
 
+  const handleResize = () => {
+    if (window.innerWidth <= 768) {
+      setToggleSideBar(true);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+  console.log("dbcdhb", toggleSideBar);
   return (
     <>
       <div className="bg-[#f2eef3] relative min-h-[100vh]">
         <div
-          className={`fixed top-0 bottom-0 w-[21.875rem] bg-white transition-transform duration-300 ease-in-out transform ${
+          className={`fixed top-0 bottom-0 lg:w-[21.875rem] w-48 bg-white transition-transform duration-300 ease-in-out transform ${
             toggleSideBar ? "-translate-x-full" : "translate-x-0"
           } z-40`}
         >
@@ -94,16 +108,18 @@ const Dashboard = () => {
         </div>
         <div
           className={`${
-            toggleSideBar ? "w-full" : "w-[calc(100%-21.875rem)]"
+            toggleSideBar
+              ? "w-full"
+              : "lg:w-[calc(100%-21.875rem)] w-[calc(100% - 12rem)]"
           } ${
-            toggleSideBar ? "ml-[0rem]" : "ml-[21.875rem]"
-          } px-[3rem] py-[1.5rem]`}
+            toggleSideBar ? "ml-[0rem]" : "lg:ml-[21.875rem] sm:ml-[12rem] ml-0"
+          } lg:px-[3rem] px-7 py-[1.5rem]`}
         >
           <div>
-            <div className="flex mb-[2.5rem] justify-between items-center z-50">
+            <div className="flex sm:mb-[2.5rem] mb-6 justify-between items-center z-50">
               <div>
                 <BiMenuAltLeft
-                  onClick={() => setToggleNavBar(!toggleSideBar)}
+                  onClick={() => setToggleSideBar(!toggleSideBar)}
                   className="w-[2.5rem] h-[2.5rem] border bg-white rounded-md cursor-pointer text-primary"
                 />
               </div>

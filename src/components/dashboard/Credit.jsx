@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import CreditPage from "./CreditPage";
+import Myplan from "./Myplan";
 
 const Credit = ({ title }) => {
   const [active, setActive] = useState(0);
@@ -12,10 +14,10 @@ const Credit = ({ title }) => {
           <h2 className="font-[700] text-[1.5rem] leading-[1.8rem] text-secondary Barlow">
             Purchase a plan
           </h2>
-          <p className="text-[1rem] leading-[1.2rem] font-[400] Barlow text-primaryLight">
+          <p className="text-[1rem] leading-[1.2rem] font-[400] Barlow text-primaryLight my-[1rem]">
             Choose the plan that work for you.
           </p>
-          <div className="flex flex-row bg-primaryInputBorder rounded-full gap-[.25rem] ">
+          <div className="flex flex-row bg-primaryInputBorder rounded-full gap-[.25rem]  ">
             <button
               className={`${active === 0 ? "btn-primary" : ""} ${
                 active === 0 ? "rounded-full" : ""
@@ -34,10 +36,7 @@ const Credit = ({ title }) => {
             </button>
           </div>
         </div>
-        <div className="flex flex-row">
-
-        </div>
-
+        {active ? <Myplan /> : <CreditPage />}
       </div>
     </>
   );

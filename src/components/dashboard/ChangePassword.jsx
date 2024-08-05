@@ -66,8 +66,8 @@ const ChangePassword = ({ title }) => {
       </div>
       <div className="flex flex-col bg-white py-[3.125rem] rounded-[1rem] ">
         <div className="text-center py-[2rem]  ">
-          <div className="outline-dotted outline-[#E1D9E9] outline-[0.188rem] rounded-full w-[6.25rem] h-[6.25rem] flex justify-center items-center mx-auto ">
-            <div className="bg-[#34C759] rounded-full w-[5rem] h-[5rem] flex justify-center items-center     ">
+          <div className="relative outline-dotted outline-[#E1D9E9] outline-[0.188rem] rounded-full w-[6.25rem] h-[6.25rem] flex justify-center items-center mx-auto before:absolute before:w-4 before:h-4 before:bg-white before:border before:border-[#E1D9E9] before:rounded-full before:left-0 before:bottom-3 after:absolute after:w-4 after:h-4 after:bg-white after:border after:border-[#E1D9E9] after:rounded-full after:right-0 after:top-3">
+            <div className="bg-[#34C759] rounded-full w-[5rem] h-[5rem] flex justify-center items-center">
               <img
                 src="/password.png"
                 alt="passwordIcon"
