@@ -22,7 +22,6 @@ const Dashboard = () => {
   const [profileOpen, setProfileOpen] = useState(0);
   const [active, setActive] = useState(0);
 
-  // Create separate refs for the profile trigger and dropdown
   const profileTriggerRef = useRef(null);
   const profileDropdownRef = useRef(null);
   const toogleTriggerRef = useRef(null);
@@ -96,6 +95,9 @@ const Dashboard = () => {
     };
   }, []);
   console.log("dbcdhb", toggleSideBar);
+  const onClose = () => {
+    SetOpenNotification(!openNotification);
+  };
   return (
     <>
       <div className="bg-[#f2eef3] relative min-h-[100vh]">
@@ -132,13 +134,13 @@ const Dashboard = () => {
                   <div className="w-[1rem] h-[1rem] bg-[#87258e] text-white !text-[0.688rem] font-semibold rounded-full flex items-center justify-center m-auto absolute top-[-.5rem] right-[-.5rem]">
                     13
                   </div>
+                  {openNotification && (
+                    <div className="absolute top-10 right-[-40px]">
+                      <Notification open={openNotification} onClose={onClose} />
+                    </div>
+                  )}
                 </div>
-                {openNotification && (
-                  <Notification
-                    open={openNotification}
-                    onClose={SetOpenNotification}
-                  />
-                )}
+
                 <div className="flex justify-center items-center gap-2">
                   <p className="text-[#381952] font-barlow">
                     Hello,{" "}

@@ -46,8 +46,10 @@ const Question = ({ faqData, toggleFAQ, activeIndex, titlePre, titleSuf }) => {
               </button>
             </div>
             <div
-              className={`text-primaryLight text-[1rem] leading-[1.563rem] font-[400] p-[1.45rem_1.25rem] pt-2 pb-6 text-algin-start ${
-                activeIndex === index ? "" : "hidden"
+              className={`overflow-hidden transition-all duration-500 ease-in-out ${
+                activeIndex === index
+                  ? "max-h-[31.25rem] opacity-100"
+                  : "max-h-0 opacity-0"
               }`}
             >
               {faq?.answer}

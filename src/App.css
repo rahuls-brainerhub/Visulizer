@@ -92,5 +92,24 @@ input[type="text"].signup-input {
 }
 
 .btn-active {
-  @apply border-[0.13rem] bg-[green] rounded-[0.5rem] p-[0.6rem_1.3rem] font-[600] text-[1rem] leading-[1.25rem] text-white;
+  @apply border-[0.13rem] border-[#039412] bg-[#039412] rounded-[0.5rem] p-[0.6rem_1.3rem] font-[600] text-[1rem] leading-[0.23rem] text-white;
+}
+
+@keyframes fadeInSlideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-slide-in {
+  animation: fadeInSlideIn 0.5s ease-out forwards;
+}
+
+.fade-in-slide-out {
+  animation: fadeInSlideIn 0.5s ease-out forwards;
 }
