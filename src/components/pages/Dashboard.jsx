@@ -14,6 +14,7 @@ import { TbLogout } from "react-icons/tb";
 import { MdOutlineChangeCircle } from "react-icons/md";
 import Credit from "../dashboard/Credit";
 import Notification from "../dashboard/Notification";
+import { toast } from "react-toastify";
 
 const Dashboard = () => {
   const [openProfile, setOpenProfile] = useState(false);
@@ -82,19 +83,19 @@ const Dashboard = () => {
     }
   }, [active]);
 
-  const handleResize = () => {
-    if (window.innerWidth <= 768) {
-      setToggleSideBar(true);
-    }
-  };
+  // const handleResize = () => {
+  //   if (window.innerWidth <= 768) {
+  //     setToggleSideBar(true);
+  //   }
+  // };
 
-  useEffect(() => {
-    window.addEventListener("resize", handleResize);
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
-  console.log("dbcdhb", toggleSideBar);
+  // useEffect(() => {
+  //   window.addEventListener("resize", handleResize);
+  //   return () => {
+  //     window.removeEventListener("resize", handleResize);
+  //   };
+  // }, []);
+  // console.log("dbcdhb", toggleSideBar);
   const onClose = () => {
     SetOpenNotification(!openNotification);
   };

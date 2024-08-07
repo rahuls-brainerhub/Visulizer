@@ -113,3 +113,10 @@ input[type="text"].signup-input {
 .fade-in-slide-out {
   animation: fadeInSlideIn 0.5s ease-out forwards;
 }
+.note-first-letter::first-letter {
+  /* Style for the first letter */
+  font-weight: 700; /* Example: bold */
+  color: #ff5733; /* Example: change the color to something different */
+  font-size: 1.25rem; /* Example: larger font size */
+  /* Add more styles as needed */
+}

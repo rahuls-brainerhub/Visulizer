@@ -133,7 +133,7 @@ const ChangePassword = ({ title }) => {
                 <input
                   className="border w-full border-primaryInputBorder rounded-lg h-[3rem] pl-[2.75rem] pr-[2rem] transition duration-300 ease-in-out hover:border-primary"
                   id="password"
-                  type={showPassword ? "text" : "password"}
+                  type={newPassword ? "text" : "password"}
                   placeholder="Enter New Password"
                   {...register("password")}
                 />
@@ -162,7 +162,7 @@ const ChangePassword = ({ title }) => {
                 <input
                   className="border w-full border-primaryInputBorder rounded-lg h-[3rem] pl-[2.75rem] pr-[2rem] transition duration-300 ease-in-out hover:border-primary"
                   id="password"
-                  type={showPassword ? "text" : "password"}
+                  type={confirmPassword ? "text" : "password"}
                   placeholder="Re-Enter Password"
                   {...register("password_confirmation")}
                 />

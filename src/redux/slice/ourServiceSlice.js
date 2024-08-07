@@ -2,7 +2,8 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
     inquiry: {},
-    package: []
+    package: [],
+    packageUser: []
 }
 
 const ourServiceSlice = createSlice({
@@ -15,12 +16,15 @@ const ourServiceSlice = createSlice({
         setPackage: (state, action) => {
             state.package = action.payload
         },
+        setPackageUser: (state, action) => {
+            state.packageUser = action.payload
+        },
         clearService: (state, action) => {
             state.inquiry = {}
         },
     }
 })
 
-export const { setInquiry, setPackage, clearInquiry } = ourServiceSlice.actions
+export const { setInquiry, setPackage, setPackageUser, clearInquiry } = ourServiceSlice.actions
 
 export default ourServiceSlice.reducer
