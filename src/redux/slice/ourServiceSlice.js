@@ -4,7 +4,7 @@ const initialState = {
     inquiry: {},
     package: [],
     packageUser: []
-}
+} 
 
 const ourServiceSlice = createSlice({
     name: 'service',
