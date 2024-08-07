@@ -33,7 +33,6 @@ const Dashboard = () => {
 
   const myProfileData = async () => {
     let res = await myProfile();
-    console.log(res);
   };
   const profile = useSelector((store) => store.auth.myProfile);
 
@@ -83,19 +82,6 @@ const Dashboard = () => {
     }
   }, [active]);
 
-  // const handleResize = () => {
-  //   if (window.innerWidth <= 768) {
-  //     setToggleSideBar(true);
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   window.addEventListener("resize", handleResize);
-  //   return () => {
-  //     window.removeEventListener("resize", handleResize);
-  //   };
-  // }, []);
-  // console.log("dbcdhb", toggleSideBar);
   const onClose = () => {
     SetOpenNotification(!openNotification);
   };
@@ -107,7 +93,7 @@ const Dashboard = () => {
             toggleSideBar ? "-translate-x-full" : "translate-x-0"
           } z-40`}
         >
-          <Sidebar active={active} setActive={setActive} />
+          <Sidebar active={active} setActive={setActive}  setToggleSideBar={setToggleSideBar} toggleSideBar={toggleSideBar} />
         </div>
         <div
           className={`${

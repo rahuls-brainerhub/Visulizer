@@ -81,7 +81,6 @@ export const myProfile = async () => {
         const res = await baseService.post(ROUTES.AUTH.MYPROFILE, null, {
             headers: { Authorization: `Bearer ${token}` }
         });
-        console.log(res)
         store.dispatch(setMyProfile(res?.data?.data))
 
         return res.data;

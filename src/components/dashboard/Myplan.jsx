@@ -8,7 +8,6 @@ const Myplan = () => {
   const myPlaneData = useSelector((store) => store.service.packageUser);
   const packageData = async () => {
     const res = await purchasePackageUser();
-    console.log(res);
   };
   useEffect(() => {
     packageData();

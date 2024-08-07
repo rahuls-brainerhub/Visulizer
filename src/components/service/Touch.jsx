@@ -20,7 +20,6 @@ const Touch = () => {
   });
 
   const onSubmit = async (data) => {
-    console.log(data, "servicedata");
     const formData = new FormData();
     formData.append("name", data?.name);
     formData.append("email", data?.email);

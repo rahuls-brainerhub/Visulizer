@@ -13,7 +13,6 @@ const OurServices = () => {
   useEffect(() => {
     serviceData();
   }, []);
-  console.log(planData, "plandataservice");
   const stripHtmlTags = (htmlString) => {
     return htmlString.replace(/<[^>]*>/g, "");
   };
