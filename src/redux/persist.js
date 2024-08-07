@@ -4,6 +4,7 @@ import storage from "redux-persist/lib/storage";
 import globalSlice from "./slice/globalSlice";
 import authSlice from "./slice/authSlice";
 import ourServiceSlice from "./slice/ourServiceSlice";
+import conatctSlice from "./slice/conatctSlice";
 
 export const persistConfig = {
     key: "demo",
@@ -13,7 +14,8 @@ export const persistConfig = {
 const combinedReducer = combineReducers({
     global: globalSlice,
     auth:authSlice,
-    service:ourServiceSlice
+    service:ourServiceSlice,
+    contact:conatctSlice
 })
 
 const rootReducer = (state, action) => {

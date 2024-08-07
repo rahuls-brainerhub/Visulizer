@@ -1,7 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import love from "../../utils/contact/love";
+import { useSelector } from "react-redux";
+import { contactUsService } from "../../services/contactUsService";
 
 const Love = () => {
+  const contactUs = useSelector((store) => store.contact.contact);
+  const contact = async () => {
+    const res = await contactUsService();
+  };
+  useEffect(() => {
+    contact();
+  }, []);
   return (
     <div className="flex-col">
       <div className=" max-w-[80rem] px-[1.25rem] mx-auto">
@@ -33,7 +42,11 @@ const Love = () => {
                   {feature.title}
                 </h3>
                 <p className="leading-[1.25rem] font-[400] text-primaryLight text-[1rem]">
-                  {feature.text}
+                  {feature.title == "Visit A Office"
+                    ? contactUs[0][0].address
+                    : feature.title == "Send Email"
+                    ? contactUs[0][0].email
+                    : contactUs[0][0].phone}
                 </p>
               </div>
             </div>

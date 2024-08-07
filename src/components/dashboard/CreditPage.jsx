@@ -17,7 +17,7 @@ const CreditPage = () => {
   useEffect(() => {
     serviceData();
   }, []);
-  console.log(planData[0], "planData");
+
   const stripHtmlTags = (htmlString) => {
     return htmlString.replace(/<[^>]*>/g, "");
   };

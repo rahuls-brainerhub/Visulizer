@@ -16,6 +16,9 @@ const ROUTES = {
     PACKAGES: "/api/v1/getPackages",
     PURCHASEPACKAGE:"/api/v1/purchasePackage",
     GETPURCHASEPACKAGE:"/api/v1/getUserPackage"
+  },
+  CONTACT:{
+   CONTACTUS:"/api/v1/getContactUs"
   }
 }
 export { ROUTES };

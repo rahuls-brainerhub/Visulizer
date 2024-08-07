@@ -28,7 +28,7 @@ const MyProfile = ({ profile, title }) => {
     setLoading(true);
     try {
       const response = await editProfile(formData);
-      console.log(response);
+
       if (response?.status === 1) {
         toast.success("Edit successful");
         onClose("openOTP");

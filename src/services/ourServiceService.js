@@ -15,7 +15,6 @@ export const inquiryService = async (userData) => {
 export const packageService = async () => {
     try {
         const res = await baseService.get(ROUTES.SERVICES.PACKAGES);
-        console.log(res.data.data, "data")
         store.dispatch(setPackage(res.data.data))
         return res.data;
     } catch (err) {
@@ -36,7 +35,6 @@ export const purchasePackage = async (data) => {
 
 export const purchasePackageUser = async () => {
     const token = store.getState().auth.token;
-    console.log(token)
     try {
         const res = await baseService.get(ROUTES.SERVICES.GETPURCHASEPACKAGE, {
             headers: { Authorization: `Bearer ${token}` }

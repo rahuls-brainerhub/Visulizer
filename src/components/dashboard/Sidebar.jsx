@@ -1,7 +1,21 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { GoHome } from "react-icons/go";
 import { CiImageOn } from "react-icons/ci";
 import { HiOutlineCurrencyRupee } from "react-icons/hi2";
+import { IoMdClose } from "react-icons/io";
+const useIsMobile = () => {
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 400);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 400);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+  return isMobile;
+};
 
 const navItems = [
   { href: "#", icon: <GoHome size={20} />, text: "Dashboard" },
@@ -9,9 +23,21 @@ const navItems = [
   { href: "#", icon: <HiOutlineCurrencyRupee size={20} />, text: "Credits" },
 ];
 
-const Sidebar = ({ active, setActive }) => {
+const Sidebar = ({ active, setActive, setToggleSideBar, toggleSideBar }) => {
+
+  const isMobile = useIsMobile();
+
   return (
     <div className="bg-white h-full">
+      {isMobile && (
+        <div className="py-[.5rem] flex justify-end">
+          <IoMdClose
+            onClick={() => setToggleSideBar(!toggleSideBar)}
+            size={20}
+          />
+        </div>
+      )}
+
       <div className="flex items-center justify-center md:py-[2.4rem] py-8 mx-auto">
         <img className="h-[4rem]" src="/logo_new.png" alt="Logo" />
       </div>
