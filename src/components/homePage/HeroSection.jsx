@@ -3,25 +3,25 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-
 const HeroSection = () => {
-
   var settings = {
     dots: true,
     infinite: true,
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
+    arrows: false,
+    autoplay: true,
   };
-  
+
   return (
-    <div className="w-full overflow-hidden relative bg-[#F9FAFE]">
+    <section className="w-full overflow-hidden relative bg-[#F9FAFE]  py-[3rem] lg:py-[6rem]">
       <img
         className="absolute top-0 left-0 w-full rotate-[180deg] opacity-[0.2] z-[0]"
         src="/bg.png"
-        alt=""  
+        alt=""
       />
-      <div className="relative z-[2] max-w-[80rem] px-[1.25rem] w-full flex flex-col md:flex-row gap-[2rem] justify-between items-center m-auto py-[3rem] md:py-[6rem]">
+      <div className="relative z-[2] max-w-[80rem] px-[1.25rem] w-full flex flex-col md:flex-row gap-[2rem] justify-between items-center m-auto">
         <div className="w-full md:w-1/2 flex flex-col gap-[2rem]">
           <div className="flex flex-col gap-[1rem]">
             <h1 className="text-secondary leading-[4.625rem] font-[600] text-[4rem]">
@@ -61,7 +61,7 @@ const HeroSection = () => {
           </Slider>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

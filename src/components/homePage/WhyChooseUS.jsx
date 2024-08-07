@@ -1,11 +1,9 @@
 import React from "react";
 import choose from "../../utils/homePage/whyChooseUs";
 
-
 const WhyChooseUs = () => {
-
   return (
-    <div className="flex-col bg-[#FDFBFF] py-[3rem] md:py-[5.938rem]">
+    <div className="flex-col bg-[#FDFBFF] py-[3rem] md:py-[6rem]">
       <div className=" max-w-[80rem] px-[1.25rem] mx-auto">
         <h2 className="text-[2.813rem] text-center font-bold text-secondary ">
           Why <span className="text-primary">Choose Us</span>
@@ -15,11 +13,11 @@ const WhyChooseUs = () => {
           industry.
         </p>
       </div>
-      <div className=" max-w-[80rem] px-[1.25rem] flex flex-col md:flex-row w-full gap-[1.5rem] py-[2.188rem] mx-auto">
+      <div className=" grid sm:grid-cols-2 lg:grid-cols-3 max-w-[80rem] px-[1.25rem]  flex-col md:flex-row w-full gap-[1.5rem] pt-[2.188rem] mx-auto">
         {choose.map((feature, index) => (
           <div
             key={index}
-            className="w-full md:w-1/3 h-[auto] p-[2rem] rounded-2xl border border-[#E1D9E9] hover:border-primary transition duration-300 flex flex-col gap-[1rem]"
+            className="h-[auto] p-[2rem] rounded-2xl border hover:shadow-[2px_2px_12px_0px_#CAC2D1] bg-[#fff] border-[#E1D9E9] hover:border-primary transition duration-300 flex flex-col gap-[1rem]"
           >
             <div className="bg-primary p-[0.875rem] w-[4.688rem] h-[4.688rem] rounded-2xl border border-white shadow-[2px_2px_12px_0px_#CAC2D1]">
               <img className="" src={feature?.icon} />

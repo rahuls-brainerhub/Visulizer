@@ -12,6 +12,8 @@ import AboutUs from "../pages/AboutUs";
 import ContactUs from "../pages/ContactUs";
 import Fqa from "../pages/Fqa";
 import ServicePage from "../pages/ServicePage";
+import Dashboard from "../pages/Dashboard";
+import PrivacyPage from "../pages/PrivacyPage";
 
 const AllRoutes = () => {
   return (
@@ -69,6 +71,15 @@ const AllRoutes = () => {
         <Route path="/contact-us" element={<ContactUs />} />
         <Route path="/faq" element={<Fqa />} />
         <Route path="/service" element={<ServicePage />} />
+        <Route
+          path="/dashboard"
+          element={
+            <PublicLayout>
+              <Dashboard />
+            </PublicLayout>
+          }
+        />
+        <Route path="/privacy-policy" element={<PrivacyPage />} />
       </Routes>
     </div>
   );

@@ -16,17 +16,17 @@ const ContactUs = () => {
         image={"/contactus.png"}
         bg={true}
       />
-      <div className="w-full overflow-hidden relative">
-        <img
+      <div className="w-full overflow-hidden relative py-[3rem] lg:py-[6rem]">
+        {/* <img
           className="absolute top-0 left-0 w-full rotate-[180deg] opacity-[0.2] z-[0]"
           src="/contactBg.png"
           alt=""
-        />
+        /> */}
         <Love />
         <Location />
       </div>
 
-      <Footer />
+      <Footer footer={true} />
     </>
   );
 };

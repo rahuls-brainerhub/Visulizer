@@ -10,11 +10,13 @@ import { toast } from "react-toastify";
 import { useGoogleLogin } from "@react-oauth/google";
 import { FcGoogle } from "react-icons/fc";
 import FacebookLogin from "react-facebook-login";
+import { useNavigate } from "react-router-dom";
 
 const LoginPopup = ({ onClose }) => {
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const [user, setUser] = useState([]);
+  const naviagte = useNavigate();
 
   const loginWithGoogle = useGoogleLogin({
     onSuccess: (codeResponse) => {
@@ -33,6 +35,7 @@ const LoginPopup = ({ onClose }) => {
     try {
       if (socialLogin?.status === 1) {
         toast.success("Login Successful");
+        naviagte("/dashboard");
         onClose("openLogin");
       } else {
         toast.error(response?.response?.data?.message);
@@ -70,6 +73,7 @@ const LoginPopup = ({ onClose }) => {
       if (response?.status === 1) {
         toast.success("Login Successful");
         onClose("openLogin");
+        naviagte("/dashboard");
       } else {
         toast.error(response?.response?.data?.message);
       }
@@ -96,6 +100,7 @@ const LoginPopup = ({ onClose }) => {
       if (socialLogin?.status === 1) {
         toast.success("Login Successful");
         onClose("openLogin");
+        naviagte("/dashboard");
       } else {
         toast.error(response?.response?.data?.message);
       }

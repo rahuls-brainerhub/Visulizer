@@ -8,6 +8,7 @@ const baseService = axios.create({
     headers: {
         "Access-Control-Allow-Origin": "*",
         "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
+        'ngrok-skip-browser-warning': '1'
     },
 });
 const refreshTokenService = axios.create({

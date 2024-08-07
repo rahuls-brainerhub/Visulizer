@@ -1,11 +1,11 @@
 import React from "react";
 
-
 const Location = () => {
-
   return (
-    <div className=" m-auto max-w-[78rem] rounded-2xl border border-[#E1D9E9] hover:border-primary transition   my-[6rem] ">
-      <img className="p-[1rem] w-full" src="location.png" />
+    <div className=" max-w-[80rem] m-auto px-[1.25rem]  mt-[3rem] lg:mt-[6rem] ">
+      <div className="rounded-2xl border shadow-[0px_4px_20px_0px_#8C2A8D40] border-[#E1D9E9] hover:border-primary">
+        <img className="p-[1rem] w-full" src="location.png" />
+      </div>
     </div>
   );
 };

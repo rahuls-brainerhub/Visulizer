@@ -6,7 +6,16 @@ const ROUTES = {
     RESENDOTP: "/api/v1/resend-otp",
     FORGETPASSWORD: "/api/v1/forgot-password",
     RESETPASSWORD: "/api/v1/reset-password",
-    SOCIALAUTH: "/api/v1/social-login"
+    SOCIALAUTH: "/api/v1/social-login",
+    MYPROFILE: "/api/v1/myprofile",
+    EDITPROFILE: "/api/v1/profile-update",
+    CHANGEPASSWORD: "/api/v1/change-password"
   },
+  SERVICES: {
+    INQUIRY: "/api/v1/inquiry",
+    PACKAGES: "/api/v1/getPackages",
+    PURCHASEPACKAGE:"/api/v1/purchasePackage",
+    GETPURCHASEPACKAGE:"/api/v1/getUserPackage"
+  }
 }
 export { ROUTES };

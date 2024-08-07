@@ -19,7 +19,7 @@ const ServicePage = () => {
       <OurServices />
       <AddService />
       <Touch />
-      <Footer />
+      <Footer footer={true} />
     </>
   );
 };

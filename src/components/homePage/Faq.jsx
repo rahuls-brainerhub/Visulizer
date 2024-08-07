@@ -1,23 +1,21 @@
 import React, { useState } from "react";
 import faqData from "../../utils/homePage/faq";
 
-
 const Faq = () => {
-
   const [activeIndex, setActiveIndex] = useState(null);
 
   const toggleFAQ = (index) => {
     setActiveIndex(activeIndex === index ? null : index);
   };
-  
+
   return (
-    <div className="max-w-[80rem] px-[1.25rem] mx-auto py-[7.219rem] flex flex-col gap-[2rem]">
+    <div className="max-w-[80rem] px-[1.25rem] mx-auto py-[3rem] lg:py-[6rem] flex flex-col gap-[2rem]">
       <div className="flex flex-col md:flex-row justify-between gap-[2rem] items-start md:items-center">
-        <h1 className="text-secondary leading-[3.375rem] font-[600] text-[2.813rem]">
+        <h2 className="text-secondary leading-[3.375rem] font-[600] text-[2.813rem]">
           Frequently Asked
           <span className="text-primary">&nbsp;Questions</span>
-        </h1>
-        <button className="btn-outline flex gap-[0.625rem] text-[0.875rem] font-[700] items-center">
+        </h2>
+        <button className="btn-outline flex gap-[0.625rem] text-[0.875rem] font-[700] items-center ml-auto">
           <p>View All</p>
           <img src="/right-arrow.png" className="h-full" />
         </button>
@@ -26,7 +24,7 @@ const Faq = () => {
       <div className="border-t">
         {faqData.map((faq, index) => (
           <div key={index} className="border-b">
-            <div key={index} className=" p-[1.45rem_1.25rem]">
+            <div className="p-[1.45rem_1.25rem]">
               <button
                 className="w-full text-left py-0 flex justify-between items-center"
                 onClick={() => toggleFAQ(index)}
@@ -52,19 +50,23 @@ const Faq = () => {
                   }`}
                 >
                   {activeIndex === index ? (
-                    <img src="/subtract.png" />
+                    <img src="/subtract.png" alt="Collapse" />
                   ) : (
-                    <img src="/add.png" />
+                    <img src="/add.png" alt="Expand" />
                   )}
                 </span>
               </button>
             </div>
             <div
-              className={`text-primaryLight text-[1rem] leading-[1.563rem] font-[400] p-[1.45rem_1.25rem] pt-2 pb-9 text-algin-start ${
-                activeIndex === index ? "" : "hidden"
+              className={`overflow-hidden transition-all duration-500 ease-in-out ${
+                activeIndex === index
+                  ? "max-h-[31.25rem] opacity-100"
+                  : "max-h-0 opacity-0"
               }`}
             >
-              {faq?.answer}
+              <div className="text-primaryLight text-[1rem] leading-[1.563rem] font-[400] p-[1.45rem_1.25rem] pt-2 pb-6 text-align-start">
+                {faq?.answer}
+              </div>
             </div>
           </div>
         ))}

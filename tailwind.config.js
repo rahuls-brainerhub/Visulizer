@@ -15,8 +15,16 @@ export default {
         iconFooterBg: "#644C79",
         primaryMediumLight: "#AC83CF",
         primaryDark: "#92278F",
-        primaryInputBorder:"#E1D9E9"
-      }
+        primaryInputBorder: "#E1D9E9"
+      },
+      fontFamily: {
+        'barlow': ['Barlow', 'sans-serif'],
+      },
+      backgroundImage: {
+        'custom-gradient': 'linear-gradient(to right, #7E6E8C 100%, #8C2A8D 100%)',
+        'active-gradient': 'linear-gradient(113.51deg, #8C2A8D 44.17%, #BA88BE 85.97%, #8C2A8D 86.48%)',
+      },
+
     },
   },
   plugins: [],
