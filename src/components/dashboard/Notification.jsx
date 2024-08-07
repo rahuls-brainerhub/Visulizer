@@ -25,15 +25,32 @@ const notification = [
     description: "High fived your workout",
     time: "0 min",
   },
+  {
+    image: "/notification.png",
+    title: "Simply Dummy",
+    description: "High fived your workout",
+    time: "0 min",
+  },
+  {
+    image: "/notification.png",
+    title: "Simply Dummy",
+    description: "High fived your workout",
+    time: "0 min",
+  },
+  {
+    image: "/notification.png",
+    title: "Simply Dummy",
+    description: "High fived your workout",
+    time: "0 min",
+  },
 ];
 
 const Notification = ({ open, onClose }) => {
-
   return (
     <>
       {open && (
         <div
-          className={`absolute mt-[1rem] right-20 top-50 gap-[.1rem] w-[20rem] m-auto bg-white overflow-hidden flex flex-col rounded-[.75rem] shadow-[2px_2px_12px_0px_#CAC2D1] border-b-4 border-primary ${
+          className={`absolute mt-[1rem] right-20 top-50 gap-[.1rem] w-[20.3rem] m-auto bg-white overflow-hidden flex flex-col rounded-[.75rem] shadow-[2px_2px_12px_0px_#CAC2D1] border-b-4 border-primary ${
             open ? "fade-in-slide-in" : "fade-in-slide-out"
           } `}
         >
@@ -47,11 +64,11 @@ const Notification = ({ open, onClose }) => {
               onClick={onClose}
             />
           </div>
-          <div className=" overflow-y-auto max-h-[20rem]">
+          <div className=" overflow-y-auto scrollbar max-h-[20rem]">
             {notification?.map((item, index) => (
               <div
                 key={index}
-                className="flex py-[1rem] px-[1.25rem] gap-[.65rem] hover:bg-[#EFE8F5] transition-all duration-300 ease-in-out transform hover:scale-105"
+                className="flex py-[1rem] px-[1.25rem] gap-[.65rem]  hover:bg-[#EFE8F5] transition-all duration-300 ease-in-out transform hover:scale-105"
               >
                 <div>
                   <img

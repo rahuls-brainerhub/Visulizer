@@ -1,22 +1,22 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-   fqa:[]
+   faq:[]
 }
 
-const contactSlice = createSlice({
-    name: 'f',
+const faqSlice = createSlice({
+    name: 'faq',
     initialState,
     reducers: {
-        setContact: (state, action) => {
-            state.contact = action.payload
+        setFaq: (state, action) => {
+            state.faq = action.payload
         },
-        clearContact: (state, action) => {
-            state.inquiry = {}
+        clearFaq: (state, action) => {
+            state.faq = []
         },
     }
 })
 
-export const { setContact,clearContact } = contactSlice.actions
+export const { setFaq,clearFaq } = faqSlice.actions
 
-export default contactSlice.reducer
+export default faqSlice.reducer

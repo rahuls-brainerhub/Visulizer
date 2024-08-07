@@ -93,7 +93,12 @@ const Dashboard = () => {
             toggleSideBar ? "-translate-x-full" : "translate-x-0"
           } z-40`}
         >
-          <Sidebar active={active} setActive={setActive}  setToggleSideBar={setToggleSideBar} toggleSideBar={toggleSideBar} />
+          <Sidebar
+            active={active}
+            setActive={setActive}
+            setToggleSideBar={setToggleSideBar}
+            toggleSideBar={toggleSideBar}
+          />
         </div>
         <div
           className={`${
@@ -122,7 +127,7 @@ const Dashboard = () => {
                     13
                   </div>
                   {openNotification && (
-                    <div className="absolute top-10 right-[-40px]">
+                    <div className="absolute top-10 sm:right-[-40px] right-[-13rem]">
                       <Notification open={openNotification} onClose={onClose} />
                     </div>
                   )}

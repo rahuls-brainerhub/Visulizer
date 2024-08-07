@@ -1,11 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Footer from "../homePage/Footer";
 import TopSection from "./Topsection";
 import Location from "../contactUs/Location";
 import Love from "../contactUs/Love";
 import NavbarPages from "./NavbarPages";
+import { contactUsService } from "../../services/contactUsService";
 
 const ContactUs = () => {
+  const contactData = async () => {
+    const res = await contactUsService();
+  };
+  useEffect(() => {
+    contactData();
+  }, []);
+
   return (
     <>
       <NavbarPages />
@@ -17,11 +25,6 @@ const ContactUs = () => {
         bg={true}
       />
       <div className="w-full overflow-hidden relative py-[3rem] lg:py-[6rem]">
-        {/* <img
-          className="absolute top-0 left-0 w-full rotate-[180deg] opacity-[0.2] z-[0]"
-          src="/contactBg.png"
-          alt=""
-        /> */}
         <Love />
         <Location />
       </div>

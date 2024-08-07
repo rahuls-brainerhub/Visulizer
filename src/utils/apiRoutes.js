@@ -19,6 +19,9 @@ const ROUTES = {
   },
   CONTACT:{
    CONTACTUS:"/api/v1/getContactUs"
+  },
+  FAQ:{
+    FAQDATA:"/api/v1/getFaq"
   }
 }
 export { ROUTES };
