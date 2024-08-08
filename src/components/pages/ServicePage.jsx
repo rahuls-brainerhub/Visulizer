@@ -11,10 +11,10 @@ const ServicePage = () => {
   const handleLogin = () => {
     setopen(!open);
   };
-  console.log(open);
+
   return (
     <>
-      <NavbarPages openLogin={open} handleLogin={handleLogin} />
+      <NavbarPages modalOpen={open} handleLogin={handleLogin} />
       <TopSection
         keys={"unique"}
         title={"Our Services"}

@@ -85,9 +85,11 @@ const SignUpPopup = ({ onClose }) => {
         onClose("openOTP");
       } else {
         toast.error(response?.response?.data?.error.email[0]);
+        toast.error(response?.response?.data?.error.phone_number[0]);
       }
     } catch (error) {
-      toast.error("Error adding Register");
+      return error;
+      // toast.error("Error adding Register");
     } finally {
       setLoading(false);
       close();

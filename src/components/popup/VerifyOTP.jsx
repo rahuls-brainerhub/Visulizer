@@ -67,7 +67,6 @@ const VerifyOTP = ({ onClose }) => {
       if (response?.status === 1) {
         toast.success("Otp send successfully");
       } else {
-        console.log(response?.data);
         toast.error(response?.data);
       }
     } catch (error) {

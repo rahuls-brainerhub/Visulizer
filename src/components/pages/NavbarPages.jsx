@@ -8,7 +8,6 @@ import VerifyOTP from "../popup/VerifyOTP";
 import ResetPassword from "../popup/ResetPassword";
 
 const NavbarPages = (props) => {
-  console.log("props", props);
   const searchParams = new URLSearchParams(location.search);
   const token = searchParams.get("token");
   const [open, setOpen] = useState({
@@ -58,8 +57,7 @@ const NavbarPages = (props) => {
     const baseUrl = window.location.href.split("?")[0];
     window.history.replaceState({}, document.title, baseUrl);
   };
-  console.log(open?.openForgetPassword, "forgetpassword");
-  console.log("open", open);
+ 
   return (
     <>
       <Navbar

@@ -39,7 +39,6 @@ const ChangePassword = ({ title }) => {
     setLoading(true);
     try {
       const response = await changePassword(formData);
-      console.log(response);
       if (response?.status === 1) {
         toast.success("Password Upadte successful");
       } else {
