@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { CgProfile } from "react-icons/cg";
 import { GoPencil } from "react-icons/go";
-import { FaRegUser } from "react-icons/fa";
+import { FaRegUser, FaRegUserCircle } from "react-icons/fa";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { profileSchema } from "../../schema/profileSchema";
 import { editProfile, myProfile } from "../../services/authService";
 import { toast } from "react-toastify";
+import { FaUser } from "react-icons/fa6";
 
 const MyProfile = ({ profile, title }) => {
   const [loading, setLoading] = useState(false);
@@ -73,9 +74,8 @@ const MyProfile = ({ profile, title }) => {
           <div className="flex justify-center items-center gap-[1.563rem]">
             <div className="h-[9.375rem] w-[9.375rem] rounded-full shadow-[2px_2px_12px_0px_#CAC2D1] border-white  border-2 mt-[-1.875rem]">
               {" "}
-              <img
-                src="/iconU.png"
-                alt="#"
+              <FaUser
+                size={20}
                 className="h-full w-full rounded-full object-cover"
               />
             </div>
@@ -111,7 +111,7 @@ const MyProfile = ({ profile, title }) => {
                   <p className="text-[1rem] text-gray-400">|</p>
                 </div>
                 <input
-                  disabled={edit}
+                  disabled={!edit}
                   className="border border-primaryInputBorder rounded-lg  h-[3rem] pl-[2.75rem] w-full transition duration-300 ease-in-out hover:border-primary placeholder:text-[0.85rem] md:placeholder:text-[1rem]"
                   id="last_name"
                   type="text"
@@ -132,7 +132,7 @@ const MyProfile = ({ profile, title }) => {
                   <p className="text-[1rem] text-gray-400">|</p>
                 </div>
                 <input
-                  disabled={edit}
+                  disabled={!edit}
                   className="border border-primaryInputBorder rounded-lg  h-[3rem] pl-[2.75rem] w-full transition duration-300 ease-in-out hover:border-primary placeholder:text-[0.85rem] md:placeholder:text-[1rem]"
                   id="last_name"
                   type="text"
@@ -185,7 +185,7 @@ const MyProfile = ({ profile, title }) => {
               <p className="text-[red]">{errors.mobile_no?.message}</p>
             </div>
           </div>
-          {!edit && (
+          {edit && (
             <div className="flex mx-auto justify-center">
               <button className="btn-primary mt-[1rem] mx-auto">Update</button>
             </div>

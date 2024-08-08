@@ -7,7 +7,8 @@ import LoginPopup from "../popup/LoginPopup";
 import VerifyOTP from "../popup/VerifyOTP";
 import ResetPassword from "../popup/ResetPassword";
 
-const NavbarPages = ({ openLogin, handleLogin }) => {
+const NavbarPages = (props) => {
+  console.log("props", props);
   const searchParams = new URLSearchParams(location.search);
   const token = searchParams.get("token");
   const [open, setOpen] = useState({
@@ -19,7 +20,6 @@ const NavbarPages = ({ openLogin, handleLogin }) => {
   });
 
   const onClose = (modalType) => {
-    console.log("modal", modalType);
     setOpen((prevState) => {
       const newState = {
         openSignup: false,
@@ -40,25 +40,26 @@ const NavbarPages = ({ openLogin, handleLogin }) => {
     );
 
     if (hasOpenModal) {
-      console.log("yes");
       document.body.classList.add("overflow-hidden");
     } else {
-      console.log("no");
       document.body.classList.remove("overflow-hidden");
     }
   }
-  if (!openLogin) {
-    document.body.classList.remove("overflow-hidden");
-  }
+
+  // useEffect(() => {
+  //   if (!props?.modalOpen) {
+  //     document.body.classList.add("overflow-hidden");
+  //   } else {
+  //     document.body.classList.remove("overflow-hidden");
+  //   }
+  // }, [props?.modalOpen]);
 
   const removeTokenFromURL = () => {
     const baseUrl = window.location.href.split("?")[0];
     window.history.replaceState({}, document.title, baseUrl);
   };
-
-  console.log(open?.openLogin, "openLogin");
-  console.log(openLogin, "servicelogin");
-
+  console.log(open?.openForgetPassword, "forgetpassword");
+  console.log("open", open);
   return (
     <>
       <Navbar
@@ -96,18 +97,17 @@ const NavbarPages = ({ openLogin, handleLogin }) => {
           onClose={onClose}
         />
       )}
-      {openLogin && (
+
+      {props?.modalOpen && (
         <PopupTemplete
           title={"Log In"}
           bodyComponent={
             <LoginPopup
-              setOpen={setOpen}
-              onClose={(view) => {
-                onClose(view);
-              }}
+              setOpen={props.handleLogin}
+              onClose={props.handleLogin}
             />
           }
-          onClose={handleLogin}
+          onClose={props.handleLogin}
         />
       )}
 

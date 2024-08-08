@@ -17,14 +17,14 @@ const HomePage = () => {
 
   return (
     <div>
-      <NavbarPages openLogin={open} handleLogin={handleLogin} />
+      <NavbarPages modalOpen={open} handleLogin={handleLogin} />
       <HeroSection handleLogin={handleLogin} />
       <InstantFebric handleLogin={handleLogin} />
       <WhyChooseUs />
       <OurServices />
       <AboutUs />
       <Faq />
-      <Footer footer={true} />
+      <Footer footer={true} handleLogin={handleLogin} />
 
       {/* <Link to={"/products/all"}>Product Listing</Link> */}
     </div>

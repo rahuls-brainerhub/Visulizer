@@ -15,6 +15,7 @@ import { MdOutlineChangeCircle } from "react-icons/md";
 import Credit from "../dashboard/Credit";
 import Notification from "../dashboard/Notification";
 import { toast } from "react-toastify";
+import { FaUser } from "react-icons/fa6";
 
 const Dashboard = () => {
   const [openProfile, setOpenProfile] = useState(false);
@@ -85,6 +86,7 @@ const Dashboard = () => {
   const onClose = () => {
     SetOpenNotification(!openNotification);
   };
+
   return (
     <>
       <div className="bg-[#f2eef3] relative min-h-[100vh]">
@@ -144,11 +146,12 @@ const Dashboard = () => {
                       ref={profileTriggerRef}
                       className="h-[3.5rem] w-[3.5rem] rounded-full border-white border-4 cursor-pointer"
                     >
-                      <img
+                      <FaUser size={20} className="h-full w-full rounded-full object-cover" />
+                      {/* <img
                         src="/iconU.png"
                         alt="#"
-                        className="h-full w-full rounded-full object-cover"
-                      />
+                        
+                      /> */}
                     </div>
                     {openProfile && (
                       <div

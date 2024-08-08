@@ -7,7 +7,7 @@ import { forgetPasswordSchema } from "../../schema/forgetPasswordSchema";
 import { toast } from "react-toastify";
 import { FaRegUser } from "react-icons/fa";
 
-const ForgetPassword = ({ setOpen }) => {
+const ForgetPassword = ({ setOpen, onClose }) => {
   const [loading, setLoading] = useState(false);
   const {
     register,
@@ -25,6 +25,7 @@ const ForgetPassword = ({ setOpen }) => {
       const response = await forgetPassword(formData);
       if (response?.status === 1) {
         toast.success("send Link to email successfully");
+        onClose("openForgetPassword");
         setOpen({});
       } else {
         toast.error(response?.response?.data?.message);
@@ -100,7 +101,7 @@ const ForgetPassword = ({ setOpen }) => {
               </button>
             </div>
           </form>
-        )}  
+        )}
       </div>
     </div>
   );

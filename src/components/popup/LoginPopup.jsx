@@ -12,7 +12,7 @@ import { FcGoogle } from "react-icons/fc";
 import FacebookLogin from "react-facebook-login";
 import { useNavigate } from "react-router-dom";
 
-const LoginPopup = ({ onClose }) => {
+const LoginPopup = ({ onClose, handleLogin }) => {
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const [user, setUser] = useState([]);
