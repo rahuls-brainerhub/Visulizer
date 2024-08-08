@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import NavbarPages from "./NavbarPages";
 import Footer from "../homePage/Footer";
 import TopSection from "./Topsection";
@@ -7,16 +7,21 @@ import OurServices from "../service/OurServices";
 import AddService from "../service/AddService";
 
 const ServicePage = () => {
+  const [open, setopen] = useState(false);
+  const handleLogin = () => {
+    setopen(!open);
+  };
+  console.log(open);
   return (
     <>
-      <NavbarPages />
+      <NavbarPages openLogin={open} handleLogin={handleLogin} />
       <TopSection
         keys={"unique"}
         title={"Our Services"}
         breadcrumData={["Home", "Our Services"]}
         image={"/serviceBanner.png"}
       />
-      <OurServices />
+      <OurServices handleLogin={handleLogin} />
       <AddService />
       <Touch />
       <Footer footer={true} />

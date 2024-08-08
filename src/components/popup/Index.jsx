@@ -6,6 +6,7 @@ const PopupTemplete = ({
   bodyComponent,
   onClose,
   removeTokenFromURL,
+  handleLogin,
 }) => {
   return (
     <div className="absolute top-0 flex justify-center items-center left-0 h-screen w-full bg-[#00000050] z-[100] ">
@@ -19,18 +20,27 @@ const PopupTemplete = ({
               color="white"
               size={20}
               onClick={() => {
-                if (title === "Sign up") {
-                  onClose("openSignup");
-                } else if (title === "Log In") {
-                  onClose("openLogin");
-                } else if (title === "Verify OTP") {
-                  onClose("openOTP");
-                } else if (title === "Forget Password") {
-                  onClose("openForgetPassword");
-                } else if (title === "Reset Password") {
-                  onClose("openResetPassword");
-                  removeTokenFromURL();
+                switch (title) {
+                  case "Sign up":
+                    onClose("openSignup");
+                    break;
+                  case "Log In":
+                    onClose("openLogin");
+                    break;
+                  case "Verify OTP":
+                    onClose("openOTP");
+                    break;
+                  case "Forget Password":
+                    onClose("openForgetPassword");
+                    break;
+                  case "Reset Password":
+                    onClose("openResetPassword");
+                    removeTokenFromURL();
+                    break;
+                  default:
+                    break;
                 }
+                handleLogin();
               }}
             />
           </div>

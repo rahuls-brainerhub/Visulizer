@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "../homePage/Navbar";
 import PopupTemplete from "../popup/Index";
 import SignUpPopup from "../popup/SignUpPopup";
@@ -7,7 +7,7 @@ import LoginPopup from "../popup/LoginPopup";
 import VerifyOTP from "../popup/VerifyOTP";
 import ResetPassword from "../popup/ResetPassword";
 
-const NavbarPages = () => {
+const NavbarPages = ({ openLogin, handleLogin }) => {
   const searchParams = new URLSearchParams(location.search);
   const token = searchParams.get("token");
   const [open, setOpen] = useState({
@@ -19,6 +19,7 @@ const NavbarPages = () => {
   });
 
   const onClose = (modalType) => {
+    console.log("modal", modalType);
     setOpen((prevState) => {
       const newState = {
         openSignup: false,
@@ -39,16 +40,24 @@ const NavbarPages = () => {
     );
 
     if (hasOpenModal) {
+      console.log("yes");
       document.body.classList.add("overflow-hidden");
     } else {
+      console.log("no");
       document.body.classList.remove("overflow-hidden");
     }
+  }
+  if (!openLogin) {
+    document.body.classList.remove("overflow-hidden");
   }
 
   const removeTokenFromURL = () => {
     const baseUrl = window.location.href.split("?")[0];
     window.history.replaceState({}, document.title, baseUrl);
   };
+
+  console.log(open?.openLogin, "openLogin");
+  console.log(openLogin, "servicelogin");
 
   return (
     <>
@@ -85,6 +94,20 @@ const NavbarPages = () => {
             <LoginPopup setOpen={setOpen} onClose={(view) => onClose(view)} />
           }
           onClose={onClose}
+        />
+      )}
+      {openLogin && (
+        <PopupTemplete
+          title={"Log In"}
+          bodyComponent={
+            <LoginPopup
+              setOpen={setOpen}
+              onClose={(view) => {
+                onClose(view);
+              }}
+            />
+          }
+          onClose={handleLogin}
         />
       )}
 

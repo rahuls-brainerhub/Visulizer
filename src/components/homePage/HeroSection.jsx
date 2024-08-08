@@ -3,7 +3,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-const HeroSection = () => {
+const HeroSection = ({handleLogin}) => {
   var settings = {
     dots: true,
     infinite: true,
@@ -33,7 +33,7 @@ const HeroSection = () => {
             </p>
           </div>
           <div>
-            <button className="btn-primary text-[1rem] font-[500] leading-[1.5rem]">
+            <button onClick={handleLogin} className="btn-primary text-[1rem] font-[500] leading-[1.5rem]">
               Visualize
             </button>
           </div>

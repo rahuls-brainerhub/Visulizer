@@ -2,6 +2,7 @@ import React from "react";
 import service from "../../utils/homePage/service";
 
 const OurServices = () => {
+  
   return (
     <div className="max-w-[80rem] px-[1.25rem] mx-auto flex flex-col gap-[2.188rem] py-[3rem] md:py-[5.938rem]">
       <div className="flex flex-col gap-[0.5rem] items-center">

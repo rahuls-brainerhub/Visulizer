@@ -3,6 +3,9 @@ import { FaInstagram, FaDribbble, FaYoutube, FaTwitter } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 const Footer = ({ footer }) => {
+  const handleClick = () => {
+    window.scrollTo(0, 0);
+  };
   return (
     <div>
       {footer && (
@@ -34,36 +37,40 @@ const Footer = ({ footer }) => {
           </div>
           <div className="flex flex-row gap-[4rem] mb-[2rem] md:mb-0">
             <div className="flex flex-col gap-3">
-              <a
-                href="#"
+              <Link
+                to={"/about-us"}
+                onClick={handleClick}
                 className="text-base leading-5 font-normal hover:underline text-white hover:text-primaryMediumLight"
               >
                 About us
-              </a>
+              </Link>
               <a
                 href="#"
                 className="text-base leading-5 font-normal hover:underline text-white hover:text-primaryMediumLight"
               >
                 Blog
               </a>
-              <a
-                href="#"
+              <Link
+                to={"/contact-us"}
+                onClick={handleClick}
                 className="text-base leading-5 font-normal hover:underline text-white hover:text-primaryMediumLight"
               >
                 Contact us
-              </a>
-              <a
-                href="#"
+              </Link>
+              <Link
+                to={"/service"}
+                onClick={handleClick}
                 className="text-base leading-5 font-normal hover:underline text-white hover:text-primaryMediumLight"
               >
                 Pricing
-              </a>
-              <a
-                href="#"
+              </Link>
+              <Link
+                to={"/faq"}
+                onClick={handleClick}
                 className="text-base leading-5 font-normal hover:underline text-white hover:text-primaryMediumLight"
               >
                 FAQ
-              </a>
+              </Link>
             </div>
             <div className="flex flex-col gap-3">
               <a
