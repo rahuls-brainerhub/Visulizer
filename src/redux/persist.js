@@ -8,6 +8,7 @@ import contactSlice from "./slice/contactSlice";
 import faqSlice from "./slice/faqSlice";
 import aboutSlice from "./slice/aboutSlice";
 import privacyPolicySlice from "./slice/privacyPolicySlice";
+import termConditionSlice from "./slice/termConditionSlice";
 
 
 export const persistConfig = {
@@ -22,7 +23,8 @@ const combinedReducer = combineReducers({
     contact: contactSlice,
     faq: faqSlice,
     about: aboutSlice,
-    privacy:privacyPolicySlice
+    privacy: privacyPolicySlice,
+    term: termConditionSlice
 })
 
 const rootReducer = (state, action) => {
