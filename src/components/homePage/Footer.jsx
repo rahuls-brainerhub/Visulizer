@@ -51,13 +51,7 @@ const Footer = ({ footer, handleLogin }) => {
               >
                 About us
               </Link>
-              <Link
-                to={"/privacy-policy"}
-                onClick={handleClick}
-                className="text-base leading-5 font-normal hover:underline text-white hover:text-primaryMediumLight"
-              >
-                Privacy policy
-              </Link>
+
               <Link
                 to={"/contact-us"}
                 onClick={handleClick}
@@ -66,6 +60,15 @@ const Footer = ({ footer, handleLogin }) => {
                 Contact us
               </Link>
               <Link
+                to={"/faq"}
+                onClick={handleClick}
+                className="text-base leading-5 font-normal hover:underline text-white hover:text-primaryMediumLight"
+              >
+                FAQ
+              </Link>
+            </div>
+            <div className="flex flex-col gap-3">
+              <Link
                 to={"/service"}
                 onClick={handleClick}
                 className="text-base leading-5 font-normal hover:underline text-white hover:text-primaryMediumLight"
@@ -73,12 +76,13 @@ const Footer = ({ footer, handleLogin }) => {
                 Pricing
               </Link>
               <Link
-                to={"/faq"}
+                to={"/privacy-policy"}
                 onClick={handleClick}
                 className="text-base leading-5 font-normal hover:underline text-white hover:text-primaryMediumLight"
               >
-                FAQ
+                Privacy policy
               </Link>
+
               <Link
                 to={"/term-condition"}
                 onClick={handleClick}
@@ -87,10 +91,6 @@ const Footer = ({ footer, handleLogin }) => {
                 Terms and Condition
               </Link>
             </div>
-            {/* <div className="flex flex-col gap-3">
-           
-             
-            </div> */}
           </div>
           <div className="flex flex-col gap-6">
             <div className="flex flex-col gap-6">
