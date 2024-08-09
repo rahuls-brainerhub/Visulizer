@@ -113,7 +113,7 @@ const MyProfile = ({ profile, title }) => {
 
           <div className="flex justify-between items-center px-[1.563rem] mb-[2.5rem] gap-6 md:flex-nowrap flex-wrap">
             <div className="flex justify-center items-center gap-[1.563rem]">
-              <div className="h-[9.375rem] w-[9.375rem] rounded-full shadow-[2px_2px_12px_0px_#CAC2D1] border-white  border-2 mt-[-1.875rem]">
+              <div className="h-[9.375rem]  w-[9.375rem] bg-white  p-[2rem] rounded-full shadow-[2px_2px_12px_0px_#CAC2D1] border-white  border-2 mt-[-1.875rem]">
                 {" "}
                 <FaUser
                   size={20}

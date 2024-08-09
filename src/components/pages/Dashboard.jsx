@@ -144,9 +144,12 @@ const Dashboard = () => {
                     <div
                       onClick={() => handleProfile()}
                       ref={profileTriggerRef}
-                      className="h-[3.5rem] w-[3.5rem] rounded-full border-white border-4 cursor-pointer"
+                      className="h-[3.5rem] w-[3.5rem] p-[0.75rem] bg-white rounded-full border-white border-4 cursor-pointer"
                     >
-                      <FaUser size={20} className="h-full w-full rounded-full object-cover" />
+                      <FaUser
+                        size={10}
+                        className="h-full w-full rounded-full object-cover"
+                      />
                       {/* <img
                         src="/iconU.png"
                         alt="#"
