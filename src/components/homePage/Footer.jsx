@@ -2,7 +2,10 @@ import React from "react";
 import { FaInstagram, FaDribbble, FaYoutube, FaTwitter } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
-const Footer = ({ footer }) => {
+const Footer = ({ footer, handleLogin }) => {
+  const handleClick = () => {
+    window.scrollTo(0, 0);
+  };
   return (
     <div>
       {footer && (
@@ -15,7 +18,13 @@ const Footer = ({ footer }) => {
             <h1 className="text-white leading-[3.8rem] text-[3rem] md:text-[4rem]  md:leading-[4.8rem]  font-[700]  text-center">
               Visualize Your Fabric Now
             </h1>
-            <button className="btn-primary border border-white text-[1rem] p-[0.50rem_1.3rem] md:p-[0.75rem_2rem]">
+            <button
+              onClick={() => {
+                handleLogin();
+                handleClick();
+              }}
+              className="btn-primary border border-white text-[1rem] p-[0.50rem_1.3rem] md:p-[0.75rem_2rem]"
+            >
               Visualize
             </button>
           </div>
@@ -34,69 +43,46 @@ const Footer = ({ footer }) => {
           </div>
           <div className="flex flex-row gap-[4rem] mb-[2rem] md:mb-0">
             <div className="flex flex-col gap-3">
-              <a
-                href="#"
+              <Link
+                to={"/about-us"}
+                onClick={handleClick}
                 className="text-base leading-5 font-normal hover:underline text-white hover:text-primaryMediumLight"
               >
                 About us
-              </a>
-              <a
-                href="#"
-                className="text-base leading-5 font-normal hover:underline text-white hover:text-primaryMediumLight"
-              >
-                Blog
-              </a>
-              <a
-                href="#"
-                className="text-base leading-5 font-normal hover:underline text-white hover:text-primaryMediumLight"
-              >
-                Contact us
-              </a>
-              <a
-                href="#"
-                className="text-base leading-5 font-normal hover:underline text-white hover:text-primaryMediumLight"
-              >
-                Pricing
-              </a>
-              <a
-                href="#"
-                className="text-base leading-5 font-normal hover:underline text-white hover:text-primaryMediumLight"
-              >
-                FAQ
-              </a>
-            </div>
-            <div className="flex flex-col gap-3">
-              <a
-                href="#"
-                className="text-base leading-5 font-normal hover:underline text-white hover:text-primaryMediumLight"
-              >
-                Help center
-              </a>
-              <a
-                href="#"
-                className="text-base leading-5 font-normal hover:underline text-white hover:text-primaryMediumLight"
-              >
-                Terms of service
-              </a>
-              <a
-                href="#"
-                className="text-base leading-5 font-normal hover:underline text-white hover:text-primaryMediumLight"
-              >
-                Legal
-              </a>
+              </Link>
               <Link
                 to={"/privacy-policy"}
+                onClick={handleClick}
                 className="text-base leading-5 font-normal hover:underline text-white hover:text-primaryMediumLight"
               >
                 Privacy policy
               </Link>
-              <a
-                href="#"
+              <Link
+                to={"/contact-us"}
+                onClick={handleClick}
                 className="text-base leading-5 font-normal hover:underline text-white hover:text-primaryMediumLight"
               >
-                Status
-              </a>
+                Contact us
+              </Link>
+              <Link
+                to={"/service"}
+                onClick={handleClick}
+                className="text-base leading-5 font-normal hover:underline text-white hover:text-primaryMediumLight"
+              >
+                Pricing
+              </Link>
+              <Link
+                to={"/faq"}
+                onClick={handleClick}
+                className="text-base leading-5 font-normal hover:underline text-white hover:text-primaryMediumLight"
+              >
+                FAQ
+              </Link>
             </div>
+            {/* <div className="flex flex-col gap-3">
+           
+             
+            </div> */}
           </div>
           <div className="flex flex-col gap-6">
             <div className="flex flex-col gap-6">

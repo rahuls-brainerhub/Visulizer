@@ -1,6 +1,9 @@
 import React from "react";
 
 const Question = ({ faqData, toggleFAQ, activeIndex, titlePre, titleSuf }) => {
+  const removeHtmlTags = (text) => {
+    return text.replace(/<\/?[^>]+(>|$)/g, "");
+  };
   return (
     <div className="max-w-[80rem] gap-[2rem]">
       <div className="flex flex-col md:flex-row  items-start md:items-center">
@@ -30,7 +33,7 @@ const Question = ({ faqData, toggleFAQ, activeIndex, titlePre, titleSuf }) => {
                   >
                     {(index + 1).toString().padStart(2, "0") + "."}
                   </span>
-                  {faq.question}
+                  {faq?.name}
                 </span>
                 <span
                   className={`text-xl ${
@@ -52,7 +55,9 @@ const Question = ({ faqData, toggleFAQ, activeIndex, titlePre, titleSuf }) => {
                   : "max-h-0 opacity-0"
               }`}
             >
-              {faq?.answer}
+              <div className="text-primaryLight text-[1rem] leading-[1.563rem] font-[400] p-[1.45rem_1.25rem] pt-2 pb-6 text-align-start">
+                {removeHtmlTags(faq?.description)}
+              </div>
             </div>
           </div>
         ))}

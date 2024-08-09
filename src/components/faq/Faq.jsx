@@ -1,9 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Question from "./Question";
-import generalQueries from "../../utils/generalQueries";
-import priceRelated from "../../utils/priceRelated";
-import refundRelated from "../../utils/refundRelated";
-import softwareRelated from "../../utils/softwareRelated";
+import { faqService } from "../../services/faqService";
+import { useSelector } from "react-redux";
 
 const Faq = () => {
   const [activeIndex, setActiveIndex] = useState({
@@ -19,6 +17,24 @@ const Faq = () => {
     );
   };
 
+  const faqData = async () => {
+    const res = await faqService();
+  };
+  useEffect(() => {
+    faqData();
+  }, []);
+  const faq = useSelector((store) => store.faq.faq);
+  const groupFAQsByCategory = (data) => {
+    return data.reduce((acc, faq) => {
+      const categoryName = faq.category.name;
+      if (!acc[categoryName]) {
+        acc[categoryName] = [];
+      }
+      acc[categoryName].push(faq);
+      return acc;
+    }, {});
+  };
+  const groupedFAQs = groupFAQsByCategory(faq);
   return (
     <section className="py-[3rem] lg:py-[6rem]">
       <div className="max-w-[80rem] px-[1.25rem] mx-auto">
@@ -33,16 +49,19 @@ const Faq = () => {
             <img className="pt-[2.6rem]" src="/faq.png" />
           </div>
           <div className="flex-1 gap-[2.2rem] lg:gap-[3rem] flex flex-col">
-            <Question
-              faqData={generalQueries}
-              toggleFAQ={(index) => toggleFAQ("general", index)}
-              activeIndex={
-                activeIndex.section === "general" ? activeIndex.index : null
-              }
-              titlePre={"General"}
-              titleSuf={"Queries"}
-            />
-            <Question
+            {Object.entries(groupedFAQs).map(([category, faqs]) => (
+              <Question
+                key={category} 
+                faqData={faqs} 
+                toggleFAQ={(index) => toggleFAQ(category, index)} 
+                activeIndex={
+                  activeIndex.section === category ? activeIndex.index : null
+                }
+                titlePre={category} 
+                titleSuf={"Queries"}
+              />
+            ))}
+            {/* <Question
               faqData={priceRelated}
               toggleFAQ={(index) => toggleFAQ("price", index)}
               activeIndex={
@@ -68,7 +87,7 @@ const Faq = () => {
               }
               titlePre={"Software"}
               titleSuf={"related"}
-            />
+            /> */}
           </div>
         </div>
       </div>

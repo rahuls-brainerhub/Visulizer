@@ -10,16 +10,21 @@ import Faq from "../homePage/Faq";
 import NavbarPages from "./NavbarPages";
 
 const HomePage = () => {
+  const [open, setOpen] = useState(false);
+  const handleLogin = () => {
+    setOpen(!open);
+  };
+ 
   return (
     <div>
-      <NavbarPages />
-      <HeroSection />
-      <InstantFebric />
+      <NavbarPages modalOpen={open} handleLogin={handleLogin} />
+      <HeroSection handleLogin={handleLogin} />
+      <InstantFebric handleLogin={handleLogin} />
       <WhyChooseUs />
       <OurServices />
       <AboutUs />
       <Faq />
-      <Footer footer={true} />
+      <Footer footer={true} handleLogin={handleLogin} />
 
       {/* <Link to={"/products/all"}>Product Listing</Link> */}
     </div>

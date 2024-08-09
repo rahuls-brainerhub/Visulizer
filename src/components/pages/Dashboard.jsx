@@ -15,6 +15,7 @@ import { MdOutlineChangeCircle } from "react-icons/md";
 import Credit from "../dashboard/Credit";
 import Notification from "../dashboard/Notification";
 import { toast } from "react-toastify";
+import { FaUser } from "react-icons/fa6";
 
 const Dashboard = () => {
   const [openProfile, setOpenProfile] = useState(false);
@@ -85,6 +86,7 @@ const Dashboard = () => {
   const onClose = () => {
     SetOpenNotification(!openNotification);
   };
+
   return (
     <>
       <div className="bg-[#f2eef3] relative min-h-[100vh]">
@@ -93,7 +95,12 @@ const Dashboard = () => {
             toggleSideBar ? "-translate-x-full" : "translate-x-0"
           } z-40`}
         >
-          <Sidebar active={active} setActive={setActive}  setToggleSideBar={setToggleSideBar} toggleSideBar={toggleSideBar} />
+          <Sidebar
+            active={active}
+            setActive={setActive}
+            setToggleSideBar={setToggleSideBar}
+            toggleSideBar={toggleSideBar}
+          />
         </div>
         <div
           className={`${
@@ -122,7 +129,7 @@ const Dashboard = () => {
                     13
                   </div>
                   {openNotification && (
-                    <div className="absolute top-10 right-[-40px]">
+                    <div className="absolute top-10 sm:right-[-40px] right-[-13rem]">
                       <Notification open={openNotification} onClose={onClose} />
                     </div>
                   )}
@@ -139,11 +146,12 @@ const Dashboard = () => {
                       ref={profileTriggerRef}
                       className="h-[3.5rem] w-[3.5rem] rounded-full border-white border-4 cursor-pointer"
                     >
-                      <img
-                        src="/user-profile.jpg"
+                      <FaUser size={20} className="h-full w-full rounded-full object-cover" />
+                      {/* <img
+                        src="/iconU.png"
                         alt="#"
-                        className="h-full w-full rounded-full object-cover"
-                      />
+                        
+                      /> */}
                     </div>
                     {openProfile && (
                       <div

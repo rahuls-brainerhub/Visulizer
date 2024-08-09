@@ -1,32 +1,34 @@
 import React, { useState } from "react";
-import { AiOutlineMail } from "react-icons/ai";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { forgetPassword } from "../../services/authService";
+import { forgetPassword, mobileVerify } from "../../services/authService";
 import { forgetPasswordSchema } from "../../schema/forgetPasswordSchema";
 import { toast } from "react-toastify";
-import { FaRegUser } from "react-icons/fa";
+import { LuPhone } from "react-icons/lu";
+import { mobileSchema } from "../../schema/mobileSchema";
+import { useSelector } from "react-redux";
 
-const ForgetPassword = ({ setOpen, onClose }) => {
+const MobilePopup = ({ setOpen, onClose }) => {
   const [loading, setLoading] = useState(false);
+  const user_id = useSelector((store) => store.auth.user)._id;
   const {
     register,
     handleSubmit,
     formState: { errors },
     reset,
   } = useForm({
-    resolver: yupResolver(forgetPasswordSchema),
+    resolver: yupResolver(mobileSchema),
   });
   const onSubmit = async (data) => {
     const formData = new FormData();
-    formData.append("email", data?.email);
+    formData.append("phone_number", data?.phone_number);
+    formData.append("user_id", user_id);
     setLoading(true);
     try {
-      const response = await forgetPassword(formData);
+      const response = await mobileVerify(formData);
       if (response?.status === 1) {
-        toast.success("send Link to email successfully");
-        onClose("openForgetPassword");
-        setOpen({});
+        toast.success("Otp send to Mobile Number successful");
+        onClose("openOTP");
       } else {
         toast.error(response?.response?.data?.message);
       }
@@ -40,16 +42,23 @@ const ForgetPassword = ({ setOpen, onClose }) => {
   };
   const close = () => {
     reset({
-      email: "",
+      phone_number: "",
     });
   };
+  const handleKeyPressNumber = (event) => {
+    const charCode = event.charCode;
+    if (!/[0-9]/.test(String.fromCharCode(charCode))) {
+      event.preventDefault();
+    }
+  };
+  console.log(user_id, "userid");
   return (
     <div>
       <div className="flex flex-col py-[2.5rem] gap-[2.5rem]">
         <div className="text-center">
           <p className="text-primaryLight font-[400] text-[1rem] leading-[1rem]">
-            Enter Your Email address and we will send you a link to reset your
-            password
+            Enter Your Mobile Number and we will send you a Otp for Mobile
+            Number verfication
           </p>
         </div>
         {loading ? (
@@ -78,26 +87,27 @@ const ForgetPassword = ({ setOpen, onClose }) => {
           >
             <div className="w-full">
               <label className="text-secondary font-[400] text-[1rem] leading-[1rem]">
-                Email Address
+                Mobile Number
               </label>
               <div className="relative pt-[.5rem] w-full">
                 <div className=" absolute left-[0.5rem] top-[50%] translate-y-[-50%] flex items-center gap-[0.25rem]">
-                  <FaRegUser size={20} className="text-primary" />
+                  <LuPhone size={20} className="text-primary" />
                   <p className="text-[1rem] text-gray-400">|</p>
                 </div>
                 <input
                   className="border w-full border-primaryInputBorder rounded-lg h-[3rem] pl-[2.75rem] transition duration-300 ease-in-out hover:border-primary"
                   id=""
                   type="text"
-                  placeholder="Enter Email Address"
-                  {...register("email")}
+                  placeholder="Enter Mobile Numner"
+                  {...register("phone_number")}
+                  onKeyPress={handleKeyPressNumber}
                 />
               </div>
               <p className="text-[red]">{errors.email?.message}</p>
             </div>
             <div>
               <button className="btn-primary text-[1rem] font-[500] my-[1.5rem] leading-[1.5rem] w-full">
-                Reset Password
+                Verify Mobile
               </button>
             </div>
           </form>
@@ -107,4 +117,4 @@ const ForgetPassword = ({ setOpen, onClose }) => {
   );
 };
 
-export default ForgetPassword;
+export default MobilePopup;

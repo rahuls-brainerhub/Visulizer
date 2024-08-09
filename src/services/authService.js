@@ -68,6 +68,7 @@ export const socialAuth = async (Data) => {
         if (res) {
             store.dispatch(setIsAuthenticated(true));
             store.dispatch(setrefreshToken(res?.data?.data?.access_token))
+            store.dispatch(setUser(res.data.data))
         }
         return res.data;
     } catch (err) {
@@ -106,6 +107,14 @@ export const changePassword = async (data) => {
         const res = await baseService.post(ROUTES.AUTH.CHANGEPASSWORD, data, {
             headers: { Authorization: `Bearer ${token}` }
         });
+        return res.data;
+    } catch (err) {
+        return err;
+    }
+};
+export const mobileVerify = async (data) => {
+    try {
+        const res = await baseService.post(ROUTES.AUTH.MOBILEVERIFY, data);
         return res.data;
     } catch (err) {
         return err;

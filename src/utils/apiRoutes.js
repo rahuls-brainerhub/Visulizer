@@ -9,7 +9,8 @@ const ROUTES = {
     SOCIALAUTH: "/api/v1/social-login",
     MYPROFILE: "/api/v1/myprofile",
     EDITPROFILE: "/api/v1/profile-update",
-    CHANGEPASSWORD: "/api/v1/change-password"
+    CHANGEPASSWORD: "/api/v1/change-password",
+    MOBILEVERIFY:"api/v1/update-phoneno"
   },
   SERVICES: {
     INQUIRY: "/api/v1/inquiry",
@@ -19,6 +20,9 @@ const ROUTES = {
   },
   CONTACT:{
    CONTACTUS:"/api/v1/getContactUs"
+  },
+  FAQ:{
+    FAQDATA:"/api/v1/getFaq"
   }
 }
 export { ROUTES };

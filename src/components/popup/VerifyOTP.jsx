@@ -3,15 +3,19 @@ import { useSelector } from "react-redux";
 import { store } from "../../redux/store";
 import { resendOtp, verifyOtp } from "../../services/authService";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
-const VerifyOTP = ({onClose}) => {
+const VerifyOTP = ({ onClose }) => {
   const [values, setValues] = useState(["", "", "", "", "", ""]);
+  const token = store.getState().auth.token;
+  const [loading, setLoading] = useState(false);
   const inputRefs = useRef([]);
   const user_id = useSelector((store) => store.auth?.user);
+  const navigate = useNavigate();
   const otpVerify = async () => {
     const result = values.join("");
     const formData = new FormData();
-    formData.append("user_id", user_id[0]?._id);
+    formData.append("user_id", user_id[0]?._id || user_id?._id);
     formData.append("otp", result);
 
     try {
@@ -19,11 +23,14 @@ const VerifyOTP = ({onClose}) => {
       if (response?.status === 1) {
         toast.success("Otp Verify successfully");
         onClose("openLogin");
+        if (Object.keys(token)?.length > 0) {
+          navigate("/dashboard");
+        } 
       } else {
-        toast.error(response?.data);
+        toast.error(response?.response?.data?.message);
       }
     } catch (error) {
-      toast.error("Error adding Register");
+      return error;
     } finally {
       setLoading(false);
     }
@@ -57,7 +64,7 @@ const VerifyOTP = ({onClose}) => {
       inputRefs.current[newValues.length - 1].focus();
     }
   };
-  const resend=async()=>{
+  const resend = async () => {
     const formData = new FormData();
     formData.append("user_id", user_id[0]?._id);
 
@@ -73,7 +80,7 @@ const VerifyOTP = ({onClose}) => {
     } finally {
       setLoading(false);
     }
-  }
+  };
 
   return (
     <div className="flex flex-col justify-center items-center">
@@ -114,7 +121,10 @@ const VerifyOTP = ({onClose}) => {
       </button>
       <p className="my-[2.813rem] text-[1rem] text-[#391952]">
         Didn't receive the code?
-        <span onClick={resend} className="text-[#92278F] font-[400] cursor-pointer">
+        <span
+          onClick={resend}
+          className="text-[#92278F] font-[400] cursor-pointer"
+        >
           {" "}
           Resend
         </span>{" "}

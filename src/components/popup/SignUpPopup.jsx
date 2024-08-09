@@ -35,11 +35,16 @@ const SignUpPopup = ({ onClose }) => {
       access_token: token,
       provider: "google",
     });
+
     try {
       if (socialLogin?.status === 1) {
         toast.success("Login Successful");
         onClose("openSignup");
-        naviagte("/dashboard");
+        if (socialLogin?.data?.mobile_no) {
+          naviagte("/dashboard");
+        } else {
+          onClose("openMobile");
+        }
       } else {
         toast.error(response?.response?.data?.message);
       }
@@ -85,9 +90,11 @@ const SignUpPopup = ({ onClose }) => {
         onClose("openOTP");
       } else {
         toast.error(response?.response?.data?.error.email[0]);
+        toast.error(response?.response?.data?.error.phone_number[0]);
       }
     } catch (error) {
-      toast.error("Error adding Register");
+      return error;
+      // toast.error("Error adding Register");
     } finally {
       setLoading(false);
       close();
@@ -113,7 +120,11 @@ const SignUpPopup = ({ onClose }) => {
       if (socialLogin?.status === 1) {
         toast.success("Login Successful");
         onClose("openSignup");
-        naviagte("/dashboard");
+        if (socialLogin?.data?.mobile_no) {
+          naviagte("/dashboard");
+        } else {
+          onClose("openMobile");
+        }
       } else {
         toast.error(response?.response?.data?.message);
       }

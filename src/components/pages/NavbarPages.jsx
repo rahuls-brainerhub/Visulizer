@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "../homePage/Navbar";
 import PopupTemplete from "../popup/Index";
 import SignUpPopup from "../popup/SignUpPopup";
@@ -6,8 +6,9 @@ import ForgetPassword from "../popup/ForgetPassword";
 import LoginPopup from "../popup/LoginPopup";
 import VerifyOTP from "../popup/VerifyOTP";
 import ResetPassword from "../popup/ResetPassword";
+import MobilePopup from "../popup/MobilePopup";
 
-const NavbarPages = () => {
+const NavbarPages = (props) => {
   const searchParams = new URLSearchParams(location.search);
   const token = searchParams.get("token");
   const [open, setOpen] = useState({
@@ -16,6 +17,7 @@ const NavbarPages = () => {
     openOTP: false,
     openForgetPassword: false,
     openResetPassword: false,
+    openMobile: false,
   });
 
   const onClose = (modalType) => {
@@ -26,6 +28,7 @@ const NavbarPages = () => {
         openOTP: false,
         openForgetPassword: false,
         openResetPassword: false,
+        openMobile: false,
       };
       newState[modalType] = !prevState[modalType];
       updateBodyOverflowClass(newState);
@@ -44,6 +47,14 @@ const NavbarPages = () => {
       document.body.classList.remove("overflow-hidden");
     }
   }
+
+  // useEffect(() => {
+  //   if (!props?.modalOpen) {
+  //     document.body.classList.add("overflow-hidden");
+  //   } else {
+  //     document.body.classList.remove("overflow-hidden");
+  //   }
+  // }, [props?.modalOpen]);
 
   const removeTokenFromURL = () => {
     const baseUrl = window.location.href.split("?")[0];
@@ -88,10 +99,23 @@ const NavbarPages = () => {
         />
       )}
 
+      {props?.modalOpen && (
+        <PopupTemplete
+          title={"Log In"}
+          bodyComponent={
+            <LoginPopup
+              setOpen={props.handleLogin}
+              onClose={props.handleLogin}
+            />
+          }
+          onClose={props.handleLogin}
+        />
+      )}
+
       {open?.openOTP ? (
         <PopupTemplete
           title={"Verify OTP"}
-          bodyComponent={<VerifyOTP onClose={() => onClose("openLogin")} />}
+          bodyComponent={<VerifyOTP onClose={(view) => onClose(view)} />}
           onClose={onClose}
         />
       ) : null}
@@ -103,6 +127,15 @@ const NavbarPages = () => {
           }
           onClose={onClose}
           removeTokenFromURL={removeTokenFromURL}
+        />
+      )}
+      {open?.openMobile && (
+        <PopupTemplete
+          title={"Verify Mobile Number"}
+          bodyComponent={
+            <MobilePopup token={token} onClose={(view) => onClose(view)} />
+          }
+          onClose={onClose}
         />
       )}
     </>
