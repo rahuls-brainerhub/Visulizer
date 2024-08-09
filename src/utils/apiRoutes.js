@@ -29,6 +29,9 @@ const ROUTES = {
   },
   FAQ: {
     FAQDATA: "/api/v1/getFaq"
+  },
+  TERM:{
+    TERMANDCONDITION:"/api/v1/getDetails/termsConditions"
   }
 }
 export { ROUTES };
