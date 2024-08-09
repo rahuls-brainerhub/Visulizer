@@ -20,6 +20,7 @@ const MobilePopup = ({ setOpen, onClose }) => {
     resolver: yupResolver(mobileSchema),
   });
   const onSubmit = async (data) => {
+    console.log(data);
     const formData = new FormData();
     formData.append("phone_number", data?.phone_number);
     formData.append("user_id", user_id);
@@ -40,11 +41,11 @@ const MobilePopup = ({ setOpen, onClose }) => {
       close();
     }
   };
-  const close = () => {
-    reset({
-      phone_number: "",
-    });
-  };
+    const close = () => {
+      reset({
+        phone_number: "",
+      });
+    };
   const handleKeyPressNumber = (event) => {
     const charCode = event.charCode;
     if (!/[0-9]/.test(String.fromCharCode(charCode))) {

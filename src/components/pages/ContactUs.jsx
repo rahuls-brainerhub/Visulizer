@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Footer from "../homePage/Footer";
 import TopSection from "./Topsection";
 import Location from "../contactUs/Location";
@@ -13,10 +13,13 @@ const ContactUs = () => {
   useEffect(() => {
     contactData();
   }, []);
-
+  const [open, setopen] = useState(false);
+  const handleLogin = () => {
+    setopen(!open);
+  };
   return (
     <>
-      <NavbarPages />
+      <NavbarPages modalOpen={open} handleLogin={handleLogin} />
       <TopSection
         keys={"unique"}
         title={"Contact Us"}
@@ -29,7 +32,7 @@ const ContactUs = () => {
         <Location />
       </div>
 
-      <Footer footer={true} />
+      <Footer footer={true} handleLogin={handleLogin}  />
     </>
   );
 };

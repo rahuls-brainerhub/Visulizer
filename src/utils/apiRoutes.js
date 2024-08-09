@@ -10,19 +10,25 @@ const ROUTES = {
     MYPROFILE: "/api/v1/myprofile",
     EDITPROFILE: "/api/v1/profile-update",
     CHANGEPASSWORD: "/api/v1/change-password",
-    MOBILEVERIFY:"api/v1/update-phoneno"
+    MOBILEVERIFY: "api/v1/update-phoneno"
   },
   SERVICES: {
     INQUIRY: "/api/v1/inquiry",
     PACKAGES: "/api/v1/getPackages",
-    PURCHASEPACKAGE:"/api/v1/purchasePackage",
-    GETPURCHASEPACKAGE:"/api/v1/getUserPackage"
+    PURCHASEPACKAGE: "/api/v1/purchasePackage",
+    GETPURCHASEPACKAGE: "/api/v1/getUserPackage"
   },
-  CONTACT:{
-   CONTACTUS:"/api/v1/getContactUs"
+  CONTACT: {
+    CONTACTUS: "/api/v1/getContactUs"
   },
-  FAQ:{
-    FAQDATA:"/api/v1/getFaq"
+  ABOUT: {
+    ABOUTUS: "/api/v1/getDetails/aboutUs"
+  },
+  PRIVACY: {
+    PRIVACYPOLICY: "/api/v1/getDetails/aboutUs"
+  },
+  FAQ: {
+    FAQDATA: "/api/v1/getFaq"
   }
 }
 export { ROUTES };

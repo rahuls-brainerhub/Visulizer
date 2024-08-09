@@ -6,6 +6,7 @@ const Footer = ({ footer, handleLogin }) => {
   const handleClick = () => {
     window.scrollTo(0, 0);
   };
+  console.log(footer, handleLogin);
   return (
     <div>
       {footer && (
@@ -19,7 +20,7 @@ const Footer = ({ footer, handleLogin }) => {
               Visualize Your Fabric Now
             </h1>
             <button
-              onClick={() => {
+              onClick={(e) => {
                 handleLogin();
                 handleClick();
               }}
@@ -77,6 +78,13 @@ const Footer = ({ footer, handleLogin }) => {
                 className="text-base leading-5 font-normal hover:underline text-white hover:text-primaryMediumLight"
               >
                 FAQ
+              </Link>
+              <Link
+                to={"/term-condition"}
+                onClick={handleClick}
+                className="text-base leading-5 font-normal hover:underline text-white hover:text-primaryMediumLight"
+              >
+                Terms and Condition
               </Link>
             </div>
             {/* <div className="flex flex-col gap-3">

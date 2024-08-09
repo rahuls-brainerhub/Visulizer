@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import NavbarPages from "./NavbarPages";
-import Footer from "../homePage/Footer";
-import PrivacyPolicy from "../privacy/PrivacyPolicy";
 import TopSection from "./Topsection";
+import TermCondition from "../termAndCondition/TermCondition";
+import Footer from "../homePage/Footer";
 
-const PrivacyPage = () => {
+const TermConditionPage = () => {
   const [open, setopen] = useState(false);
   const handleLogin = () => {
     setopen(!open);
@@ -14,14 +14,14 @@ const PrivacyPage = () => {
       <NavbarPages modalOpen={open} handleLogin={handleLogin} />
       <TopSection
         keys={"unique"}
-        title={"Privacy Policy"}
-        breadcrumData={["Home", "Privacy Policy"]}
+        title={"Terms and Condition"}
+        breadcrumData={["Home", "Terms and Condition"]}
         image={"/privacyPolicy.png"}
       />
-      <PrivacyPolicy />
-      <Footer footer={false} handleLogin={handleLogin} />
+      <TermCondition />
+      <Footer footer={true} handleLogin={handleLogin} />
     </>
   );
 };
 
-export default PrivacyPage;
+export default TermConditionPage;
