@@ -33,6 +33,9 @@ const PopupTemplete = ({
                   case "Forget Password":
                     onClose("openForgetPassword");
                     break;
+                    case "Verify Mobile Number":
+                      onClose("openMobile");
+                      break;
                   case "Reset Password":
                     onClose("openResetPassword");
                     removeTokenFromURL();

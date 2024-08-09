@@ -35,11 +35,16 @@ const SignUpPopup = ({ onClose }) => {
       access_token: token,
       provider: "google",
     });
+
     try {
       if (socialLogin?.status === 1) {
         toast.success("Login Successful");
         onClose("openSignup");
-        naviagte("/dashboard");
+        if (socialLogin?.data?.mobile_no) {
+          naviagte("/dashboard");
+        } else {
+          onClose("openMobile");
+        }
       } else {
         toast.error(response?.response?.data?.message);
       }
@@ -115,7 +120,11 @@ const SignUpPopup = ({ onClose }) => {
       if (socialLogin?.status === 1) {
         toast.success("Login Successful");
         onClose("openSignup");
-        naviagte("/dashboard");
+        if (socialLogin?.data?.mobile_no) {
+          naviagte("/dashboard");
+        } else {
+          onClose("openMobile");
+        }
       } else {
         toast.error(response?.response?.data?.message);
       }

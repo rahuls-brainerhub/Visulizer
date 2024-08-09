@@ -35,8 +35,12 @@ const LoginPopup = ({ onClose, handleLogin }) => {
     try {
       if (socialLogin?.status === 1) {
         toast.success("Login Successful");
-        naviagte("/dashboard");
         onClose("openLogin");
+        if (socialLogin?.data?.mobile_no) {
+          naviagte("/dashboard");
+        } else {
+          onClose("openMobile");
+        }
       } else {
         toast.error(response?.response?.data?.message);
       }
@@ -47,7 +51,7 @@ const LoginPopup = ({ onClose, handleLogin }) => {
     }
   };
   useEffect(() => {
-    if (Object.keys(user).length) {
+    if (Object.keys(user)?.length) {
       getAuthTokn(user.access_token);
     }
   }, [user]);
@@ -100,7 +104,11 @@ const LoginPopup = ({ onClose, handleLogin }) => {
       if (socialLogin?.status === 1) {
         toast.success("Login Successful");
         onClose("openLogin");
-        naviagte("/dashboard");
+        if (socialLogin?.data?.mobile_no) {
+          naviagte("/dashboard");
+        } else {
+          onClose("openMobile");
+        }
       } else {
         toast.error(response?.response?.data?.message);
       }

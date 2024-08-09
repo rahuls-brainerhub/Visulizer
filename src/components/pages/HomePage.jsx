@@ -14,7 +14,7 @@ const HomePage = () => {
   const handleLogin = () => {
     setOpen(!open);
   };
-
+ 
   return (
     <div>
       <NavbarPages modalOpen={open} handleLogin={handleLogin} />
