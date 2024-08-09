@@ -24,6 +24,9 @@ const ROUTES = {
   ABOUT: {
     ABOUTUS: "/api/v1/getDetails/aboutUs"
   },
+  PRIVACY: {
+    PRIVACYPOLICY: "/api/v1/getDetails/aboutUs"
+  },
   FAQ: {
     FAQDATA: "/api/v1/getFaq"
   }

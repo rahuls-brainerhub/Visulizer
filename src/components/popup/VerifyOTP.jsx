@@ -5,7 +5,7 @@ import { resendOtp, verifyOtp } from "../../services/authService";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 
-const VerifyOTP = ({ onClose ,edit,profile }) => {
+const VerifyOTP = ({ onClose, edit }) => {
   const [values, setValues] = useState(["", "", "", "", "", ""]);
   const token = store.getState().auth.token;
   const [loading, setLoading] = useState(false);
@@ -23,9 +23,11 @@ const VerifyOTP = ({ onClose ,edit,profile }) => {
       if (response?.status === 1) {
         toast.success("Otp Verify successfully");
         onClose("openLogin");
-        if (Object.keys(token)?.length > 0) {
+        if (edit) {
           navigate("/dashboard");
-        } 
+        } else if (Object.keys(token)?.length > 0) {
+          navigate("/dashboard");
+        }
       } else {
         toast.error(response?.response?.data?.message);
       }

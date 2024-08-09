@@ -14,6 +14,7 @@ import Fqa from "../pages/Fqa";
 import ServicePage from "../pages/ServicePage";
 import Dashboard from "../pages/Dashboard";
 import PrivacyPage from "../pages/PrivacyPage";
+import TermConditionPage from "../pages/TermConditionPage";
 
 const AllRoutes = () => {
   return (
@@ -80,6 +81,7 @@ const AllRoutes = () => {
           }
         />
         <Route path="/privacy-policy" element={<PrivacyPage />} />
+        <Route path="/term-condition" element={<TermConditionPage />} />
       </Routes>
     </div>
   );

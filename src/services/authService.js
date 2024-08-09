@@ -28,6 +28,7 @@ export const login = async (userData) => {
         const res = await baseService.post(ROUTES.AUTH.LOGIN, userData);
         if (res) {
             store.dispatch(setIsAuthenticated(true));
+            store.dispatch(setUser(res.data.data))
             store.dispatch(setrefreshToken(res?.data?.data?.access_token))
         }
 

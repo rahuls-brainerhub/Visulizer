@@ -79,6 +79,13 @@ const Footer = ({ footer, handleLogin }) => {
               >
                 FAQ
               </Link>
+              <Link
+                to={"/term-condition"}
+                onClick={handleClick}
+                className="text-base leading-5 font-normal hover:underline text-white hover:text-primaryMediumLight"
+              >
+                Terms and Condition
+              </Link>
             </div>
             {/* <div className="flex flex-col gap-3">
            
