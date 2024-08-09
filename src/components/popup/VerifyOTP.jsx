@@ -5,7 +5,7 @@ import { resendOtp, verifyOtp } from "../../services/authService";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 
-const VerifyOTP = ({ onClose }) => {
+const VerifyOTP = ({ onClose ,edit,profile }) => {
   const [values, setValues] = useState(["", "", "", "", "", ""]);
   const token = store.getState().auth.token;
   const [loading, setLoading] = useState(false);

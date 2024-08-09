@@ -6,6 +6,7 @@ import authSlice from "./slice/authSlice";
 import ourServiceSlice from "./slice/ourServiceSlice";
 import contactSlice from "./slice/contactSlice";
 import faqSlice from "./slice/faqSlice";
+import aboutSlice from "./slice/aboutSlice";
 
 
 export const persistConfig = {
@@ -18,7 +19,8 @@ const combinedReducer = combineReducers({
     auth: authSlice,
     service: ourServiceSlice,
     contact: contactSlice,
-    faq: faqSlice
+    faq: faqSlice,
+    about: aboutSlice
 })
 
 const rootReducer = (state, action) => {

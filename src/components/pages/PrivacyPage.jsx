@@ -5,9 +5,13 @@ import PrivacyPolicy from "../privacy/PrivacyPolicy";
 import TopSection from "./Topsection";
 
 const PrivacyPage = () => {
+  const [open, setopen] = useState(false);
+  const handleLogin = () => {
+    setopen(!open);
+  };
   return (
     <>
-      <NavbarPages />
+      <NavbarPages modalOpen={open} handleLogin={handleLogin} />
       <TopSection
         keys={"unique"}
         title={"Privacy Policy"}
@@ -15,7 +19,7 @@ const PrivacyPage = () => {
         image={"/privacyPolicy.png"}
       />
       <PrivacyPolicy />
-      <Footer footer={false} />
+      <Footer footer={false} handleLogin={handleLogin} />
     </>
   );
 };

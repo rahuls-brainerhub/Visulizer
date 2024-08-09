@@ -1,13 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import Footer from "../homePage/Footer";
 import TopSection from "./Topsection";
 import Story from "../aboutUs/Story";
 import NavbarPages from "./NavbarPages";
 // import successImage from "../../../public/"
 const AboutUs = () => {
+  const [open, setopen] = useState(false);
+  const handleLogin = () => {
+    setopen(!open);
+  };
   return (
     <div>
-      <NavbarPages />
+      <NavbarPages modalOpen={open} handleLogin={handleLogin} />
       <TopSection
         keys={"unique"}
         title={"About Us"}
@@ -15,7 +19,7 @@ const AboutUs = () => {
         image={"/aboutus.png"}
       />
       <Story />
-      <Footer footer={true} />
+      <Footer footer={true} handleLogin={handleLogin} />
     </div>
   );
 };

@@ -24,7 +24,7 @@ const ServicePage = () => {
       <OurServices handleLogin={handleLogin} />
       <AddService />
       <Touch />
-      <Footer footer={true} />
+      <Footer footer={true} handleLogin={handleLogin} />
     </>
   );
 };

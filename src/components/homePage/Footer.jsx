@@ -6,6 +6,7 @@ const Footer = ({ footer, handleLogin }) => {
   const handleClick = () => {
     window.scrollTo(0, 0);
   };
+  console.log(footer, handleLogin);
   return (
     <div>
       {footer && (
@@ -19,7 +20,7 @@ const Footer = ({ footer, handleLogin }) => {
               Visualize Your Fabric Now
             </h1>
             <button
-              onClick={() => {
+              onClick={(e) => {
                 handleLogin();
                 handleClick();
               }}
